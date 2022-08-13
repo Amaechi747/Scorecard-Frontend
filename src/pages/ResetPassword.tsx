@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-const ResetPassword = (props: Props) => {
+const ResetPassword: FC = (props: Props) => {
   return (
     <div>ResetPassword</div>
   )
 }
 
-export default ResetPassword
+export default ResetPassword;

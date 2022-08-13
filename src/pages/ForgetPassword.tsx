@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-const ForgetPassword = (props: Props) => {
+const ForgetPassword: FC = (props: Props) => {
   return (
-    <div>ForgetPassword</div>
+    <div>: Fc</div>
   )
 }
 
-export default ForgetPassword
+export default ForgetPassword;

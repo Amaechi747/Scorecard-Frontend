@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {}
 
-const AdminDashboard = (props: Props) => {
+const AdminDashboard: FC = (props: Props) => {
   return (
     <div>AdminDashboard</div>
   )
 }
 
-export default AdminDashboard
+export default AdminDashboard;

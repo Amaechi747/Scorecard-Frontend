@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
+import { AdminDashboard, ChangePassword, ForgetPassword, Login, ResetPassword, SuperAdminSignUp } from "./pages"
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/SuperAdminSignUp" element={<SuperAdminSignUp />} />
+      </Routes>
     </div>
   );
 }
