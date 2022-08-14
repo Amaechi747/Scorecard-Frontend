@@ -17,7 +17,7 @@ const ButtonText = styled.p`
 color: #FFFFFF;
 `
 
-const Button = (props: ButtonProps) => {
+const FormButton = (props: ButtonProps) => {
   const { text } = props
   return (
     <ButtonBody>
@@ -26,4 +26,4 @@ const Button = (props: ButtonProps) => {
   )
 }
 
-export default Button
+export default FormButton

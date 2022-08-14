@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { AdminDashboard, ChangePassword, ForgetPassword, Login, ResetPassword, SuperAdminSignUp } from "./pages"
 
+
 function App(): JSX.Element {
   return (
     <div className="App">
@@ -11,7 +12,7 @@ function App(): JSX.Element {
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/SuperAdminSignUp" element={<SuperAdminSignUp />} />
+        <Route path="/superadmin-signup" element={<SuperAdminSignUp />} />
       </Routes>
     </div>
   );
