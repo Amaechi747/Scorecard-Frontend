@@ -11,9 +11,9 @@ type FormProps = {
 
 const Form = (props: FormProps) => {
   return (
-    <div>
+    <form>
      {props.children}
-    </div>
+    </form>
   )
 }
 
