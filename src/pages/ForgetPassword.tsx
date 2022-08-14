@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-type Props = {}
+type ForgetPasswordProps = {}
 
-const ForgetPassword: FC = (props: Props) => {
+const ForgetPassword: FC = (props: ForgetPasswordProps) => {
   return (
     <div>: Fc</div>
   )

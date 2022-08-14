@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-type Props = {}
+type LoginProps = {}
 
-const Login: FC = (props: Props) => {
+const Login: FC = (props: LoginProps) => {
   return (
     <div>Login</div>
   )

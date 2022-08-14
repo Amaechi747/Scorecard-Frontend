@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-type Props = {}
+type SuperAdminSignUpProps = {}
 
-const SuperAdminSignUp: FC = (props: Props) => {
+const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   return (
     <div>SuperAdminSignUp</div>
   )

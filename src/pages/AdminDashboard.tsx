@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-type Props = {}
+type AdminDashboardProps = {}
 
-const AdminDashboard: FC = (props: Props) => {
+const AdminDashboard: FC = (props: AdminDashboardProps) => {
   return (
     <div>AdminDashboard</div>
   )
