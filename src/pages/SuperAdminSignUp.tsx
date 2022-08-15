@@ -1,6 +1,8 @@
-import React, { FC, useState, ChangeEvent } from "react";
+import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
 import { Heading, Paragraph, HorizontalLine } from "../styling/css";
+import axios from "axios"
+import swal from "sweetalert"
 
 type SuperAdminSignUpProps = {};
 
@@ -19,6 +21,27 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
     });
   };
 
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+
+      axios.post('/api/super-admin-signup', formData)
+      swal("Success", "You have successfully signed in", "success")
+
+    } catch {
+      swal("Error", "Something went wrong", "error")
+    }
+  }
+
+
   return (
     <>
       <Heading>SuperAdmin Signup</Heading>
@@ -29,37 +52,41 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
         </div>
 
         <div style={{ padding: "2rem 2.5rem" }}>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <FormInput
               label="First Name"
               type="text"
               value={formData.firstName}
               name="firstName"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
             />
 
-            <FormInput 
+            <FormInput
               label="Last Name"
               type="text"
               value={formData.lastName}
               name="lastName"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
             />
 
-            <FormInput 
+            <FormInput
               label="Email"
               type="email"
               value={formData.email}
               name="email"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
             />
 
-            <FormInput 
+            <FormInput
               label="Password"
               type="password"
               value={formData.password}
               name="password"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
             />
 
             <FormButton text="Create Super Admin" />
