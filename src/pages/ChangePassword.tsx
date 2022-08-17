@@ -1,7 +1,7 @@
-import { FC, useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
 import { Heading, Paragraph, HorizontalLine } from "../styling/css";
-import axios from "axios";
+// import axios from "axios";
 
 type ChangePasswordProps = {};
 

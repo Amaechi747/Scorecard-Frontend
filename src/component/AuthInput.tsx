@@ -92,6 +92,7 @@ const AuthInput = (props: PageProps) => {
                 }
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, color])
 
     return (
