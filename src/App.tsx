@@ -9,7 +9,7 @@ function App(): JSX.Element {
         <Route path="/" element={<AdminDashboard />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/change-password" element={<ChangePassword />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/superadmin-signup" element={<SuperAdminSignUp />} />

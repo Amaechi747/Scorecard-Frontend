@@ -19,6 +19,6 @@ const Card = (props: CardProps) => {
    {props.children}
   </CardBody>
  )
-}
+} 
 
 export default Card
