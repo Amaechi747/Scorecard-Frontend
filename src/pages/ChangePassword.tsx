@@ -37,7 +37,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
       await axios.post('/api/change-password', formData)
       swal("Success", "You have successfully signed in", "success")
 
-    } catch {
+    } catch(err) {
       swal("Error", "Something went wrong", "error")
     }
   }

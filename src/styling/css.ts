@@ -36,3 +36,28 @@ export const Input = styled.input`
  line-height: 1.5rem;
  height: 1.3rem;
 `
+
+export const ButtonBody = styled.button`
+
+&:hover{
+background: #249800;
+}
+width: calc(100% - 0.21rem);
+font-weight: 500;
+font-size: 1rem;
+line-heigth: 1.5rem;
+border: unset;
+padding: 0.8rem;
+text-align: center;
+color: #fff;
+margin: 0.4rem 0;
+background: #14A800;
+cursor: pointer
+`
+
+export const CardBody = styled.div`
+ background: #fff;
+ width: 50%;
+ height: 80vh;
+ margin: 3rem auto 0;
+`
