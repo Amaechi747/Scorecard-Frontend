@@ -8,6 +8,7 @@ type ChangePasswordProps = {};
 const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   props: ChangePasswordProps
 ) => {
+  
   const [formData, setFormData] = useState({
     newPassword: "",
     confirmPassword: "",
