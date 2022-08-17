@@ -31,6 +31,7 @@ const WrapperPage = (props: PageProps) => {
 						<span style={{ 
 						fontSize: '1.7rem', 
 						fontWeight: '600', 
+						color: '#21334F',
 						lineHeight: '3rem',
 						marginLeft: '0.4rem'}}>Scorecard</span>
 					</div>

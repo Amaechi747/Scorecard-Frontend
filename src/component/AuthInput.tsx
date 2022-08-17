@@ -11,22 +11,29 @@ type PageProps = {
     setSharedState?: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Label = styled.label`
- margin-bottom: 1rem;
- color: #21334F;
- font-weigth: 600;
- display: block;
-`
+// const Label = styled.label`
+//  margin-bottom: 1rem;
+//  color: #21334F;
+//  display: block;
+// `
 const Input = styled.input`
  border-width: 0.13rem;
  border-style: solid;
- color: grey;
  outline: unset;
- width: calc(100% - 2.2rem);
- padding: 0.4rem 1rem;
- font-size: 0.9rem;
+ width: calc(100% - 3.5rem);
+ padding: 0.8rem 1.5rem;
+ font-size: 1rem;
  line-height: 1.5rem;
- height: 1.3rem;
+ height: 1.5rem;
+ color: #21334f;
+
+ ::placeholder,
+ ::-webkit-input-placeholder {
+   color: #21334Fc9;
+ }
+ :-ms-input-placeholder {
+    color: #21334Fc9;
+ }
 `
 
 const AuthInput = (props: PageProps) => {
@@ -97,7 +104,11 @@ const AuthInput = (props: PageProps) => {
 
     return (
         <div style={{ marginBottom: '1.5rem', width: '100%' }}>
-            <Label>{label}</Label>
+            <label style={{ 
+                fontWeight: '600',
+                 marginBottom: '1rem',
+                 color: '#21334F',
+                 display: 'block' }}>{label}</label>
             <Input
                 type={type}
                 value={value}

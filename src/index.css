@@ -1,8 +1,8 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 body {
   margin: 0;
   background-color: #E5E5E5;
-  font-family: 'Calibri', 'Helvetica Neue', Helvetica, A;
+  font-family:  'Inter' ,'Calibri', 'Helvetica Neue', Helvetica;
   font-style: normal;
 }

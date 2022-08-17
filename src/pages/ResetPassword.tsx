@@ -12,7 +12,7 @@ const ResetPassword: FC = (props: ResetPasswordProps) => {
     <WrapperPage backToLogin={true}>
       <div style={{ color: '#21334F', margin: '5rem 0 1rem 0'}}>
         <h1>Reset Password</h1>
-        <span style={{ fontWeight: '400', color: '#21334F59' }}>Please choose your new password</span>
+        <span style={{ fontWeight: '400', color: '#21334FC9' }}>Please choose your new password</span>
       </div>
       <div  style={{ width: '100%', padding: '3rem 0'}}>
         <form action="" method='post'>
