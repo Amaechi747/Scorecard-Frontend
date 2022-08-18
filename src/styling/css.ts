@@ -31,7 +31,6 @@ export const Input = styled.input`
  width: calc(100% - 1.5rem);
  padding: 0.4rem 0.5rem;
  display: inline-block;
- margin-bottom: 0.8rem;
  font-size: 0.9rem;
  line-height: 1.5rem;
  height: 1.3rem;
@@ -45,7 +44,7 @@ background: #249800;
 width: calc(100% - 0.21rem);
 font-weight: 500;
 font-size: 1rem;
-line-heigth: 1.5rem;
+line-height: 1.5rem;
 border: unset;
 padding: 0.8rem;
 text-align: center;

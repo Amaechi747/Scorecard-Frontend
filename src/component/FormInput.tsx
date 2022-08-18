@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent } from 'react'
-import styled from "styled-components"
 import { Label, Input } from "../styling/css"
 
 type FormInputProps = {
@@ -7,16 +6,20 @@ type FormInputProps = {
  type: string
  value: string
  name: string
+ errBorderColor: string
+ errMsgColor?: string
+ errMsg?: string
+ // border: string | number | undefined
  onChange: (e: ChangeEvent<HTMLInputElement>) => void
  onBlur: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 
 const FormInput: (props: FormInputProps) => JSX.Element = (props: FormInputProps) => {
- const { label, type, value, name, onChange, onBlur } = props
+ const { label, type, value, name, onChange, onBlur, errBorderColor, errMsg, errMsgColor} = props
 
  return (
-  <div style={{ marginBottom: '0.4rem', width: '100%' }}>
+  <div style={{ marginBottom: '1.2rem', width: '100%' }}>
    <Label>{label}</Label>
    <Input
     type={type}
@@ -24,8 +27,11 @@ const FormInput: (props: FormInputProps) => JSX.Element = (props: FormInputProps
     onChange={onChange}
     onBlur={onBlur}
     name={name}
+    style={{border: `1px solid ${errBorderColor}`}}
     required
    />
+   
+   <small style={{color: `${errMsgColor}`}}>{errMsg}</small>
   </div>
  )
 }

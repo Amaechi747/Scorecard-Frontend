@@ -14,7 +14,16 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
     password: "",
   });
 
+  const [errMsg, setErrMsg] = useState<string>('')
+  const [errMsgColor, setErrMsgColor] = useState<string>('')
+  const [errBorderColor, setErrBorderColor] = useState<string>('')
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(formData.firstName === '' || errMsgColor === '' || errBorderColor === '') {
+      setErrMsgColor('#FF0000')
+      setErrBorderColor('#FF0000')
+      setErrMsg('First name cannot be empty')
+    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -60,6 +69,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               name="firstName"
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`} 
             />
 
             <FormInput
@@ -69,6 +79,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               name="lastName"
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`} 
             />
 
             <FormInput
@@ -78,6 +89,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               name="email"
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`}
             />
 
             <FormInput
@@ -87,6 +99,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               name="password"
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`}
             />
 
             <FormButton text="Create Super Admin" />
