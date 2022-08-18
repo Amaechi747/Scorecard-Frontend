@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {FormEvent} from 'react'
 import styled from "styled-components"
 
 type FormProps = {
  children: any
+ onSubmit: (e: FormEvent<HTMLFormElement>) => void
 }
 
 // const Form = styled.form`
@@ -10,8 +11,11 @@ type FormProps = {
 // `
 
 const Form = (props: FormProps) => {
+  const {onSubmit} = props
   return (
-    <form>
+    <form
+      onSubmit={onSubmit}
+    >
      {props.children}
     </form>
   )
