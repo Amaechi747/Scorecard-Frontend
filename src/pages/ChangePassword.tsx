@@ -11,7 +11,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
 ) => {
   
   const [formData, setFormData] = useState({
-    newPassword: "",
+    password: "",
     confirmPassword: "",
   });
   const [errMsg, setErrMsg] = useState<string>('')
@@ -22,21 +22,21 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (formData.newPassword === '' && errMsgColor === '' && errBorderColor === '') {
+    if (formData.password === '' && errMsgColor === '' && errBorderColor === '') {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Password cannot be empty')
     }
-    else if (formData.newPassword !== formData.confirmPassword) {
+    else if (formData.password !== formData.confirmPassword) {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Passwords do not match')
     }
-    else if ( formData.newPassword.length < 8 && formData.confirmPassword.length < 8) {
+    else if ( formData.password.length < 8 && formData.confirmPassword.length < 8) {
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if(formData.newPassword === formData.confirmPassword) {
+    } else if(formData.password === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -51,31 +51,33 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      if (formData.newPassword === '' && errMsgColor === '' && errBorderColor === '') {
+      if (formData.password === '' && errMsgColor === '' && errBorderColor === '') {
         setErrMsgColor('#FF0000')
         setErrBorderColor('#FF0000')
         setErrMsg('Password cannot be empty')
       } else { 
-        const result = await axios.post('http://localhost:4000/update_password/:id', formData)
-        console.log(result)
+        const result = await axios.post('http://localhost:4000/users/update_password', formData)
         swal("Success", "You have successfully signed in", "success")
       }
-    } catch (err) {
-      swal("Error", "Something went wrong", "error")
+    } catch (error: any) {
+      if(error?.response.data.error) {
+        const message = error?.response.data.error.includes('jwt') ? "You must be logged in" : error?.response.data.error
+        swal("Error", message, "error")
+      }
     }
   }
 
   useEffect(() => {
-    if (formData.newPassword !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Passwords do not match')
     }
-    else if (formData.newPassword && formData.newPassword.length < 8 && formData.confirmPassword.length < 8) {
+    else if (formData.password && formData.password.length < 8 && formData.confirmPassword.length < 8) {
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if(formData.newPassword && formData.confirmPassword && formData.newPassword === formData.confirmPassword) {
+    } else if(formData.password && formData.confirmPassword && formData.password === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -101,10 +103,10 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
             <FormInput
               label="New Password"
               type="password"
-              value={formData.newPassword}
+              value={formData.password}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleChange(e)}
-              name="newPassword"
+              name="password"
               errBorderColor={`${errBorderColor}`}
               errMsg={errMsg}
               errMsgColor={errMsgColor}
