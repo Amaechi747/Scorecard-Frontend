@@ -11,11 +11,7 @@ type PageProps = {
     setSharedState?: React.Dispatch<React.SetStateAction<string>>
 }
 
-// const Label = styled.label`
-//  margin-bottom: 1rem;
-//  color: #21334F;
-//  display: block;
-// `
+
 const Input = styled.input`
  border-width: 0.13rem;
  border-style: solid;
@@ -26,7 +22,6 @@ const Input = styled.input`
  line-height: 1.5rem;
  height: 1.5rem;
  color: #21334f;
-
  ::placeholder,
  ::-webkit-input-placeholder {
    color: #21334Fc9;
@@ -43,6 +38,7 @@ const AuthInput = (props: PageProps) => {
     const [color, setColor] = useState('#CFD0D145')
 
     function handleInput(e: ChangeEvent<HTMLInputElement>) {
+        e.preventDefault();
         setValue(e.target.value.trim());
         if(typeof setSharedState !== 'undefined') {
             setSharedState(e.target.value.trim());
@@ -50,7 +46,7 @@ const AuthInput = (props: PageProps) => {
         if(type === 'email') {
             const atposition = value.indexOf("@");  
             const dotposition = value.lastIndexOf(".");  
-            if ((atposition < 1) || (dotposition < atposition+2) || (dotposition >= value.length)){  
+            if ((atposition < 1) || (dotposition < atposition+2) || (dotposition === value.length)){  
                 setColor('red');
                 errOccured(true);
             }  else {
@@ -62,7 +58,7 @@ const AuthInput = (props: PageProps) => {
             }
         }
         if(type === 'password') {
-            if (new RegExp('^[a-zA-Z0-9]{4,30}$').test(value)) {
+            if ( value.length > 3 && new RegExp('^[a-zA-Z0-9@_:;]{3,30}$', 'g').test(value)) {
                 if(props.match){
                     if(value !== props.match) {
                         setColor('red');
@@ -103,7 +99,7 @@ const AuthInput = (props: PageProps) => {
     }, [value, color])
 
     return (
-        <div style={{ marginBottom: '1.5rem', width: '100%' }}>
+        <div style={{ marginBottom: '1.5rem', width: '100%', display: 'flex', flexDirection: 'column' }}>
             <label style={{ 
                 fontWeight: '600',
                  marginBottom: '1rem',
@@ -115,8 +111,9 @@ const AuthInput = (props: PageProps) => {
                 style={{ borderColor: `${color}`}}
                 placeholder={`Enter ${placeholder}`}
                 // onChange={onChange}
-                onInput={handleInput}
+                onChange={handleInput}
                 onBlur={handleInput}
+                onFocus={handleInput}
                 name={name}
             />
             {

@@ -9,8 +9,9 @@ type PageProps = {
 
 const Main = styled.div`
     width: 100vw;
-    display: flex;
 		height: 100vh;
+		margin: 0;
+    display: flex;
     justify-content: space-between;
 		background-color: white;
 `
@@ -20,13 +21,9 @@ const WrapperPage = (props: PageProps) => {
 	const [hover, isHover] = useState(false);
 
 	return (
-		<>
 			<Main>
-				<div style={ { padding: '6rem', width: '53.5%' } }>
-					<div style={{ 
-						display: 'inline-flex',
-						marginBottom: 'calc(90px - 1rem)'
-						}}> 
+				<div style={ { width: '53.5%', margin: '0' } } className='wrapper-left'>
+					<div className='brand'> 
 						<img src="/assets/images/scorecardLogo.png" alt="logo"/>			
 						<span style={{ 
 						fontSize: '1.7rem', 
@@ -36,29 +33,26 @@ const WrapperPage = (props: PageProps) => {
 						marginLeft: '0.4rem'}}>Scorecard</span>
 					</div>
 					<div>
-					{
-						props.backToLogin ? <Link to='/login' style={{ 
-							fontSize: '1rem',
-							fontWeight: '600',
-							letterSpacing: ( hover ? '0.4px' : '0' ), 
-							color: '#14A800', 
-							textDecoration: 'none' }} 
-							onMouseEnter={()=>{ isHover(true); }}
-							onMouseLeave={()=>{ isHover(false); }}
-							>Go back to Login</Link> : null
-					}
+						{
+							props.backToLogin ? <Link to='/login' style={{ 
+								fontSize: '1rem',
+								fontWeight: '600',
+								letterSpacing: ( hover ? '0.4px' : '0' ), 
+								color: '#14A800', 
+								textDecoration: 'none' }} 
+								onMouseEnter={()=>{ isHover(true); }}
+								onMouseLeave={()=>{ isHover(false); }}
+								>Go back to Login</Link> : null
+						}
 					</div>
-					<div style={{ marginTop: '4rem'}}>
 						{
 							props.children
 						}
-					</div>
 				</div>
 					<img src="/assets/images/loginPageImage.png" style={{ 
 					height: '100vh',
-					width: '46.5%'}} className='no-mobile'  alt="Decadev"/>			
+					width: '46.5%', margin: '0'}} className='no-mobile'  alt="Decadev"/>			
 			</Main>
-		</>
 	)
 }
 export default WrapperPage; 

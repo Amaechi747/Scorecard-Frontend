@@ -6,3 +6,71 @@ body {
   font-family:  'Inter' ,'Calibri', 'Helvetica Neue', Helvetica;
   font-style: normal;
 }
+
+.wrapper-left {
+  padding: 6rem;
+  height: auto;
+}
+
+.brand {
+    display: inline-flex;
+    margin-bottom: calc(90px - 1rem);
+}
+
+.authPage_title {
+  margin: 4rem 0 2rem 0;
+}
+
+@media screen and (max-width: 396px) {
+  .wrapper-left {
+    padding: 3rem 0 2.5rem 2.5rem;
+  }
+  .wrapper-children {
+    width: calc(100% - 1rem)
+  }  
+  .authPage_title {
+    margin: 1rem 0 1rem 0;
+  }
+  .authPage_title h1 {
+    width: 12rem;
+  }
+  .authPage_form {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper-left {
+    padding: 3rem;
+  }  
+  .authPage_title {
+    margin: 4rem 0 1rem 0;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  /* .authPage_title {
+    margin: 1rem 0 1rem 0;
+  } */
+}
+
+@media screen and (max-width: 1023px) {
+  .no-mobile {
+    display: none;
+  }
+
+  .brand {
+    margin-bottom: calc(70px - 1rem);
+  }
+
+  .wrapper-left {
+    padding: 4rem;
+  }
+
+}
+
+@media screen and (max-width: 1240px) {
+  .wrapper-left {
+    margin: 3rem;
+  }
+}
