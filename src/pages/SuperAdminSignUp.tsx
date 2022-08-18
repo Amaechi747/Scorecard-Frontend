@@ -29,7 +29,6 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
       [e.target.name]: e.target.value,
     });
   };
-
   const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -37,19 +36,17 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
     })
 
   }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  
+  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
-      e.preventDefault();
+      e.preventDefault()
+      await axios.post("http://localhost:5000/admin/superuser",formData)
+      swal("Success", "You have successfully signed up!", "success");
 
-      axios.post('/api/super-admin-signup', formData)
-      swal("Success", "You have successfully signed in", "success")
-
-    } catch {
-      swal("Error", "Something went wrong", "error")
+    } catch(error) {
+        swal("Error", "Something went wrong", "error");
     }
   }
-
 
   return (
     <>
@@ -61,7 +58,10 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
         </div>
 
         <div style={{ padding: "2rem 2.5rem" }}>
-          <Form onSubmit={handleSubmit}>
+          
+          <Form
+            onSubmit={(e) => handleSubmit(e)}
+          >
             <FormInput
               label="First Name"
               type="text"

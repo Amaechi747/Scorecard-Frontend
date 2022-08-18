@@ -82,6 +82,17 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
     }
   }, [errMsg])
 
+  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault()
+      await axios.post("http://localhost:5000/admin/superuser",formData)
+      swal("Success", "You have successfully signed up!", "success");
+
+    } catch(error) {
+        swal("Error", "Something went wrong", "error");
+    }
+  }
+
   return (
     <>
       <Heading>Change Password</Heading>
@@ -98,7 +109,6 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
           <Form
             onSubmit={(e) => handleSubmit(e)}
           >
-            
             <FormInput
               label="New Password"
               type="password"
