@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, FC, FormEvent } from 'react';
 import swal from 'sweetalert';
 import validator from 'validator';
-import { AuthenticationInput, Form } from '.';
+import { AuthenticationInput, Form, AuthenticationButton } from '.';
 
 type IAuthenticationLeftProps = {
 }
@@ -27,18 +27,21 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
         try{
             e.preventDefault();
 
-            await axios.post('/api/login', formData)
+            await axios.post('http://localhost:5000/users/login', formData)
             swal("Error","Login Successful", "success")
 
-        }catch(err) {
-         swal("Error","Login Failed", "error")
+        }catch(err: any) {
+            if(err?.response.data.error) {
+                const message = err?.response.data.error ? "Account doesn't exist" : "Invalid credentials"
+                swal("Error",message, "error")
+            }
         }
     }
 
     return (
         <>
 
-            <form onSubmit = {(e)=> handleSubmit(e)}>
+            <form onSubmit={(e)=> handleSubmit(e)}>
                 
                 <AuthenticationInput
                     label="Email address"
@@ -66,6 +69,8 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         formData.password.length === 0 ? <small style={{ color: 'red' }}>Field cannot be empty</small> :
                             <small style={{ color: 'orange' }}>Must be at least 8 characters</small>
                 }
+
+<AuthenticationButton text="Login" />
             </form>
         </>
     );
