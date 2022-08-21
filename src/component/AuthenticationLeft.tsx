@@ -41,12 +41,8 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
             swal("Error","Login Successful", "success");
         }catch(err: any) {
             if(err?.response.data.error) {
-<<<<<<< HEAD
-                const message = err?.response.data.error
-=======
+
                 const message = err?.response.data.error 
-                // ? "Account doesn't exist" : "Invalid credentials"
->>>>>>> aa76fe38ceab2110d0971caa7144e92054ff8a1e
                 swal("Error",message, "error")
             }
         }
