@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import { AdminDashboard, ChangePassword, ForgetPassword,Login,ResetPassword, SuperAdminSignUp } from "./pages"
-import { AuthenticationBody } from './component';
+// import { AuthenticationBody } from './component';
 
 
 function App(): JSX.Element {
@@ -11,10 +11,9 @@ function App(): JSX.Element {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
-        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/superadmin-signup" element={<SuperAdminSignUp />} />
-        <Route path="/login" element={<AuthenticationBody />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

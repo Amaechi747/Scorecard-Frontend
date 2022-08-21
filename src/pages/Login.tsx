@@ -1,20 +1,44 @@
-import React, { FC } from 'react'
-import {FormInput, Form} from '../component'
-import {Heading, Paragraph } from '../styling/css'
-import axios from 'axios';
-
-type LoginProps = {}
-
-const Login: FC = (props: LoginProps) => {
-  return (
-    <div style={{display: 'flex'}}>
-      <div style={{flex: '1'}}>
+import * as React from 'react';
+import { LoginHeading } from '../styling/css';
+import { AuthenticationLeft, AuthenticationRight, ScorecardLogo } from "../component";
+import { Link } from "react-router-dom";
 
 
-      </div>
-      <div style={{flex: '1'}}></div>
-    </div>
-  )
+interface IAuthenticationBodyProps {
 }
+
+const Login: React.FunctionComponent<IAuthenticationBodyProps> = (props) => {
+  return (
+    <>
+      <div style={{ display: 'flex', backgroundColor: '#fff' }}>
+
+        <div style={{ flex: '1', margin: "3rem 5rem" }}>
+          <ScorecardLogo />
+          <LoginHeading>Login to your account</LoginHeading>
+
+          <AuthenticationLeft />
+
+          {/* <p style={{paddingLeft: "25rem" }}><Link to="/forget-password" style={{textDecoration: "none", color: "#34A853"}}>Forgot Password?</Link></p>
+                    <AuthenticationButton text="Login" />
+                    <p style={{textAlign: "center"}}>Don't have an account? <Link to="/sign-up" style={{textDecoration: "none", color: "#34A853"}}>Sign Up</Link></p> */}
+
+          <p style={{
+            textAlign: "center",
+            fontWeight: '300',
+            color: '#03435F'
+          }}>Don't have an account? <Link to="/sign-up" style={{
+            textDecoration: "none",
+            color: "#34A853",
+            fontWeight: '800'
+          }}>Sign Up</Link></p>
+        </div >
+
+        <div style={{ flex: "1" }}>
+          <AuthenticationRight />
+        </div>
+      </div >
+    </>
+  );
+};
 
 export default Login;
