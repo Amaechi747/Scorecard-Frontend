@@ -39,20 +39,15 @@ export const Input = styled.input`
 `
 
 export const Paragraph = styled.p`
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
+font-weight: 200;
+font-size: 1rem;
 color: #BDBDBD;
-padding: 2rem 2.5rem 0.1rem 2.5rem;
-`
-
-export const HorizontalLine = styled.div`
-border: 1px solid #D9D9D9
+padding: 2rem 2.5rem 1.5rem 2.5rem;
+box-shadow: inset 0px -0.51px #bdbdbd;
 `
 
 
 export const ButtonBody = styled.button`
-
 &:hover{
 background: #249800;
 }

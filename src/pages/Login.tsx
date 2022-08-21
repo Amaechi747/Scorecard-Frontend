@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import {FormInput, Form} from '../component'
-import {Heading, Paragraph, HorizontalLine} from '../styling/css'
+import {Heading, Paragraph } from '../styling/css'
 import axios from 'axios';
 
 type LoginProps = {}
