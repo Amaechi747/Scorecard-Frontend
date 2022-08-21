@@ -9,10 +9,8 @@ type ButtonProps = {
 const FormButton = (props: ButtonProps) => {
   const { text } = props
   return (
-    <ButtonBody>
-      {/* <ButtonText> */}
+    <ButtonBody type='submit'>
       {text}
-      {/* </ButtonText> */}
     </ButtonBody>
   )
 }
