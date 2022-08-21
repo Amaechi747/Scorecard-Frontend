@@ -32,7 +32,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
 
         }catch(err: any) {
             if(err?.response.data.error) {
-                const message = err?.response.data.error ? "Account doesn't exist" : "Invalid credentials"
+                const message = err?.response.data.error
                 swal("Error",message, "error")
             }
         }
