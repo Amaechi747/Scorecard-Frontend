@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
-import { Heading, Paragraph, HorizontalLine } from "../styling/css";
+import { Heading, Paragraph } from "../styling/css";
 import axios from "axios"
 import swal from "sweetalert"
 
@@ -16,13 +16,29 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   const [ formErrors, setFormErrors] = useState({firstName:'', lastName:'', email: '', password: ''});
   const [isSubmit, setIsSubmit] = useState(false);
 
+  const [errMsg, setErrMsg] = useState<string>('')
+  const [errMsgColor, setErrMsgColor] = useState<string>('')
+  const [errBorderColor, setErrBorderColor] = useState<string>('')
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if(formData.firstName === '' || errMsgColor === '' || errBorderColor === '') {
+      setErrMsgColor('#FF0000')
+      setErrBorderColor('#FF0000')
+      setErrMsg('First name cannot be empty')
+    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
 
+  }
+  
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
@@ -71,10 +87,10 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
       <Card>
         <div>
           <Paragraph>Fill in all required details.</Paragraph>
-          <HorizontalLine />
         </div>
 
         <div style={{ padding: "2rem 2.5rem" }}>
+          
           <Form
             onSubmit={(e) => handleSubmit(e)}
           >
@@ -84,33 +100,41 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               value={formData.firstName}
               name="firstName"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`} 
             />
             <p>{formErrors.firstName}</p>
 
-            <FormInput 
+            <FormInput
               label="Last Name"
               type="text"
               value={formData.lastName}
               name="lastName"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`} 
             />
             <p>{formErrors.lastName}</p>
 
-            <FormInput 
+            <FormInput
               label="Email"
               type="email"
               value={formData.email}
               name="email"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`}
             />
             <p>{formErrors.email}</p>
 
-            <FormInput 
+            <FormInput
               label="Password"
               type="password"
               value={formData.password}
               name="password"
               onChange={(e) => handleChange(e)}
+              onBlur={(e) => handleBlur(e)}
+              errBorderColor={`${errBorderColor}`}
             />
             <p>{formErrors.password}</p>
 

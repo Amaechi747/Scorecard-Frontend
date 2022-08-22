@@ -7,13 +7,13 @@ type AuthenticationInputProps = {
     value: string
     name: string
     placeholder: string
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onInput: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 
 
 const AuthenticationInput: (props: AuthenticationInputProps) => JSX.Element = (props: AuthenticationInputProps) => {
-    const { label, type, value, name, onChange, placeholder } = props
+    const { label, type, value, name, onInput, placeholder } = props
 
 
     // const [value, setValue] = useState<string>('')
@@ -23,7 +23,7 @@ const AuthenticationInput: (props: AuthenticationInputProps) => JSX.Element = (p
             <Input
                 type={type}
                 value={value}
-                onChange={onChange}
+                onInput={onInput}
                 name={name}
                 placeholder={placeholder}
             />
