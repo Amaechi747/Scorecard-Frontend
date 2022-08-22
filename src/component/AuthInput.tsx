@@ -22,9 +22,9 @@ const Input = styled.input`
  line-height: 1.5rem;
  color: #21334f;
  @media screen and (max-width: 396px) {
-    padding: 0.5rem 0.8rem;
+    padding: 0.6rem 1rem;
     font-size: 0.8rem;
-    width: calc(100% - 2rem);
+    width: calc(100% - 2.2rem);
     line-height: 1rem;
 }
  ::placeholder,
@@ -133,7 +133,7 @@ const AuthInput = (props: PageProps) => {
     }, [value, color])
 
     return (
-        <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ marginBottom: '1.5rem', width: '100%' }}>
             <label style={{ 
                 fontWeight: '600',
                  marginBottom: '1rem',

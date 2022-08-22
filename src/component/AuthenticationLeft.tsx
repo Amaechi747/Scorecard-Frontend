@@ -37,8 +37,9 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-            await axios.post('/users/login', formData);
-            swal("Error","Login Successful", "success");
+            const response = await axios.post('/users/login', formData);
+            console.log(response);
+            swal("Success","Login Successful", "success");
         }catch(err: any) {
             if(err?.response.data.error) {
                 const message = err?.response.data.error 

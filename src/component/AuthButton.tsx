@@ -10,7 +10,7 @@ const ButtonBody = styled.input`
 letter-spacing: 0.4px;
 }
 padding: 0.8rem 1.5rem;
-width: calc(100% - 0.21rem);
+width: 100%;
 font-weight: 700;
 cursor: pointer;
 border: unset;
