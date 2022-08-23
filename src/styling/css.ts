@@ -59,15 +59,16 @@ border: unset;
 padding: 0.8rem;
 text-align: center;
 color: #fff;
-margin: 0.4rem 0;
+margin: 0.5rem, 0 0 0;
 background: #14A800;
 cursor: pointer
+
 `
 
 export const CardBody = styled.div`
  background: #fff;
  width: 50%;
- height: 80vh;
+ height: 85vh;
  margin: 3rem auto 0;
 `
 
@@ -100,4 +101,30 @@ export const Th = styled.th`
   text-color: red;
 
   padding: 8px;
+`
+
+export const Select = styled.select`
+
+ border: 0.15rem solid rgba(33, 51, 79, 0.15);
+ color: #21334F;
+ width: calc(100% - 0.4rem);
+ padding: 0.4rem 0.5rem;
+ display: inline-block;
+ margin-bottom: 0.8rem;
+ font-size: 0.9rem;
+ line-height: 1.5rem;
+ height: 2.5rem;
+`
+
+export const Option = styled.option`
+ border: 0.15rem solid rgba(33, 51, 79, 0.15);
+ color: #21334F;
+ width: calc(100% - 1.5rem);
+ padding: 0.4rem 0.5rem;
+ display: inline-block;
+ margin-bottom: 0.8rem;
+ font-size: 0.9rem;
+ line-height: 1.5rem;
+ height: 1.3rem;
+
 `
