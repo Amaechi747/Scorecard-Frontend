@@ -6,4 +6,6 @@ export { default as AuthenticationBody } from "./AuthenticationBody"
 export { default as AuthenticationInput } from "./AuthenticationInput"  
 export { default as AuthenticationButton } from "./AuthenticationButton"  
 export { default as AuthInput } from "./AuthInput";
-export { default as AuthButton } from "./AuthButton"
+export { default as AuthButton } from "./AuthButton";
+export { default as FormInput2 } from './FormInput2';
+export { default as FormSelect } from './CustomFormSelect';
