@@ -1,6 +1,6 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
-import { Heading, Paragraph, HorizontalLine } from "../styling/css";
+import { Heading, Paragraph } from "../styling/css";
 import axios from "axios"
 import swal from "sweetalert"
 
@@ -54,7 +54,6 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
       <Card>
         <div>
           <Paragraph>Fill in all required details.</Paragraph>
-          <HorizontalLine />
         </div>
 
         <div style={{ padding: "2rem 2.5rem" }}>

@@ -1,7 +1,7 @@
 
 import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
-import { Heading, Paragraph, HorizontalLine } from "../styling/css";
+import { Heading, Paragraph } from "../styling/css";
 import axios from "axios";
 import swal from "sweetalert"
 
@@ -57,7 +57,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
         setErrBorderColor('#FF0000')
         setErrMsg('Password cannot be empty')
       } else { 
-        const result = await axios.post('http://localhost:4000/users/update_password', formData)
+        const result = await axios.post('/users/update_password', formData)
         swal("Success", "You have successfully signed in", "success")
       }
     } catch (error: any) {
@@ -94,7 +94,6 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
             YOUR NEW PASSWORD MUST BE DIFFERENT FROM YOUR USED PREVIOUS
             PASSWORDS.
           </Paragraph>
-          <HorizontalLine />
         </div>
 
         <div style={{ padding: "2rem 2.5rem" }}>

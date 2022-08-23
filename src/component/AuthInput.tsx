@@ -20,14 +20,21 @@ const Input = styled.input`
  padding: 0.8rem 1.5rem;
  font-size: 1rem;
  line-height: 1.5rem;
- height: 1.5rem;
  color: #21334f;
+ @media screen and (max-width: 396px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    width: calc(100% - 2rem);
+    line-height: 1rem;
+}
  ::placeholder,
  ::-webkit-input-placeholder {
-   color: #21334Fc9;
+   color: #21334F59;
+   font-weight: 200;
  }
  :-ms-input-placeholder {
-    color: #21334Fc9;
+    color: #21334F59;
+    font-weight: 200;
  }
 `
 
@@ -37,7 +44,7 @@ const AuthInput = (props: PageProps) => {
     const [value, setValue] = useState("");
     const [color, setColor] = useState('#CFD0D145')
 
-    function handleInput(e: ChangeEvent<HTMLInputElement>) {
+    function handleInput(e: ChangeEvent<HTMLInputElement> ) {
         e.preventDefault();
         setValue(e.target.value.trim());
         if(typeof setSharedState !== 'undefined') {
@@ -46,7 +53,7 @@ const AuthInput = (props: PageProps) => {
         if(type === 'email') {
             const atposition = value.indexOf("@");  
             const dotposition = value.lastIndexOf(".");  
-            if ((atposition < 1) || (dotposition < atposition+2) || (dotposition === value.length)){  
+            if ((atposition < 1) || (dotposition < atposition+2) || (dotposition === (value.length - 1))){  
                 setColor('red');
                 errOccured(true);
             }  else {
@@ -83,11 +90,13 @@ const AuthInput = (props: PageProps) => {
     }
 
     useEffect(()=>{
-        if(props.match){
-            if(value !== props.match) {
+        if(value && type === 'email') {
+            const atposition = value.indexOf("@");  
+            const dotposition = value.lastIndexOf(".");  
+            if ((atposition < 1) || (dotposition < atposition+2) || (dotposition === (value.length - 1))){  
                 setColor('red');
                 errOccured(true);
-            } else {
+            }  else {
                 if(color !== '#CFD0D145'){
                     setColor('green');
                     errOccured(false);
@@ -95,11 +104,36 @@ const AuthInput = (props: PageProps) => {
                 }
             }
         }
+
+        if(value && type === 'password') {
+            if ( value.length > 3 && new RegExp('^[a-zA-Z0-9@_:;]{3,30}$', 'g').test(value)) {
+                if(props.match){
+                    if(value !== props.match) {
+                        setColor('red');
+                        errOccured(true);
+                    } else {
+                        if(color !== '#CFD0D145'){
+                            setColor('green');
+                            errOccured(false);
+                            setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+                        }
+                    }
+                } else if(color !== '#CFD0D145'){
+                    setColor('green');
+                    errOccured(false);
+                    setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+                }
+            } else {
+                setColor('red')
+                errOccured(true)
+            }
+        }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, color])
 
     return (
-        <div style={{ marginBottom: '1.5rem', width: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column' }}>
             <label style={{ 
                 fontWeight: '600',
                  marginBottom: '1rem',
@@ -110,7 +144,6 @@ const AuthInput = (props: PageProps) => {
                 value={value}
                 style={{ borderColor: `${color}`}}
                 placeholder={`Enter ${placeholder}`}
-                // onChange={onChange}
                 onChange={handleInput}
                 onBlur={handleInput}
                 onFocus={handleInput}

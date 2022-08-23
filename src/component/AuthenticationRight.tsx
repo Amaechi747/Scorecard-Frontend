@@ -6,16 +6,9 @@ interface IAuthenticationRightProps {
 
 const AuthenticationRight: React.FunctionComponent<IAuthenticationRightProps> = (props) => {
   return (
-    <>
-        <div >
-        <img src={photo} alt="" style={{
-                    height: "800px",
-                    width: '750px',
-                    top: "-75px",
-                    objectFit: "cover"
-                }} />
-        </div>
-    </>
+    <div style={{height: '100vh'}} className='authentication-right'>
+        <img src={photo} alt="" style={{ height: '100vh', width: '100%', objectFit: "cover" }} />
+    </div>
   );
 };
 
