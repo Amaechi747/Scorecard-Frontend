@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { AdminDashboard, ChangePassword, ForgetPassword,Login,ResetPassword, SuperAdminSignUp } from "./pages"
+import { AdminDashboard, ChangePassword, ForgetPassword,Login,ResetPassword, SuperAdminSignUp, ViewAllUsers } from "./pages"
 import { AuthenticationBody } from './component';
 
 
@@ -15,6 +15,7 @@ function App(): JSX.Element {
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/superadmin-signup" element={<SuperAdminSignUp />} />
         <Route path="/login" element={<AuthenticationBody />} />
+        <Route path="/view-all-users" element={<ViewAllUsers/>} />
       </Routes>
     </div>
   );
