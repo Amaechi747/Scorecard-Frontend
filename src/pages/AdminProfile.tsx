@@ -41,7 +41,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
                     'Content-Type': 'multipart/form-data'
                     }
                 })
-                if(result.status === 20) {
+                if(result.status === 200) {
                     setFormContent({ ...formContent, imageUrl: result.data.imageUrl });
                     swal('Success', 'Profile Image updated', "success");
                 }
