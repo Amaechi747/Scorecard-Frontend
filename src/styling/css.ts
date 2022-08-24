@@ -186,6 +186,27 @@ justify-content: center;
 }
 `
 
+export const Tr = styled.tr`
+background: rgba(0, 0, 0, 0.04);
+height: 42px;
+`
+
+export const Table = styled.table`
+  margin: 10% auto;
+  width: 80%;
+`
+
+export const Th = styled.th`
+
+  border: 1px solid #dddddd;
+
+  text-align: center;
+
+  text-color: red;
+
+  padding: 8px;
+`
+
 export const Select = styled.select`
  border: 0.15rem solid rgba(33, 51, 79, 0.15);
  color: #21334F;

@@ -11,3 +11,4 @@ export { default as AuthInput } from "./AuthInput";
 export { default as AuthButton } from "./AuthButton";
 export { default as FormInput2 } from './FormInput2';
 export { default as FormSelect } from './CustomFormSelect';
+export { default as UserTable } from "./UserTable";
