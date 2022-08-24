@@ -116,9 +116,9 @@ border: unset;
 padding: 0.5rem;
 text-align: center;
 color: #fff;
-margin: 0.5rem, 0 0 0;
+margin: 1.5rem 0 0 0;
 background: #14A800;
-cursor: pointer
+cursor: pointer;
 
 `
 

@@ -3,15 +3,15 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 type PageProps = {
-    name: string;
-    label: string;
-    match?: string;
-    firstValue?: string;
-    disabled?: boolean;
-    type: string;
-    errorMsg: string;
-    presetValue?: string;
-    setSharedState?: React.Dispatch<React.SetStateAction<string>> | ( (param: string) => void );
+    // name: string;
+    // label: string;
+    // match?: string;
+    // firstValue?: string;
+    // disabled?: boolean;
+    // type: string;
+    // errorMsg: string;
+    // presetValue?: string;
+    // setSharedState?: React.Dispatch<React.SetStateAction<string>> | ( (param: string) => void );
 
 }
 
@@ -30,71 +30,73 @@ const ModalButton = styled.button`
 `
 
 const FormSelect = (props: PageProps) => {
-    const { label, name, type, errorMsg, setSharedState, firstValue, disabled, presetValue } = props;
-    const [err, errOccured] = useState(false);
-    const [value, setValue] = useState(firstValue ? `${firstValue}` : "");
-    const [color, setColor] = useState('#CFD0D145');
+    // const { label, name, type, errorMsg, setSharedState, firstValue, disabled, presetValue } = props;
+    // const [err, errOccured] = useState(false);
+    // const [value, setValue] = useState(firstValue ? `${firstValue}` : "");
+    // const [color, setColor] = useState('#CFD0D145');
     const [modal, showModal] = useState(false);
 
-    function handleChange(e: ChangeEvent<HTMLInputElement> ) {
-        e.preventDefault();
-        setValue(e.target.value.trim());
-        if(typeof setSharedState !== 'undefined') {
-            setSharedState(e.target.value.trim());
-        }
-        if(value && type === 'text') {
-            if(value.length < 2) {
-                setColor('red');
-                errOccured(true);
-            } else {
-                if(color !== '#CFD0D145'){
-                    setColor('green');
-                    errOccured(false);
-                    setTimeout(()=>{ setColor('#CFD0D145') }, 700)
-                }
-            }
-        }
-    }
+    // function handleChange(e: ChangeEvent<HTMLInputElement> ) {
+    //     e.preventDefault();
+    //     setValue(e.target.value.trim());
+    //     if(typeof setSharedState !== 'undefined') {
+    //         setSharedState(e.target.value.trim());
+    //     }
+    //     if(value && type === 'text') {
+    //         if(value.length < 2) {
+    //             setColor('red');
+    //             errOccured(true);
+    //         } else {
+    //             if(color !== '#CFD0D145'){
+    //                 setColor('green');
+    //                 errOccured(false);
+    //                 setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+    //             }
+    //         }
+    //     }
+    // }
 
-    function handleBlur() {
-        showModal(false);
-        if(value && type === 'text') {
-            if(value.length < 2) {
-                setColor('red');
-                errOccured(true);
-            } else {
-                if(color !== '#CFD0D145'){
-                    setColor('green');
-                    errOccured(false);
-                    setTimeout(()=>{ setColor('#CFD0D145') }, 700)
-                }
-            }
-        }
-    }
+    // function handleBlur() {
+    //     showModal(false);
+    //     if(value && type === 'text') {
+    //         if(value.length < 2) {
+    //             setColor('red');
+    //             errOccured(true);
+    //         } else {
+    //             if(color !== '#CFD0D145'){
+    //                 setColor('green');
+    //                 errOccured(false);
+    //                 setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+    //             }
+    //         }
+    //     }
+    // }
 
-    function handleFocus() {
-        showModal(true);
-    }
+    // function handleFocus() {
+    //     showModal(true);
+    // }
 
     useEffect(()=>{
-        if(value && type === 'text') {
-            if(value.length < 2) {
-                setColor('red');
-                errOccured(true);
-            } else {
-                if(color !== '#CFD0D145'){
-                    setColor('green');
-                    errOccured(false);
-                    setTimeout(()=>{ setColor('#CFD0D145') }, 700)
-                }
-            }
-        }
+        
+    //     if(value && type === 'text') {
+    //         if(value.length < 2) {
+    //             setColor('red');
+    //             errOccured(true);
+    //         } else {
+    //             if(color !== '#CFD0D145'){
+    //                 setColor('green');
+    //                 errOccured(false);
+    //                 setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+    //             }
+    //         }
+    //     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value, modal])
-
+    }, [ ])
+ 
     return (
         <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
-            <label style={{ 
+            <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
+            {/* <label style={{ 
                 fontWeight: '400',
                  marginBottom: '0.7rem',
                  color: '#21334F',
@@ -112,7 +114,7 @@ const FormSelect = (props: PageProps) => {
             />
             {
                 !err ?  null : <small style={{ color: `${color}`}}>{errorMsg}</small>
-            }
+            } */}
             <div style={{ 
                 position: 'absolute', 
                 display: (modal ? 'inline-flex' : 'none'),
@@ -127,10 +129,10 @@ const FormSelect = (props: PageProps) => {
                 justifyContent: 'space-around',
                 padding: '0.8rem 0'
             }}>
-                <ModalButton>Stack Lead</ModalButton>
-                <ModalButton>Stack Associates</ModalButton>
-                <ModalButton>Program Associate</ModalButton>
-                <ModalButton>Others</ModalButton>
+                <ModalButton>Edit</ModalButton>
+                <ModalButton>Activate</ModalButton>
+                <ModalButton>Deactivate</ModalButton>
+                <ModalButton>Delete</ModalButton>
             </div>
         </div>
     )

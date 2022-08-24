@@ -1,7 +1,7 @@
 import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FormSelect, FormButton, Form, FormInput2 } from "../component";
-import { Heading2, Paragraph, Card2, Select } from "../styling/css";
+import { Heading2, Paragraph, Card2, Select2 } from "../styling/css";
 import axios from "axios";
 import swal from "sweetalert"
 
@@ -10,7 +10,59 @@ type PageProps = {}
 
 
 const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
+  const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    stack: '',
+    role: '',
+    squad: '',
+    password: '1234'
+  })
+  const [stacks, setStacks] = useState([]);
 
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/admin/create_user', userData,{
+        headers: {
+          'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      if(response.statusText === 'Created') {
+        swal('Success', `Admin ${response.data.firstName} ${response.data.lastName} has been created`, 'success');
+        setUserData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          stack: '',
+          role: '',
+          squad: '',
+          password: '1234'
+        });
+      }
+    } catch (err: any) {
+      /** replace with custom contextual error message */
+      if(err?.response.data.error) {
+        const message = err?.response.data.error.includes('E1100') ? 'A user already exists with this email' : err?.response.data.error;
+        swal('Failed', message, "error");
+      }
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    axios.get('/admin/view_all_stack', {
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then((data) => {
+      setStacks(data.data.data);
+    }).catch((err) => {
+      /** replace with custom contextual error message */
+      console.error(err);
+    })
+  }, [])
 
     return (
         <>
@@ -35,7 +87,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
             </Paragraph>
     
             <div style={{ padding: "2rem 2.5rem" }}>
-              <Form onSubmit={() => {}} >
+              <Form onSubmit={handleSubmit} >
 
                 <FormInput2 
                     name="firstName"
@@ -43,6 +95,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                     label="First Name"
                     type="text"
                     errorMsg="First name cannot be blank"
+                    setSharedState={(s: string) => { setUserData({ ...userData, firstName: s }) }}
                 />
                 <FormInput2 
                     name="lastName"
@@ -50,6 +103,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                     label="Last Name"
                     type="text"
                     errorMsg="Last name cannot be blank"
+                    setSharedState={(s: string) => { setUserData({ ...userData, lastName: s }) }}
                 />
                 <FormInput2 
                 name="email" 
@@ -57,6 +111,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                 label="Email" 
                 type="email" 
                 errorMsg="Please enter a valid email address" 
+                setSharedState={(s: string) => { setUserData({ ...userData, email: s }) }}
                 // firstValue="Name cannot be blank"
                 />
                 {/* <FormSelect 
@@ -64,24 +119,20 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                   label="Stack"
                   errorMsg="Please select a comma separated list of Stacks for this Admin"
                   type="text"
-                />
-                <FormSelect 
-                  name="role"
-                  label="Assign Role"
-                  errorMsg="Please select a role for this user"
-                  type="text"
                 /> */}
+                {/* <FormSelect /> */}
                 <div style={{ marginBottom: '0.7rem' }}>
                   <label style={{ 
                     fontWeight: '400',
                     marginBottom: '0.7rem',
                     color: '#21334F',
                     display: 'block' }}>Stack</label>
-                  <Select name="stack" id="stack">
-                      <option value=""></option>
-                      <option value="test">Test</option>
-                      <option value="test2">Test 2</option>
-                  </Select>
+                  <Select2 name="stack" id="stack" onChange={(e) => { setUserData({ ...userData, stack: e.target.value }) }}>
+                      <option value="">Select...</option>
+                      { stacks.length > 0 && stacks.map((e: any) => (
+                        <option key={e._id} value={e.name}>{e.name}</option>
+                      )) }
+                  </Select2>
                 </div>
                 <div style={{ marginBottom: '0.7rem' }}>
                   <label style={{ 
@@ -89,18 +140,21 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                     marginBottom: '0.7rem',
                     color: '#21334F',
                     display: 'block' }} htmlFor='role'>Assign Roles</label>
-                  <Select name="role" id="role">
-                      <option value=""></option>
-                      <option value="test">Test</option>
-                      <option value="test2">Test 2</option>
-                  </Select>
+                  <Select2 name="role" id="role" onChange={(e) => { setUserData({ ...userData, role: e.target.value }) }}>
+                      <option value="">Select..</option>
+                      <option value="SL">Stack Lead</option>
+                      <option value="SA">Stack Associate</option>
+                      <option value="PA">Program Associate</option>
+                      <option value="Other">Other</option>
+                  </Select2>
                 </div>
                 <FormInput2 
                 name="squad" 
-                placeholder="SQ0011" 
+                placeholder="011" 
                 label="Squad" 
                 type="text" 
-                errorMsg="Please enter a valid Squad e.g. - SQ0012" 
+                errorMsg="Please enter a valid Squad e.g. - 012" 
+                setSharedState={(s: string) => { setUserData({ ...userData, squad: s }) }}
                 // firstValue="Name cannot be blank"
                 />
 
