@@ -39,8 +39,9 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
-      e.preventDefault()
-      await axios.post("http://localhost:5000/admin/superuser",formData)
+      e.preventDefault();
+      console.log(formData);
+      await axios.post("/admin/superuser",formData)
       swal("Success", "You have successfully signed up!", "success");
 
     } catch(error) {

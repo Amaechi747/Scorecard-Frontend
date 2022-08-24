@@ -18,10 +18,6 @@ const Login: React.FunctionComponent<IAuthenticationBodyProps> = (props) => {
 
           <AuthenticationLeft />
 
-          {/* <p style={{paddingLeft: "25rem" }}><Link to="/forget-password" style={{textDecoration: "none", color: "#34A853"}}>Forgot Password?</Link></p>
-                    <AuthenticationButton text="Login" />
-                    <p style={{textAlign: "center"}}>Don't have an account? <Link to="/sign-up" style={{textDecoration: "none", color: "#34A853"}}>Sign Up</Link></p> */}
-
           <p style={{
             textAlign: "center",
             fontWeight: '300',
