@@ -10,6 +10,9 @@ export { default as ScorecardLogo } from "./ScorecardLogo"
 export { default as AuthInput } from "./AuthInput";
 
 export { default as AuthButton } from "./AuthButton"
+<<<<<<< HEAD
+export { default as UserTable } from "./AdminTable"
+=======
 export { default as NavBarSearch } from "./NavBarSearch"
 export { default as NavBar } from './NavBar'
 export { default as SideBar } from "./SideBar"
@@ -22,3 +25,4 @@ export { default as FormInput2 } from './FormInput2';
 export { default as FormSelect } from './CustomFormSelect';
 export { default as UserTable } from "./UserTable";
 export { default as IsAuthenticated } from "./IsAuthenticated";
+>>>>>>> 33c3ceb9dd5477b59abe80777c1449dec9c2970b
