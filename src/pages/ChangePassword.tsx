@@ -1,6 +1,6 @@
 
 import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
-import { FormInput, Card, FormButton, Form } from "../component";
+import { FormInput, Card, FormButton, Form, FormInput2 } from "../component";
 import { Heading, Paragraph } from "../styling/css";
 import axios from "axios";
 import swal from "sweetalert"

@@ -18,6 +18,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     })
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate();
     // const [errMsg, setErrMSg] = useState('')
 
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,8 +38,34 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-            await axios.post('/users/login', formData);
-            swal("Error","Login Successful", "success");
+
+            const response = await axios.post("/users/login", formData);
+            response.data.message === "Success"
+              ? swal("Success", "Login Successful", "success")
+              : void 0;
+            for (let item in response.data.data) {
+                localStorage.setItem(`${item}`, response.data.data[item]);
+                if (item === 'admin') {
+                    setTimeout(() => {
+                        navigate('/admin');
+                    }, 1000)
+                }
+            }
+            const response = await axios.post('/users/login', formData);
+            response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
+            for(let item in response.data.data) {
+                localStorage.setItem(item, response.data.data[item]);
+                if(item === 'admin') {
+                    Object.entries(response.data.data[item]).forEach(([key, value]) => {
+                        localStorage.setItem(key, `${value}`);
+                    });
+                    setTimeout(()=>{
+                        navigate('/admin');
+                    }, 900)
+                }
+            }
+            // localStorage.setItem
+
         }catch(err: any) {
             if(err?.response.data.error) {
 
@@ -53,15 +80,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
             <form onSubmit={(e)=> handleSubmit(e)}>
                 <AuthInput name='email' placeholder='Email Address' label='Email Address'
                 type='email' errorMsg='Please enter a valid email address' setSharedState={setMail} />
-                {/* <AuthenticationInput
-                    label="Email address"
-                    type="email"
-                    value={formData.email}
-                    onInput={(e) => handleChange(e)}
-                    name="email"
-                    placeholder="Enter email address"
-                />
-                <small>{errMsg}</small> */}
+                
 
                 <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '3rem' }}>
                     <AuthInput
@@ -78,21 +97,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         alignSelf: 'flex-end',
                         marginTop: '-1.2rem'}}>Forgot Password?</Link>
                 </div>
-                {/* <AuthenticationInput
-                    label="Password"
-                    type="password"
-                    value={formData.password}
-                    onInput={(e) => handleChange(e)}
-                    name="password"
-                    placeholder="Enter password"
-                /> */}
-                {/* <small>}</small> */}
-                {/* {
-                    formData.password.length > 8 ?
-                        <small style={{ color: 'green' }}>Password is ok</small> :
-                        formData.password.length === 0 ? <small style={{ color: 'red' }}>Field cannot be empty</small> :
-                            <small style={{ color: 'orange' }}>Must be at least 8 characters</small>
-                } */}
+                
 
                 <AuthButton text="Login" />
             </form>
