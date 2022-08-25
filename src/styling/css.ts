@@ -7,6 +7,27 @@ line-height: 39px;
 color: #03435F;
 text-align: center;
 `
+
+export const Heading2 = styled.h3`
+width: 50%;
+margin: 2rem auto 0;
+font-weight: 600;
+display: flex;
+justify-content: space-between;
+align-items: end;
+font-size: 32px;
+line-height: 32px;
+color: #03435F;
+@media screen and (max-width: 1023) {
+    width: 80%;
+
+}
+@media screen and (max-width: 700px) {
+   width: calc(100% - 2rem);
+   margin: 2rem 1rem 0 2rem;
+   display: block;`
+
+
 export const ScoreCardHeading = styled.span`
 font-weight: 600;
 font-size: 32px;
