@@ -9,4 +9,4 @@ export { default as AuthenticationRight } from "./AuthenticationRight"
 export { default as ScorecardLogo} from "./ScorecardLogo"
 export { default as AuthInput } from "./AuthInput";
 export { default as AuthButton } from "./AuthButton"
-export { default as UserTable } from "./UserTable"
+export { default as UserTable } from "./AdminTable"
