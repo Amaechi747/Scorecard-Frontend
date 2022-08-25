@@ -11,13 +11,13 @@ const sideBarData = [
  },
  {
   id: 1,
-  link: "/user-management",
+  link: "/admin-dashboard/user",
   icon: <AiOutlineUser />,
   name: 'User Management'
  },
  {
   id: 2,
-  link: "/admin-management",
+  link: "/admin-dashboard/create_admin",
   icon: <RiUserSettingsLine />,
   name: 'Admin Management'
  }

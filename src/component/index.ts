@@ -11,7 +11,7 @@ export { default as AuthInput } from "./AuthInput";
 
 export { default as AuthButton } from "./AuthButton"
 export { default as NavBarSearch } from "./NavBarSearch"
-export { default as NavBar } from "./NavBar"
+export { default as NavBar } from './NavBar'
 export { default as SideBar } from "./SideBar"
 export { default as ProfileAccountSettings } from "./ProfileAccountSettings"
 export { default as DashboardLayout } from "./DashboardLayout"
@@ -21,3 +21,4 @@ export { default as ProfileModal } from "./ProfileModal"
 export { default as FormInput2 } from './FormInput2';
 export { default as FormSelect } from './CustomFormSelect';
 export { default as UserTable } from "./UserTable";
+export { default as IsAuthenticated } from "./IsAuthenticated";

@@ -9,3 +9,4 @@ export { default as SuperAdminSignUp} from "./SuperAdminSignUp"
 export {default as ViewAllUsers} from "./ViewAllUsers"
 export { default as ViewAllAdmins} from "./ViewAllAdmins"
 export { default as UserManagement} from "./UserManagement"
+export {default as LandingDashboard} from './LandingDashboard';

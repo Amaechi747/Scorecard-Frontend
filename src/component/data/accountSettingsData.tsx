@@ -6,13 +6,13 @@ import { FiLogOut } from "react-icons/fi"
 const accountSettingsData = [
  {
   id: 0,
-  link: '/profile',
+  link: '/admin-dashboard/profile',
   icon: <AiOutlineUser />,
   name: 'Profile',
  },
  {
   id: 1,
-  link: '/change-passsword',
+  link: '/admin-dashboard/change-password',
   icon: <GiPadlock />,
   name: 'Change Password'
  }

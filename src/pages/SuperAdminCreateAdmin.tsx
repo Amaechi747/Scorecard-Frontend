@@ -8,6 +8,7 @@ import swal from "sweetalert"
 
 type PageProps = {}
 
+const BASEURL = process.env.REACT_APP_BASEURL;
 
 const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   const [userData, setUserData] = useState({
@@ -24,7 +25,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/admin/create_user', userData,{
+      const response = await axios.post(`${BASEURL}/admin/create_user`, userData,{
         headers: {
           'authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -52,7 +53,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   }
 
   useEffect(() => {
-    axios.get('/admin/view_all_stack', {
+    axios.get(`${BASEURL}/admin/view_all_stack`, {
       headers: {
         'authorization': `Bearer ${localStorage.getItem('token')}`
       }

@@ -7,6 +7,7 @@ import swal from "sweetalert";
 
 type UserManagementProps = {};
 
+const BASEURL = process.env.REACT_APP_BASEURL
 const UserManagement: FC = (props: UserManagementProps) => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -41,7 +42,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
 
   useEffect(() => {
     axios
-      .get("/admin/view_all_stack", {
+      .get(`${BASEURL}/admin/view_all_stack`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -66,7 +67,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const result = await axios.post("/admin/create_decadev", formData, {
+      const result = await axios.post(`${BASEURL}/admin/create_decadev`, formData, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -102,7 +103,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
         Create user
         <div>
           <Link
-            to="/view-all-admins"
+            to="/admin-dashboard/view-all-users"
             style={{
               fontSize: "calc(2rem - 18px)",
 

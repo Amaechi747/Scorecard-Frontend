@@ -10,6 +10,8 @@ import {AuthInput, AuthButton} from '.'
 type IAuthenticationLeftProps = {
 }
 
+const BASEURL = process.env.REACT_APP_BASEURL;
+
 const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
 
     const [formData, setFormData] = useState({
@@ -39,7 +41,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
         e.preventDefault();
         try{
 
-            const response = await axios.post('/users/login', formData);
+            const response = await axios.post(`${BASEURL}/users/login`, formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
                 localStorage.setItem(item, response.data.data[item]);
@@ -48,7 +50,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/admin');
+                        navigate('/admin-dashboard/profile');
                     }, 900)
                 }
             }

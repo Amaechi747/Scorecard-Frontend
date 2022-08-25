@@ -1,18 +1,17 @@
-import React, { FC } from 'react'
-import { DashboardLayout } from "../component"
-import { Routes, Route } from "react-router-dom"
-import { ChangePassword } from "."
+import React, { FC } from "react";
+import { DashboardLayout, IsAuthenticated } from "../component";
+import { Outlet } from "react-router-dom";
 
-type AdminDashboardProps = {}
+type AdminDashboardProps = {};
 
 const AdminDashboard: FC = (props: AdminDashboardProps) => {
   return (
-    <DashboardLayout>
-      <Routes>
-        <Route path="/change-password" element={<ChangePassword />} />
-      </Routes>
-    </DashboardLayout>
-  )
-}
+    <IsAuthenticated userRole="SL">
+      <DashboardLayout>
+        <Outlet />
+      </DashboardLayout>
+    </IsAuthenticated>
+  );
+};
 
 export default AdminDashboard;

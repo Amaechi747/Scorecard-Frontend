@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavBar, SideBar } from "."
+import classes from './AdminDashboard.module.css'
 
 type Props = {
   children: React.ReactNode
@@ -7,10 +8,14 @@ type Props = {
 
 const DashboardLayout = (props: Props) => {
   return (
-    <div>
+    <div className={classes.admin_wapper}>
+      <div>
       <NavBar />
+      </div>
+      <div className={classes.admin_dashboard_container}>
       <SideBar />
-      {props.children}
+      <div>{props.children}</div>
+      </div>
     </div>
   )
 }
