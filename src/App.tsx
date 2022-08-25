@@ -19,7 +19,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<AdminDashboard />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/change-password" element={<ChangePassword />} />
+        {/* <Route path="/change-password" element={<ChangePassword />} /> */}
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
         {/* <Route path="/login" element={<Login />} /> */}

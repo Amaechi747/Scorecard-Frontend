@@ -25,10 +25,11 @@ color: #03435F;
    width: calc(100% - 2rem);
    margin: 2rem 1rem 0 2rem;
 
-  `
+  
 
    display: block;
-}`
+}
+`
 
 
 
@@ -93,7 +94,8 @@ padding: 0.4rem 1rem;
    width: calc(100%);
    font-size: 0.8rem;
    line-height: 1.3rem;
-`;
+}
+`
 
 
 export const Paragraph = styled.p`
@@ -103,6 +105,7 @@ color: #BDBDBD;
 padding: 2rem 2.5rem 1.5rem 2.5rem;
 box-shadow: inset 0px -0.51px #bdbdbd;
 `
+
 export const Paragraph2 = styled(Paragraph)`
 padding: 2rem 0 1.5rem;
 `
