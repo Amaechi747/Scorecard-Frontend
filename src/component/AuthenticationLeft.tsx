@@ -39,18 +39,6 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
         e.preventDefault();
         try{
 
-            const response = await axios.post("/users/login", formData);
-            response.data.message === "Success"
-              ? swal("Success", "Login Successful", "success")
-              : void 0;
-            for (let item in response.data.data) {
-                localStorage.setItem(`${item}`, response.data.data[item]);
-                if (item === 'admin') {
-                    setTimeout(() => {
-                        navigate('/admin');
-                    }, 1000)
-                }
-            }
             const response = await axios.post('/users/login', formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
