@@ -38,6 +38,19 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
+
+            const response = await axios.post("/users/login", formData);
+            response.data.message === "Success"
+              ? swal("Success", "Login Successful", "success")
+              : void 0;
+            for (let item in response.data.data) {
+                localStorage.setItem(`${item}`, response.data.data[item]);
+                if (item === 'admin') {
+                    setTimeout(() => {
+                        navigate('/admin');
+                    }, 1000)
+                }
+            }
             const response = await axios.post('/users/login', formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
@@ -52,6 +65,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                 }
             }
             // localStorage.setItem
+
         }catch(err: any) {
             if(err?.response.data.error) {
 

@@ -20,12 +20,19 @@ line-height: 32px;
 color: #03435F;
 @media screen and (max-width: 1023) {
     width: 80%;
+
+
+
 }
 @media screen and (max-width: 700px) {
    width: calc(100% - 2rem);
    margin: 2rem 1rem 0 2rem;
+
+  `
+
    display: block;
 }`
+
 
 
 export const ScoreCardHeading = styled.span`
