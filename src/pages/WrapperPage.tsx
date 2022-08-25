@@ -12,8 +12,11 @@ const Main = styled.div`
 		height: 100vh;
 		margin: 0;
     display: flex;
-    justify-content: space-between;
-		background-color: white;
+	justify-content: stretch;
+	background-color: white;
+	@media screen and (max-width: 1023px) {
+		jusitfy-content: center;
+	}
 `
 
 const WrapperPage = (props: PageProps) => {
@@ -22,7 +25,7 @@ const WrapperPage = (props: PageProps) => {
 
 	return (
 			<Main>
-				<div style={ { width: '53.5%', margin: '0' } } className='wrapper-left'>
+				<div style={ { margin: '0', flex: '1' } } className='wrapper-left'>
 					<div className='brand'> 
 						<img src="/assets/images/scorecardLogo.png" alt="logo"/>			
 						<span style={{ 

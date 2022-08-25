@@ -7,7 +7,7 @@ type FormInputProps = {
  type: string
  value: string
  name: string
- errBorderColor: string
+ errBorderColor?: string
  errMsgColor?: string
  errMsg?: string
  // border: string | number | undefined
@@ -28,10 +28,9 @@ const FormInput: (props: FormInputProps) => JSX.Element = (props: FormInputProps
     onChange={onChange}
     onBlur={onBlur}
     name={name}
-    style={{border: `1px solid ${errBorderColor}`}}
+    style={{border: `0.05rem solid ${errBorderColor}`}}
     required
    />
-   
    <small style={{color: `${errMsgColor}`}}>{errMsg}</small>
   </div>
  )
