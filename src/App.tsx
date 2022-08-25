@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom"
-
 import {
   AdminDashboard,
   ChangePassword,
@@ -13,7 +12,6 @@ import {
   ViewAllAdmins,
   ViewAllUsers
 } from "./pages";
-
 
 function App(): JSX.Element {
   return (
