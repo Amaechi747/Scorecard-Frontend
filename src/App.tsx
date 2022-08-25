@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom"
 import { AdminDashboard, ChangePassword, ForgetPassword,Login,ResetPassword, SuperAdminSignUp } from "./pages"
-// import { AuthenticationBody } from './component';
-
 
 function App(): JSX.Element {
   return (

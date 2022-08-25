@@ -78,3 +78,12 @@ border: 1px solid rgba(33, 51, 79, 0.15);
 margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
+
+export const SearchBar = styled.input`
+ width: 100%;
+ height: 48px;
+ background: #F8F9FA;
+ border: 1px solid rgba(0, 0, 0, 0.05);
+ border: none;
+ outline: none;
+`

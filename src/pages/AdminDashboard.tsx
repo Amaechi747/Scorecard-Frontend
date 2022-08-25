@@ -1,10 +1,17 @@
 import React, { FC } from 'react'
+import { DashboardLayout } from "../component"
+import { Routes, Route } from "react-router-dom"
+import { ChangePassword } from "."
 
 type AdminDashboardProps = {}
 
 const AdminDashboard: FC = (props: AdminDashboardProps) => {
   return (
-    <div>AdminDashboard</div>
+    <DashboardLayout>
+      <Routes>
+        <Route path="/change-password" element={<ChangePassword />} />
+      </Routes>
+    </DashboardLayout>
   )
 }
 
