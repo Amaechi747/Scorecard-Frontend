@@ -78,3 +78,46 @@ border: 1px solid rgba(33, 51, 79, 0.15);
 margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
+export const CardDashboard = styled.div`
+    width: 75%;
+    margin: 0 auto;
+    background: #FFFFFF;
+`
+
+export const Table = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+`;
+
+export const Thead = styled.thead`
+    color: #03435F;
+    font-size: 14px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+`
+
+export const Tbody = styled.tbody`
+
+`
+
+export const Tr = styled.tr`
+    height: 30px;
+    border: 1px solid #ddd;
+`
+
+export const Th = styled.th`
+
+`
+
+export const Td = styled.td`
+    text-align: center;
+    color: #03435F;
+    font-weight: 300;
+    &.action {
+        font-weight: 700;
+        line-height: 1.5rem;
+    }
+`

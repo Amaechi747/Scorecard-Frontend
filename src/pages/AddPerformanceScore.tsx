@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
 import swal from 'sweetalert';
 import { FormInput, Card, FormButton, Form } from "../component";
-import { Heading, Paragraph, HorizontalLine } from "../styling/css";
+import { Heading, Paragraph } from "../styling/css";
 
 type AddPerformanceScoreProps = {};
 
@@ -39,7 +39,7 @@ const AddPerformanceScore: FC = (props: AddPerformanceScoreProps) => {
         <Heading> Dashboard </Heading>
         <button> Weeks </button>
         <Card>
-
+          
         </Card>
     
     </>
