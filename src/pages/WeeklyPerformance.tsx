@@ -69,12 +69,12 @@ const WeeklyPerformance: any = (props: AddWeeklyPerformanceProps) => {
   let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
   if(token !== null){
-    token = JSON.parse(token);
+    token = token;
   }
 
   let userId: string;
   if(admin !== null){
-    admin = JSON.parse(admin)
+    admin = admin
     const {id}: any = admin 
     if(id !== null){
       userId = id

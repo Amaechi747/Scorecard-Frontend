@@ -1,11 +1,17 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
+import { DashboardLayout, IsAuthenticated } from "../component";
+import { Outlet } from "react-router-dom";
 
-type AdminDashboardProps = {}
+type AdminDashboardProps = {};
 
 const AdminDashboard: FC = (props: AdminDashboardProps) => {
   return (
-    <div>AdminDashboard</div>
-  )
-}
+    <IsAuthenticated userRole="SL">
+      <DashboardLayout>
+        <Outlet />
+      </DashboardLayout>
+    </IsAuthenticated>
+  );
+};
 
 export default AdminDashboard;

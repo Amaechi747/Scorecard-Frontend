@@ -6,6 +6,8 @@ import swal from "sweetalert"
 
 type SuperAdminSignUpProps = {};
 
+const BASEURL = process.env.REACT_APP_BASEURL;
+
 const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -44,7 +46,8 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
       e.preventDefault();
       setFormErrors(validate(formData));
       setIsSubmit(true);
-      await axios.post("/admin/superuser",formData)
+      console.log(formData);
+      await axios.post(`${BASEURL}/admin/superuser`,formData)
       swal("Success", "You have successfully signed up!", "success");
 
     } catch(error) {
