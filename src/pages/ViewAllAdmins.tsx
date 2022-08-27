@@ -25,7 +25,7 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
   console.log(admins)
   
   return (
-    <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', flexDirection: 'column'}}>
+    <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', flexDirection: 'column', width: '1200px'}}>
 
       <div  style ={{ alignSelf: 'start', marginLeft: 'calc(15% - 4rem)', color: "#03435F"}}>
 

@@ -18,7 +18,7 @@ const ProfileAccountSettings = (props: Props) => {
           <img src="https://img.icons8.com/office/30/000000/test-account.png" />
         </div>
         <div style={{ paddingLeft: '2rem' }}>Cherechi</div>
-      </div>
+      </div> 
 
       {showModal && <ProfileModal accountSettingsData={accountSettingsData} showModal={showModal} />}
 

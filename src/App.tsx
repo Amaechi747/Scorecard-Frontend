@@ -12,7 +12,10 @@ import {
   ViewAllAdmins,
   ViewAllUsers,
   LandingDashboard,
+  Stack 
 } from "./pages";
+// import { AuthenticationBody } from './component';
+
 
 function App(): JSX.Element {
   return (
@@ -34,6 +37,10 @@ function App(): JSX.Element {
             <Route
               path="/admin-dashboard/superadmin-signup"
               element={<SuperAdminSignUp />}
+            />
+            <Route 
+            path="/admin-dashboard/stack" 
+            element={< Stack />}
             />
             <Route
               path="/admin-dashboard/view-all-users"

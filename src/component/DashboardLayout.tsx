@@ -9,12 +9,12 @@ type Props = {
 const DashboardLayout = (props: Props) => {
   return (
     <div className={classes.admin_wapper}>
-      <div>
-      <NavBar />
+      <div style={{ width: '100%' }}>
+        <NavBar />
       </div>
       <div className={classes.admin_dashboard_container}>
-      <SideBar />
-      <div>{props.children}</div>
+        <SideBar/>
+        <div  style={{ overflow: 'scroll', width: '100%'}}>{props.children}</div>
       </div>
     </div>
   )
