@@ -154,7 +154,6 @@ margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
 export const CardDashboard = styled.div`
-    width: 75%;
     margin: 0 auto;
     background: #FFFFFF;
 `
@@ -251,11 +250,11 @@ background: rgba(0, 0, 0, 0.04);
 height: 42px;
 `
 export const Table = styled.table`
-width: 80%;
+width: 100%;
 border-collapse: collapse;
 `
 export const Th = styled.th`
-padding: 0.5rem 1rem 0.5rem 2rem;
+padding: 0.35rem 1rem 0.35rem 2.5rem;
 text-align: justify;
 color: #03435F;
 @media screen and (max-width: 1200px) {
@@ -266,7 +265,8 @@ color: #03435F;
 // background: 
 export const Td = styled.td`
 background-color: #fff;
-padding: 0.4rem 2rem;
+border-bottom: 0.05rem solid rgba(0, 0, 0, 0.05);
+padding: 0.5rem 1rem 0.5rem 2.5rem;
 color: #03435F;
 `
 export const Select = styled.select`
@@ -290,5 +290,4 @@ export const Option = styled.option`
  font-size: 0.9rem;
  line-height: 1.5rem;
  height: 1.3rem;
-<<<<<<< HEAD
 `

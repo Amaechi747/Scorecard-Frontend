@@ -38,10 +38,10 @@ const WeekDropDown = (props: PageProps) => {
             <div style={{ 
                 position: 'absolute', 
                 display: (modal ? 'inline-flex' : 'none'),
-                boxShadow: '0px 0px 5px grey',
+                boxShadow: '0px 0px 10px grey',
                 flexDirection: 'column',
                 top: '2rem',
-                left: '0',
+                left: '-9rem',
                 background: 'white',
                 zIndex: '1000',
                 minWidth: '15rem',

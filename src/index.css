@@ -101,11 +101,11 @@ body {
   border-radius: unset;
   outline: unset;
 }
-
+/* 
 a {
   font-weight: 400;
   line-height: 19px;
-}
+} */
 
 .sidebar-link {
   text-decoration: none;
@@ -113,18 +113,23 @@ a {
   color: #21334F;
 }
 
-a {
+.action {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 0.1rem;
+}
+
+/* a {
   text-decoration: none;
   color: #21334F;
   padding: 9% 0px 9% 2%;
-
 }
 
 a:hover {
   padding: 9% 0px 9% 2%;
   background: #14A800;
 
-}
+} */
 
 .sidebar-link:hover {
   background: #14A800;
@@ -159,7 +164,6 @@ a:hover {
   left: 70%;
   top: 10%;
   position: absolute;
-  /* margin: auto; */
 }
 
 .profile-modal-up {

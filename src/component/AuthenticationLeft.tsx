@@ -45,6 +45,14 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         navigate('/admin-dashboard/profile');
                     }, 900)
                 }
+                if(item === 'decadevDetails'){
+                    Object.entries(response.data.data[item]).forEach(([key, value]) => {
+                        localStorage.setItem(key, `${value}`);
+                    });
+                    setTimeout(()=>{
+                        navigate('/login');
+                    }, 900)
+                }
             }
             // localStorage.setItem
         }catch(err: any) {

@@ -26,6 +26,8 @@ type WeeklyTableProps ={
 
 }
 
+const BASEURL = process.env.REACT_APP_BASEURL;
+
 const WeeklyTable = (props: WeeklyTableProps) => {
   return (
     <Tr key={props.count}>
@@ -66,26 +68,32 @@ const WeeklyPerformance: any = (props: AddWeeklyPerformanceProps) => {
     setWeek(id);
   }
   
-  let admin = localStorage.getItem('admin');
+  // let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
+  let userId = localStorage.getItem('id');
+
+  console.log(userId)
+  
   if(token !== null){
     token = token;
   }
+  console.log(localStorage)
 
-  let userId: string;
-  if(admin !== null){
-    admin = admin
-    const {id}: any = admin 
-    if(id !== null){
-      userId = id
-    }
-  }
+  // if(admin !== null){
+  //   admin = admin
+  //   console.log(admin)
+  //   console.log(token)
+  //   const {id}: any = admin 
+  //   if(id !== null){
+  //     userId = id
+  //   }
+
   
 
   useEffect(() => {
     (async () => {
       // const scoresEndpoint = await axios.get(),
-      const result = await axios.get(`/admin/filter_score/${userId}?week=${week || 4}`,
+      const result = await axios.get(`${BASEURL}/admin/filter_score/${userId}?week=${week || 4}`,
       {headers: {"Authorization": `Bearer ${token}`}}
       )
 
@@ -104,12 +112,12 @@ const weeklyTableList = () => {
   return (
     <>
       <div style={{ margin: '0 3rem'}}>
-        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <Heading> Dashboard </Heading>
           <WeekDropDown onClick={weekChangeHandler}/>
         </div>
         <CardDashboard>
-          <div>
+          <div style={{border: '1px solid #fff'}}>
             <h2 style={{ color: "#03435F", textAlign: "center" }}>Week {week}</h2>{" "}
           </div>
           <Table>
