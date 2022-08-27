@@ -5,7 +5,7 @@ import { RiUserSettingsLine } from "react-icons/ri"
 const sideBarData = [
  {
   id: 0,
-  link: "/dashboard",
+  link: "/admin-dashboard/stack",
   icon: <FiHome />,
   name: 'Dashboard'
  },

@@ -5,6 +5,8 @@ import Button from '../UI/Button';
 import { CgClose } from 'react-icons/cg';
 import axios from 'axios';
 
+
+const BASEURL = process.env.REACT_APP_BASEURL;
 //Implemented Portals here
 type ModalFormProps ={
     offModal: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -45,7 +47,7 @@ const ModalForm: (props: ModalFormProps) => JSX.Element = function(props: ModalF
         if(name !== undefined && imageFile !== undefined){
             formData.append('name', name) 
             formData.append('image', imageFile);
-            axios.post('/admin/create_stack', formData, {
+            axios.post(`${BASEURL}/admin/create_stack`, formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',

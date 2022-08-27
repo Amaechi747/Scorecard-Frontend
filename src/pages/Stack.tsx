@@ -2,6 +2,8 @@ import React, { FC, useState, useEffect } from 'react';
 import {EmptyStack, CreatedStack, CreateStackModal} from '../component';
 import axios from 'axios';
 
+
+const BASEURL = process.env.REACT_APP_BASEURL;
 type StackProps = {};
 
 const Stack: FC = function ( props: StackProps) {
@@ -35,7 +37,7 @@ const Stack: FC = function ( props: StackProps) {
     const token = localStorage.getItem('token')
     //Get and save stack records.
     useEffect(() => {
-        axios.get('/admin/view_all_stack', {headers: {"Authorization": `Bearer ${token}`}})
+        axios.get(`${BASEURL}/admin/view_all_stack`, {headers: {"Authorization": `Bearer ${token}`}})
             .then((res) => {
                 stackDataArray = [...res.data.data];
                 if(stackDataArray.length > 0){

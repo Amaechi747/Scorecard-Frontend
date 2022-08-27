@@ -22,11 +22,11 @@ const CreatedStack: (props: CreatedStackProps) => JSX.Element = function  (props
     }
 
     return(
-        <>
-                <div style={{display: 'flex'}}>
-                    <h1 className={`${styles["dashboard"]}`}> Dashboard </h1>
-                    <button className={`${styles["create-stack"]}`} onClick={createStackHandler} >+ Create Stack </button>
-                </div>
+        <div style={{ width: '1100px'}}>
+            <div style={{display: 'flex'}}>
+                <h1 className={`${styles["dashboard"]}`}> Dashboard </h1>
+                <button className={`${styles["create-stack"]}`} onClick={createStackHandler} >+ Create Stack </button>
+            </div>
 
             <div className={styles["image-container"]}> 
             {
@@ -60,7 +60,7 @@ const CreatedStack: (props: CreatedStackProps) => JSX.Element = function  (props
                     <p>Node js</p>
                 </div>
             </div> */}
-        </>
+        </div>
     )
 }
 

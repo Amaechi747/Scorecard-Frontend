@@ -86,7 +86,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   }, [errMsg])
 
   return (
-    <>
+    <div style={{ width: '1200px'}}>
       <Heading>Change Password</Heading>
       <Card>
         <div>
@@ -128,7 +128,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
           </Form>
         </div>
       </Card>
-    </>
+    </div>
   );
 };
 

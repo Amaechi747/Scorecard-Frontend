@@ -98,7 +98,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
   };
 
   return (
-    <>
+    <div style={{ width: '1200px'}}>
       <Heading2>
         Create user
         <div>
@@ -197,7 +197,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
           </Form>
         </div>
       </Card>
-    </>
+    </div>
   );
 };
 

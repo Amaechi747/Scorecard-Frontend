@@ -19,9 +19,8 @@ export { default as Logout } from "./Logout"
 export { default as ProfileModal } from "./ProfileModal"
 export { default as FormInput2 } from './FormInput2';
 export { default as FormSelect } from './CustomFormSelect';
-export { default as UserTable } from "./UserTable";
+// export { default as UserTable } from "./UserTable";
 export { default as IsAuthenticated } from "./IsAuthenticated";
-export { default as AuthButton } from "./AuthButton";
 export { default as EmptyStack } from "./EmptyStack";
 export { default as CreatedStack } from "./CreatedStack";
 export { default as CreateStackModal } from "./CreateStackModal";

@@ -103,7 +103,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
     //useMemo to call api for profile image
 
     return (
-        <>
+        <div style={{ width: '1200px'}}>
           <Heading>Profile</Heading> 
             <Card2>
                 <Paragraph2>
@@ -190,7 +190,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
                     null
                 }
             </Card2>
-        </>)
+        </div>)
 }
 
 export default AdminProfile;

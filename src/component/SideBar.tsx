@@ -8,20 +8,32 @@ type SideBarProps = {}
 
 const SideBar = (props: SideBarProps) => {
   return (
-    <div style={{ height: '100vh', background: '#FFFFFF', width: '23%', padding: '2rem' }}>
-      <div style={{ flexDirection: 'column' }}>
+    <div style={{ 
+            background: '#FFFFFF', 
+            // width: '23%', 
+            padding: '2rem', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            justifyContent: 'space-between' 
+          }}>
+      <div>
         {
           sideBarData.map(el => {
             return (
-                <div className="sidebar_data" style={{ display: 'flex', alignItems: 'center', padding: '0.4rem', fontSize: '16px', color: '#FFFFFF', lineHeight: '19px', fontWeight: '400' }}>
+                <div className="sidebar_data" style={{ 
+                  display: 'block', 
+                  marginTop: '0.5rem', 
+                  fontSize: '0.91rem', 
+                  color: '#FFFFFF', 
+                  lineHeight: '1.3rem', 
+                  fontWeight: '400' }}>
                   <Link className="sidebar-link" to={el.link}>
-                    <span style={{ flex: '0.5', paddingRight: '3rem' }}>
+                    <span style={{ display: 'inline-block', fontSize: '1.4rem', marginRight: '0.5rem' }}>
                       {el.icon}
                     </span>
-                    <span style={{ flex: '0.5', paddingRight: '3rem' }}>
+                    <span style={{ display: 'inline-block'}}>
                       {el.name}
                     </span>
-
                   </Link>
 
                 </div>
@@ -30,12 +42,10 @@ const SideBar = (props: SideBarProps) => {
             )
           })
         }
-        <div style={{marginTop: '100%', background: 'rgba(20, 168, 0, 0.05)'}}>
-          <Logout />
-        </div>
       </div>
-
-
+        <div style={{ background: 'rgba(20, 168, 0, 0.05)', marginBottom: '1.5rem'}}>
+        <Logout />
+        </div>
     </div>
   )
 }
