@@ -66,7 +66,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   }, [])
 
     return (
-        <>
+        <div style={{ width: '1200px'}}>
           <Heading2>Create Admin 
             <div>
                 <Link to='/view-all-admins' style={{
@@ -163,7 +163,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
               </Form>
             </div>
           </Card2>
-        </>)
+        </div>)
 }
 
 export default SuperAdminCreateAdmin;

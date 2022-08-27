@@ -13,12 +13,14 @@ import {
   ViewAllAdmins,
   ViewAllUsers,
   LandingDashboard,
-  PerformanceTracker
+  PerformanceTracker,
+  Stack
 } from "./pages";
+// import { AuthenticationBody } from './component';
+
 
 function App(): JSX.Element {
   return (
-    <>
     <div className="App">
       <Routes>
         <Route path="/" element={<AdminDashboard />} />
@@ -36,21 +38,21 @@ function App(): JSX.Element {
 
         <Route path="/admin-dashboard" element={<AdminDashboard />}>
           <Route path="/admin-dashboard/weekly-performance" element={<WeeklyPerformance/>} />
-          <Route path="/admin-dashboard/profile" element={<AdminProfile />} />
-          <Route path="/admin-dashboard/create_admin" element={<SuperAdminCreateAdmin />} />
-          <Route path="/admin-dashboard/superadmin-signup" element={<SuperAdminSignUp />} />
           <Route path="/admin-dashboard/view-all-users" element={<ViewAllUsers />} />
           <Route path="/admin-dashboard/change-password"  element={<ChangePassword />} />
           <Route path="/admin-dashboard/view-all-admins" element={<ViewAllAdmins />} />
           <Route path="/admin-dashboard/user" element={<UserManagement />} />
           <Route path="/admin-dashboard/change-password" element={<ChangePassword />} />
+          <Route path="/admin-dashboard/profile" element={<AdminProfile />} />
+          <Route path="/admin-dashboard/create_admin" element={<SuperAdminCreateAdmin />} />
+          <Route path="/admin-dashboard/superadmin-signup" element={<SuperAdminSignUp />} />
+          <Route  path="/admin-dashboard/stack"  element={< Stack />} />
         </Route>
         
         <Route path="/performance-tracker" element={<PerformanceTracker />} />         
       </Routes>
     </div>
-    </>
-  );
+     );
 }
 
 export default App;

@@ -27,8 +27,6 @@ color: #03435F;
 }
 `
 
-
-
 export const ScoreCardHeading = styled.span`
 font-weight: 600;
 font-size: 32px;
@@ -92,7 +90,6 @@ padding: 0.4rem 1rem;
 }
 `
 
-
 export const Paragraph = styled.p`
 font-weight: 200;
 font-size: 1rem;
@@ -120,10 +117,7 @@ color: #fff;
 margin: 1.5rem 0 0 0;
 background: #14A800;
 cursor: pointer;
-<<<<<<< HEAD
-=======
 
->>>>>>> 33c3ceb9dd5477b59abe80777c1449dec9c2970b
 `
 export const CardBody = styled.div`
  background: #fff;
@@ -153,6 +147,7 @@ border: 1px solid rgba(33, 51, 79, 0.15);
 margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
+
 export const CardDashboard = styled.div`
     margin: 0 auto;
     background: #FFFFFF;
@@ -176,31 +171,6 @@ export const Thead = styled.thead`
 export const Tbody = styled.tbody`
 
 `
-
-// export const Tr = styled.tr`
-//     height: 30px;
-//     border: 1px solid #ddd;
-// `
-
-// export const Th = styled.th`
-
-// `
-
-// export const Td = styled.td`
-//     text-align: center;
-//     color: #03435F;
-//     font-weight: 300;
-//     &.action {
-//         font-weight: 700;
-//         line-height: 1.5rem;
-//     }
-// `
-// export const Tr = styled.tr`
-// border-bottom: 0.015rem solid gray;
-// &:last-child {
-//   border: unset;
-// }
-// `
 
 export const SearchBar = styled.input`
  width: 100%;
@@ -247,12 +217,17 @@ justify-content: center;
 
 export const Tr = styled.tr`
 background: rgba(0, 0, 0, 0.04);
-height: 42px;
+border-bottom: 0.015rem solid gray;
+&:last-child {
+  border: unset;
+}
 `
+
 export const Table = styled.table`
 width: 100%;
 border-collapse: collapse;
 `
+
 export const Th = styled.th`
 padding: 0.35rem 1rem 0.35rem 2.5rem;
 text-align: justify;

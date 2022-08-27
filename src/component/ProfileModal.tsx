@@ -16,7 +16,7 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
     return ReactDOM.createPortal(
       <div className="profile-modal">
         <div className="profile-modal-up">
-          <div>
+          <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}>
             <img src="https://img.icons8.com/office/30/000000/test-account.png" />
           </div>
 
@@ -27,14 +27,14 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
 
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+        <div style={{ padding: '1rem 0 2.5rem 2rem' }}>
           {
             accountSettingsData.map((el: any) => {
               return (
-                <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '1.0rem', fontSize: '16px', color: '#FFFFFF', lineHeight: '19px', fontWeight: '400' }}>
-                  <Link to={el.link}>
-                    <span style={{ flex: '0.5', paddingRight: '2rem' }}>{el.icon}</span>
-                    <span style={{ flex: '0.5', paddingRight: '2rem' }}>{el.name}</span>
+                <div>
+                  <Link to={el.link} className='profile-modal-links'>
+                    <span style={{ marginRight: '1rem', fontSize: '1.5rem', display: 'inline-block' }}>{el.icon}</span>
+                    <span style={{ display: 'inline-block',  }}>{el.name}</span>
                   </Link>
                 </div>
               )

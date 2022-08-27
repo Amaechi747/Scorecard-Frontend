@@ -7,7 +7,9 @@ import validator from 'validator';
 import {AuthInput, AuthButton} from '.'
 type IAuthenticationLeftProps = {
 }
+
 const BASEURL = process.env.REACT_APP_BASEURL;
+
 const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [formData, setFormData] = useState({
         email: '',
@@ -43,6 +45,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                     });
                     setTimeout(()=>{
                         navigate('/admin-dashboard/profile');
+
                     }, 900)
                 }
                 if(item === 'decadevDetails'){
