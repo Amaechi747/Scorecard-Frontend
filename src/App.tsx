@@ -29,13 +29,13 @@ function App(): JSX.Element {
         <Route path="/superadmin-signup" element={<SuperAdminSignUp />} />
 
         <Route path="/login" element={<Login />} />
-        <Route path="/admin/weekly-performance" element={<WeeklyPerformance/>} />
         <Route path="/" element={<LandingDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />}>
+          <Route path="/admin-dashboard/weekly-performance" element={<WeeklyPerformance/>} />
           <Route path="/admin-dashboard/profile" element={<AdminProfile />} />
           <Route path="/admin-dashboard/create_admin" element={<SuperAdminCreateAdmin />} />
           <Route path="/admin-dashboard/superadmin-signup" element={<SuperAdminSignUp />} />
