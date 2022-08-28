@@ -19,7 +19,10 @@ const BASEURL = process.env.REACT_APP_BASEURL;
 const ProfileAccountSettings = (props: Props) => {
   const { handleClick, setShowModal, showModal, handleHover, handleLeave } = props;
 
-  const [profilePicture, setProfilePicture] = useState('')
+  const [profilePicture, setProfilePicture] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState(''); 
+  const [role, setRole] = useState('');
   
   useEffect(() => {
     (async () => {
@@ -30,7 +33,11 @@ const ProfileAccountSettings = (props: Props) => {
           }
         })
         console.log(result.data)
-        const {imageUrl}=  result.data        // setProfilePicture(result.data.data)
+        const {imageUrl, firstName, lastName, role}=  result.data        
+        setProfilePicture(imageUrl)
+        setFirstName(firstName)
+        setLastName(lastName)
+        setRole(role)
 
       } catch (err) {
         console.error(err)
@@ -43,14 +50,14 @@ const ProfileAccountSettings = (props: Props) => {
     <>
       <div onClick={(e) => handleClick(e)} onMouseOver={() => handleHover()} className="account-settings">
         <div style={{ paddingLeft: '2rem' }}>
-          <img className="profile-img" src="https://img.icons8.com/office/30/000000/test-account.png" />
+          <img className="profile-img" src={profilePicture} />
         </div>
-        <div style={{ paddingLeft: '2rem' }}>Cherechi</div>
+        <div style={{ paddingLeft: '2rem' }}>{`${firstName} ${lastName}`}</div>
       </div>
 
       <div onMouseLeave={() => handleLeave()}>
 
-        {showModal && <ProfileModal accountSettingsData={accountSettingsData} showModal={showModal} />}
+        {showModal && <ProfileModal accountSettingsData={accountSettingsData} showModal={showModal} profilePicture={profilePicture} firstName={firstName} lastName={lastName} role={role} />}
       </div>
 
 
