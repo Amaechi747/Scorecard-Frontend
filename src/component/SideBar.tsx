@@ -11,7 +11,7 @@ const SideBar = (props: SideBarProps) => {
     <div style={{ 
             background: '#FFFFFF', 
             // width: '23%', 
-            padding: '2rem', 
+            padding: '4rem 2rem 7rem 2rem', 
             display: 'flex', 
             flexDirection: 'column', 
             justifyContent: 'space-between' 
