@@ -153,11 +153,25 @@ a {
 }
 
 .account-settings:hover {
-  background: #F8F9FA;
   opacity: 1;
   border-radius: 5rem;
   width: 70%;
 }
+
+.profile-img {
+  width: 3rem;
+  height: 3rem;
+  clip-path: circle();
+  object-fit: cover;
+  object-position: center;
+}
+/* .profile-img-modal {
+  width: 5rem;
+  height: 5rem;
+  clip-path: circle();
+  object-fit: cover;
+  object-position: center;
+} */
 
 
 .profile-modal {

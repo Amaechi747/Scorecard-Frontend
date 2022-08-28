@@ -6,10 +6,14 @@ import Logout from './Logout';
 type ProfileModalProps = {
   accountSettingsData: any
   showModal: boolean
+  profilePicture: string
+  firstName: string
+  lastName: string
+  role: string
 }
 
 const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (props: ProfileModalProps) => {
-  const { accountSettingsData, showModal } = props
+  const { accountSettingsData, showModal, profilePicture, firstName, lastName, role } = props
 
   if (showModal) {
 
@@ -17,21 +21,21 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
       <div className="profile-modal">
         <div className="profile-modal-up">
           <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}>
-            <img src="https://img.icons8.com/office/30/000000/test-account.png" />
+            <img src={profilePicture} />
           </div>
 
           <div className="profile-modal-bottom">
-            <span style={{ color: '#03435F', fontWeight: '700', lineHeight: '19px' }}>Cherechi Orika</span>
-            <span style={{ color: '#03435F', fontWeight: '400', lineHeight: '19px' }}>Stack Associate</span>
+            <span style={{ color: '#03435F', fontWeight: '700', lineHeight: '19px' }}>{`${firstName} ${lastName}`}</span>
+            <span style={{ color: '#03435F', fontWeight: '400', lineHeight: '19px' }}>{`${role}`}</span>
           </div>
 
         </div>
 
-        <div style={{ padding: '1rem 0 2.5rem 2rem' }}>
+        <div style={{ padding: '1rem 0 1.5rem 2rem' }}>
           {
             accountSettingsData.map((el: any) => {
               return (
-                <div>
+                <div style={{paddingBottom: '0rem', paddingTop: '2rem'}}>
                   <Link to={el.link} className='profile-modal-links'>
                     <span style={{ marginRight: '1rem', fontSize: '1.5rem', display: 'inline-block' }}>{el.icon}</span>
                     <span style={{ display: 'inline-block',  }}>{el.name}</span>
