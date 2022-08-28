@@ -37,6 +37,7 @@ function App(): JSX.Element {
         <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         <Route path="/admin-dashboard" element={<AdminDashboard />}>
+          <Route  path="/admin-dashboard/stack"  element={< Stack />} />
           <Route path="/admin-dashboard/weekly-performance" element={<WeeklyPerformance/>} />
           <Route path="/admin-dashboard/view-all-users" element={<ViewAllUsers />} />
           <Route path="/admin-dashboard/change-password"  element={<ChangePassword />} />
@@ -46,7 +47,6 @@ function App(): JSX.Element {
           <Route path="/admin-dashboard/profile" element={<AdminProfile />} />
           <Route path="/admin-dashboard/create_admin" element={<SuperAdminCreateAdmin />} />
           <Route path="/admin-dashboard/superadmin-signup" element={<SuperAdminSignUp />} />
-          <Route  path="/admin-dashboard/stack"  element={< Stack />} />
         </Route>
         
         <Route path="/performance-tracker" element={<PerformanceTracker />} />         

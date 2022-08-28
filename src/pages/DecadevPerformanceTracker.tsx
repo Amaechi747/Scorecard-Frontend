@@ -16,46 +16,18 @@ import {
 import axios from "axios";
 
 type WeeksPerformanceProps = {
-  //id: string;
-  // firstName: string
+
 };
 
 type PerformanceProps ={
-  count: number
+  index: number
   el: any
   // user: string
 
 }
 
+// let index = 0;
 const BASEURL = process.env.REACT_APP_BASEURL;
-
-const WeeksPerformance = (props: PerformanceProps) => {
-  return (
-    <Tr key={props.count}>
-      <Td>{props.count + 1}</Td>
-
-      {
-        Object.hasOwn(props.el, '') ?
-        <>
-          <Td>{props.el?.algorithm}</Td>
-          <Td>{props.el?.weeklyTask }</Td>
-          <Td>{props.el?.assessment }</Td>
-          <Td>{props.el?.agileTest }</Td>
-          <Td>{props.el?.cummulative }</Td>
-        </>
-        : 
-        <>
-          <Td>-</Td>
-          <Td>-</Td>
-          <Td>-</Td>
-          <Td>-</Td>
-          <Td>-</Td>
-        </>
-      }
-    </Tr>
-  )  
-}
-
 
 
 const PerformanceTracker: any = (props: WeeksPerformanceProps) => {
@@ -65,14 +37,10 @@ const PerformanceTracker: any = (props: WeeksPerformanceProps) => {
   // let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
   let userId = localStorage.getItem('id');
-
-  console.log(userId)
   
   if(token !== null){
     token = token;
   }
-  console.log(localStorage)
-
 
   useEffect(() => {
     (async () => {
@@ -81,17 +49,10 @@ const PerformanceTracker: any = (props: WeeksPerformanceProps) => {
       {headers: {"Authorization": `Bearer ${token}`}}
       )
 
-      setDisplayPerformance([result]);
-      console.log(result);
+      setDisplayPerformance([...result.data.data]);
+      console.log(result.data.data);
     })();
   }, []);
-
-const weeksPerformanceList = () => {
-  return displayPerformance.map((el: any, index: number) => {
-    return <WeeksPerformance key={index} count={index} el={el} />
-  })
-}
-
 
   return (
     <>
@@ -112,9 +73,18 @@ const weeksPerformanceList = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {weeksPerformanceList()}
+              {displayPerformance.map((el: any, index:number) => {
+                return (
+                <Tr>
+                  <Td>Week {index +=1}</Td>
+                  <Td>{el.algorithm}</Td>
+                  <Td>{el.weeklyTask }</Td>
+                  <Td>{el.assessment }</Td>
+                  <Td>{el.agileTest }</Td>
+                  <Td>{el.cummulative }</Td>
+                </Tr>
+              )})}
               </Tbody>
-
           </Table>
         </CardDashboard>
       </div>
