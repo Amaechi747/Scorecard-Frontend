@@ -23,7 +23,7 @@ const CreatedStack: (props: CreatedStackProps) => JSX.Element = function  (props
 
     return(
         <div style={{ width: '73rem', marginBottom: '3rem'}}>
-            <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', padding: '0 4rem 0 1rem' }}>
+            <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', padding: '0 4rem 0 2rem' }}>
                 <h1 className={`${styles["dashboard"]}`}> Dashboard </h1>
                 <div>
                     <button className={`${styles["create-stack"]}`} onClick={createStackHandler} >+ Create Stack </button>

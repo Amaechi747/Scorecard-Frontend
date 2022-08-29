@@ -103,7 +103,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
     //useMemo to call api for profile image
 
     return (
-        <div style={{ width: '1200px' }}>
+        <div style={{ width: '73rem', marginBottom: '4rem' }}>
             <Heading>Profile</Heading>
             <Card2>
                 <Paragraph2>

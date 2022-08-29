@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { Card } from "../component";
-import {AiOutlineCalendar} from 'react-icons/ai'
+import styles from '../component/CreateStackModal.module.css';
+import {AiOutlineCalendar} from 'react-icons/ai';
+import AddPerformanceScore from './AddPerformanceScore'
 import {
   Heading,
   Table,
@@ -25,6 +28,7 @@ type WeeklyTableProps ={
   // user: string
 
 }
+
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 
@@ -71,25 +75,11 @@ const WeeklyPerformance: any = (props: AddWeeklyPerformanceProps) => {
   // let admin = localStorage.getItem('admin');
   let token = localStorage.getItem('token');
   let userId = localStorage.getItem('id');
-
-  console.log(userId)
   
   if(token !== null){
     token = token;
   }
-  console.log(localStorage)
-
-  // if(admin !== null){
-  //   admin = admin
-  //   console.log(admin)
-  //   console.log(token)
-  //   const {id}: any = admin 
-  //   if(id !== null){
-  //     userId = id
-  //   }
-
   
-
   useEffect(() => {
     (async () => {
       // const scoresEndpoint = await axios.get(),
@@ -98,7 +88,7 @@ const WeeklyPerformance: any = (props: AddWeeklyPerformanceProps) => {
       )
 
       setDisplayList([...result.data]);
-      console.log(result.data);
+      // console.log(result.data);
     })();
   }, [week]);
 

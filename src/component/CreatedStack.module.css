@@ -31,10 +31,11 @@
     /* width: 140px;
     height: 40px;
     margin: 20px; */
-    padding: 0.5rem 0.7rem;
-    margin: 2rem;
-    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 2rem 2rem 2rem;
+    font-size: 1.1rem;
     background: #14A800;
+    cursor: pointer;
     border-radius: 6px;
     color: white;
     border: none;

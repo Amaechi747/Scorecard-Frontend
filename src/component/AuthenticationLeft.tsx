@@ -18,13 +18,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
-    // const [errMsg, setErrMSg] = useState('')
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target
-    //     setFormData({ ...formData, [name]: value })
-    //     formData.email.length === 0 ? setErrMSg('Email cannot be empty') :
-    //     formData.email.length > 0 && validator.isEmail(formData.email) ? setErrMSg('Valid Email') : setErrMSg('Please enter a valid email address')
-    // }
+    
     useEffect(() => {
         if(mail || pass) {
             setFormData({ email: mail, password: pass});
