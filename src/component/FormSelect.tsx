@@ -1,7 +1,11 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, MouseEvent } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
+import {EditModal} from '../component';
+import {AdminTable} from '../component';
+import ReactDOM from 'react-dom';
+
 type PageProps = {
     id: string;
 }
@@ -65,29 +69,43 @@ const FormSelect = (props: PageProps) => {
             }
         }
     }
+
+    const [editModal, setEditModal] = useState(false);
+
+    const addModal: (e: MouseEvent<HTMLButtonElement>) => void = function (e: MouseEvent<HTMLButtonElement>){
+        setEditModal(true);
+    }
     return (
-        <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
-            <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
-            <div style={{ 
-                position: 'absolute', 
-                display: (modal ? 'inline-flex' : 'none'),
-                boxShadow: '0px 0px 10px grey',
-                flexDirection: 'column',
-                top: '2rem',
-                left: '-14rem',
-                background: 'white',
-                zIndex: '1000',
-                minWidth: '15rem',
-                minHeight: '13rem',
-                justifyContent: 'space-around',
-                padding: '0.8rem 0'
-            }}>
-                <ModalButton onClick={() => {}}>Edit</ModalButton>
-                <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
-                <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
-                <ModalButton data-action={[`/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
+        <>
+              { ReactDOM.createPortal(
+                    <EditModal />,
+                    document.getElementById('edit-admin-modal-root')!
+                )}
+                { editModal && <AdminTable tableData={undefined} />}
+
+            <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
+                <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
+                <div style={{ 
+                    position: 'absolute', 
+                    display: (modal ? 'inline-flex' : 'none'),
+                    boxShadow: '0px 0px 10px grey',
+                    flexDirection: 'column',
+                    top: '2rem',
+                    left: '-14rem',
+                    background: 'white',
+                    zIndex: '1000',
+                    minWidth: '15rem',
+                    minHeight: '13rem',
+                    justifyContent: 'space-around',
+                    padding: '0.8rem 0'
+                }}>
+                    <ModalButton onClick={addModal}>Edit</ModalButton>
+                    <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
+                    <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
+                    <ModalButton data-action={[`/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 export default FormSelect;

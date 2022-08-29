@@ -3,8 +3,12 @@ import { HiArrowNarrowLeft } from 'react-icons/hi'
 import axios from "axios";
 import AdminTable from '../component/AdminTable';
 
+
+
 type ViewAllAdminsProps = {
 }
+
+const BASEURL = process.env.REACT_APP_BASEURL;
 
 const ViewAllAdmins = (props: ViewAllAdminsProps) => {
 
@@ -13,7 +17,7 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
 
   const fetchAdmins = async () => {
 
-    const response = await axios.get('/admin');
+    const response = await axios.get(`${BASEURL}/admin`);
 
     console.log(response.data);
       setAdmins(response.data);

@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { FC, useState, ChangeEvent, FormEvent, useEffect, MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { FormSelect, FormButton, Form, FormInput2 } from "../component";
 import { Heading2, Paragraph, Card2, Select2 } from "../styling/css";
@@ -10,7 +10,7 @@ type PageProps = {}
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 
-const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
+const EditModal = (props: PageProps): JSX.Element => {
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
@@ -55,7 +55,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   useEffect(() => {
     axios.get(`${BASEURL}/admin/view_all_stack`, {
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     }).then((data) => {
       setStacks(data.data.data);
@@ -66,7 +66,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
   }, [])
 
     return (
-        <div style={{ width: '1200px'}}>
+        <>
           <Heading2>Create Admin 
             <div>
                 <Link to='/admin-dashboard/view-all-admins' style={{
@@ -115,13 +115,6 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                 setSharedState={(s: string) => { setUserData({ ...userData, email: s }) }}
                 // firstValue="Name cannot be blank"
                 />
-                {/* <FormSelect 
-                  name="stack"
-                  label="Stack"
-                  errorMsg="Please select a comma separated list of Stacks for this Admin"
-                  type="text"
-                /> */}
-                {/* <FormSelect /> */}
                 <div style={{ marginBottom: '0.7rem' }}>
                   <label style={{ 
                     fontWeight: '400',
@@ -159,11 +152,11 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                 // firstValue="Name cannot be blank"
                 />
 
-                <FormButton text="Create Admin" />
+                <FormButton text="Edit Admin" />
               </Form>
             </div>
           </Card2>
-        </div>)
+        </>)
 }
 
-export default SuperAdminCreateAdmin;
+export default EditModal;

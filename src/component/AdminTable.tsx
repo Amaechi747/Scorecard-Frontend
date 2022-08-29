@@ -1,17 +1,19 @@
-import React, { useMemo } from "react";
+// import React, { useMemo } from "react";
 // import { useTable, Column } from "react-table";
 // import { IAdmins } from "./TableTypes";
-import { Table, Tr, Th, Td } from "../styling/css"
+import { Table, Tr, Th, Td } from "../styling/css";
+import {MouseEvent} from "react";
 import FormSelect from "./FormSelect";
-
+import { EditModal } from '../component';
 
 type AdminTableProp = {
   tableData: any;
   action?: string;
+  offModal?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const AdminTable = (props: AdminTableProp) => {
-  const { tableData } = props;
+  const { tableData, offModal } = props;
   return (
     <>
       <Table>

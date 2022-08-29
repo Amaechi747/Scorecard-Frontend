@@ -23,9 +23,6 @@ color: #03435F;
 @media screen and (max-width: 700px) {
    width: calc(100% - 2rem);
    margin: 2rem 1rem 0 2rem;
-
-  
-
    display: block;
 }
 `
@@ -120,7 +117,6 @@ color: #fff;
 margin: 1.5rem 0 0 0;
 background: #14A800;
 cursor: pointer;
-
 `
 export const CardBody = styled.div`
  background: #fff;
@@ -155,13 +151,8 @@ export const Tr = styled.tr`
 border-bottom: 0.015rem solid gray;
 &:last-child {
   border: unset;
-}
-`
+}`
 
-// export const Tr = styled.tr`
-// background: rgba(0, 0, 0, 0.04);
-// height: 42px;
-// `
 
 export const SearchBar = styled.input`
  width: 100%;
@@ -206,7 +197,6 @@ justify-content: center;
 }
 `
 
-
 export const Table = styled.table`
 width: 80%;
 border-collapse: collapse;
@@ -220,6 +210,7 @@ color: #03435F;
   font-weight: 500;
 }
 `
+
 // background: 
 export const Td = styled.td`
 background-color: #fff;
@@ -237,6 +228,7 @@ export const Select = styled.select`
  line-height: 1.5rem;
  height: 2.5rem;
 `
+
 export const Option = styled.option`
  border: 0.15rem solid rgba(33, 51, 79, 0.15);
  color: #21334F;
@@ -247,7 +239,4 @@ export const Option = styled.option`
  font-size: 0.9rem;
  line-height: 1.5rem;
  height: 1.3rem;
-
 `
-
-

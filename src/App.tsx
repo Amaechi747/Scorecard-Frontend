@@ -51,7 +51,7 @@ function App(): JSX.Element {
               element={<ChangePassword />}
             />
             <Route
-              path="/admin-dashboard/all-admins"
+              path="/admin-dashboard/view-all-admins"
               element={<ViewAllAdmins />}
             />
             <Route path="/admin-dashboard/user" element={<UserManagement />} />
