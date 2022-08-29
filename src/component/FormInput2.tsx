@@ -1,47 +1,24 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
-import styled from "styled-components";
+import { Input } from '../styling/css';
+import { useState, useEffect, ChangeEvent } from 'react';
 
 type PageProps = {
     name: string;
-    placeholder: string;
+    placeholder?: string;
     label: string;
     match?: string;
+    firstValue?: string;
+    disabled?: boolean;
     type: string;
-    errorMsg: string;
-    setSharedState?: React.Dispatch<React.SetStateAction<string>>
+    errorMsg?: string;
+    presetValue?: string;
+    setSharedState?: React.Dispatch<React.SetStateAction<string>> | ( (param: string) => void )
 }
 
 
-const Input = styled.input`
- border-width: 0.13rem;
- border-style: solid;
- outline: unset;
- width: calc(100% - 3.5rem);
- padding: 0.8rem 1.5rem;
- font-size: 1rem;
- line-height: 1.5rem;
- color: #21334f;
- @media screen and (max-width: 396px) {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    width: calc(100% - 2.2rem);
-    line-height: 1rem;
-}
- ::placeholder,
- ::-webkit-input-placeholder {
-   color: #21334F59;
-   font-weight: 200;
- }
- :-ms-input-placeholder {
-    color: #21334F59;
-    font-weight: 200;
- }
-`
-
-const AuthInput = (props: PageProps) => {
-    const { label, name, placeholder, type, errorMsg, setSharedState } = props;
+const FormInput2 = (props: PageProps) => {
+    const { label, name, placeholder, type, errorMsg, setSharedState, firstValue, disabled, presetValue } = props;
     const [err, errOccured] = useState(false);
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(firstValue ? `${firstValue}` : "");
     const [color, setColor] = useState('#CFD0D145')
 
     function handleInput(e: ChangeEvent<HTMLInputElement> ) {
@@ -104,8 +81,18 @@ const AuthInput = (props: PageProps) => {
                 }
             }
         }
-
-    
+        if(value && type === 'text') {
+            if(value.length < 2) {
+                setColor('red');
+                errOccured(true);
+            } else {
+                if(color !== '#CFD0D145'){
+                    setColor('green');
+                    errOccured(false);
+                    setTimeout(()=>{ setColor('#CFD0D145') }, 700)
+                }
+            }
+        }
         if(value && type === 'password') {
             if ( value.length > 3 && new RegExp('^[a-zA-Z0-9@_:;]{3,30}$', 'g').test(value)) {
                 if(props.match){
@@ -134,21 +121,22 @@ const AuthInput = (props: PageProps) => {
     }, [value, color])
 
     return (
-        <div style={{ marginBottom: '1.5rem', width: '100%' }}>
+        <div style={{ width: '100%', marginBottom: '0.8rem' }}>
             <label style={{ 
-                fontWeight: '600',
-                 marginBottom: '1rem',
+                fontWeight: '400',
+                 marginBottom: '0.7rem',
                  color: '#21334F',
                  display: 'block' }}>{label}</label>
             <Input
                 type={type}
-                value={value}
-                style={{ borderColor: `${color}`}}
-                placeholder={`Enter ${placeholder}`}
+                value={presetValue || value}
+                style={{ borderColor: `${color}`, borderStyle: 'solid', borderWidth: '0.5px'}}
+                placeholder={`${placeholder}`}
                 onChange={handleInput}
                 onBlur={handleInput}
                 onFocus={handleInput}
                 name={name}
+                disabled={disabled}
             />
             {
                 !err ?  null : <small style={{ color: `${color}`}}>{errorMsg}</small>
@@ -157,4 +145,4 @@ const AuthInput = (props: PageProps) => {
     )
 }
 
-export default AuthInput;
+export default FormInput2;

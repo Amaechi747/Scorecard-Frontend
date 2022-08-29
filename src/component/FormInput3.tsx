@@ -1,8 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState, ChangeEvent } from 'react'
 import { Label, Input } from "../styling/css"
 
-type FormInputProps = {
+type FormInputProps3 = {
  label: string
  type: string
  value: string
@@ -16,7 +15,7 @@ type FormInputProps = {
 }
 
 
-const FormInput: (props: FormInputProps) => JSX.Element = (props: FormInputProps) => {
+const FormInput3: (props: FormInputProps3) => JSX.Element = (props: FormInputProps3) => {
  const { label, type, value, name, onChange, onBlur, errBorderColor, errMsg, errMsgColor} = props
 
  return (
@@ -29,11 +28,11 @@ const FormInput: (props: FormInputProps) => JSX.Element = (props: FormInputProps
     onBlur={onBlur}
     name={name}
     style={{border: `0.05rem solid ${errBorderColor}`}}
-    required
+    disabled
    />
    <small style={{color: `${errMsgColor}`}}>{errMsg}</small>
   </div>
  )
 }
 
-export default FormInput
+export default FormInput3

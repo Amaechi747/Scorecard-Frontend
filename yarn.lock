@@ -1735,19 +1735,19 @@
 
 "@sweetalert/transformer@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@sweetalert/transformer/-/transformer-0.1.1.tgz#638bdd20b862f03579fd906578dc9355db00887a"
+  resolved "https://registry.npmjs.org/@sweetalert/transformer/-/transformer-0.1.1.tgz"
   integrity sha512-QdV8CrelIoK95kWOrZNMKXL9oEQFsvaForZcw2UijhmVJX/wzopPRLT/sAg51436TJ4q5angt8BvHQInehGFHA==
 
 "@sweetalert/with-react@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@sweetalert/with-react/-/with-react-0.1.1.tgz#5fe4ca967ae8fb34868ef0b9e52013b783e665d5"
+  resolved "https://registry.npmjs.org/@sweetalert/with-react/-/with-react-0.1.1.tgz"
   integrity sha512-LC9eMYKsv8ydvhvKufdVPOIMDgbAFsxn7eeKWadwvXPsFcflosfm/cXZSO0Ras5TuaO3WxHEgvitKD6UfpeIwQ==
   dependencies:
     "@sweetalert/transformer" "^0.1.1"
 
 "@testing-library/dom@^8.5.0":
   version "8.17.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.17.1.tgz#2d7af4ff6dad8d837630fecd08835aee08320ad7"
+  resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.17.1.tgz"
   integrity sha512-KnH2MnJUzmFNPW6RIKfd+zf2Wue8mEKX0M3cpX6aKl5ZXrJM1/c/Pc8c2xDNYQCnJO48Sm5ITbMXgqTr3h4jxQ==
   dependencies:
     "@babel/code-frame" "^7.10.4"
@@ -2651,7 +2651,7 @@ axe-core@^4.4.3:
 
 axios@^0.27.2:
   version "0.27.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
+  resolved "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
   dependencies:
     follow-redirects "^1.14.9"
@@ -7383,7 +7383,7 @@ react-refresh@^0.11.0:
 
 react-router-dom@^6.3.0:
   version "6.3.0"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.3.0.tgz#a0216da813454e521905b5fa55e0e5176123f43d"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.3.0.tgz"
   integrity sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==
   dependencies:
     history "^5.2.0"
@@ -7392,6 +7392,13 @@ react-router-dom@^6.3.0:
 react-router@6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/react-router/-/react-router-6.3.0.tgz"
+  integrity sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==
+  dependencies:
+    history "^5.2.0"
+
+react-router@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.3.0.tgz#3970cc64b4cb4eae0c1ea5203a80334fdd175557"
   integrity sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==
   dependencies:
     history "^5.2.0"
@@ -7451,9 +7458,14 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-table@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.npmjs.org/react-table/-/react-table-7.8.0.tgz"
+  integrity sha512-hNaz4ygkZO4bESeFfnfOft73iBUj8K5oKi1EcSHPAibEydfsX2MyU6Z8KCr3mv3C9Kqqh71U+DhZkFvibbnPbA==
+
 react@^18.2.0:
   version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
@@ -8294,7 +8306,7 @@ svgo@^2.7.0:
 
 sweetalert@^2.1.2:
   version "2.1.2"
-  resolved "https://registry.yarnpkg.com/sweetalert/-/sweetalert-2.1.2.tgz#010baaa80d0dbdc86f96bfcaa96b490728594b79"
+  resolved "https://registry.npmjs.org/sweetalert/-/sweetalert-2.1.2.tgz"
   integrity sha512-iWx7X4anRBNDa/a+AdTmvAzQtkN1+s4j/JJRWlHpYE8Qimkohs8/XnFcWeYHH2lMA8LRCa5tj2d244If3S/hzA==
   dependencies:
     es6-object-assign "^1.1.0"

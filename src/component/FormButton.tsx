@@ -15,4 +15,4 @@ const FormButton = (props: ButtonProps) => {
   )
 }
 
-export default FormButton
+export default FormButton;

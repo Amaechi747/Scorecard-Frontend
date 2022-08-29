@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
 
-
 type PageProps = {
     id: string;
 }
+
 
 const ModalButton = styled.button`
     border: unset;
@@ -23,15 +23,14 @@ const ModalButton = styled.button`
 `
 const FormSelect = (props: PageProps) => {
     const {id} = props;
-    
     const [modal, showModal] = useState(false);
-
     const axiosHeader = { 
         headers: {
             'authorization': `Bearer ${localStorage.getItem('token')}`
         } 
     }
 
+    
     const deleteUser = async (url: string) => {
         const response = await axios.delete(url, axiosHeader);
         if(response.data.status === 'success') {
@@ -53,8 +52,8 @@ const FormSelect = (props: PageProps) => {
             showModal(false);
         }
     }
-    
 
+    
     const handleClick = (e: any) => {
         if(e.target.dataset){
             const [url, method] = e.target.dataset.action.split(',');
@@ -73,14 +72,7 @@ const FormSelect = (props: PageProps) => {
             }
         }
     }
-    //handle Edit Modal
-    const openEditModal =()=>{
-        if(modal){
-            alert("Clicked")
-            showModal(!modal)
-        }
-    }
-
+    
     return (
         <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
             <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
@@ -98,10 +90,11 @@ const FormSelect = (props: PageProps) => {
                 justifyContent: 'space-around',
                 padding: '0.8rem 0'
             }}>
-                <ModalButton onClick={openEditModal}>Edit</ModalButton>
-                <ModalButton data-action={[`/admin/activate_decadev/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
-                <ModalButton data-action={[`/admin/deactivate_decadev/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
-                <ModalButton data-action={[`/admin/delete_decadev/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
+                
+                <ModalButton onClick={() => {}}>Edit</ModalButton>
+                <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
+                <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
+                <ModalButton data-action={[`/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
             </div>
         </div>
     )
