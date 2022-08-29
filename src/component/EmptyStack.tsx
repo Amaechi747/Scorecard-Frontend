@@ -24,9 +24,7 @@ const EmptyStack: (props: EmptyStackProps) => JSX.Element = function(props: Empt
     return(
         
         <div className={`${styles["wrapper"]}`} >
-            <div className={`${styles["dashboard-div"]}`}>
-                <h3 className={`${styles["dashboard"]}`}> Dashboard </h3>
-            </div>
+            <h3 className={`${styles["dashboard"]}`}> Dashboard </h3>
             <div className={`${styles["dashboard-container"]}`}>
                 <div className={`${styles["microscope"]}`} >
                     <img src= { microscope } alt="" />
@@ -39,7 +37,7 @@ const EmptyStack: (props: EmptyStackProps) => JSX.Element = function(props: Empt
                 </div>
                 <div className={`${styles["create"]}`}>
                     {/* <h1 className="dashboard">Dashboard</h1> */}
-                    <button className={`${styles["create-stack"]}`} onClick={ changeStack } >+ Create Stack</button>
+                    <button className={`${styles["create-stack"]}`} onClick={ changeStack } ><span style={{fontSize: '1.5rem', textAlign: 'end', lineHeight: '1rem' }}>+   </span> Create Stack</button>
                 </div>
             </div>
         </div>

@@ -18,13 +18,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
-    // const [errMsg, setErrMSg] = useState('')
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target
-    //     setFormData({ ...formData, [name]: value })
-    //     formData.email.length === 0 ? setErrMSg('Email cannot be empty') :
-    //     formData.email.length > 0 && validator.isEmail(formData.email) ? setErrMSg('Valid Email') : setErrMSg('Please enter a valid email address')
-    // }
+    
     useEffect(() => {
         if(mail || pass) {
             setFormData({ email: mail, password: pass});
@@ -34,6 +28,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
+
             const response = await axios.post(`${BASEURL}/users/login`, formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
@@ -45,6 +40,14 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                     setTimeout(()=>{
                         navigate('/admin-dashboard/profile');
 
+                    }, 900)
+                }
+                if(item === 'decadevDetails'){
+                    Object.entries(response.data.data[item]).forEach(([key, value]) => {
+                        localStorage.setItem(key, `${value}`);
+                    });
+                    setTimeout(()=>{
+                        navigate('/login');
                     }, 900)
                 }
             }

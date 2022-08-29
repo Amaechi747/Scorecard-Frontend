@@ -1,10 +1,12 @@
-import React, { FC, useState, ChangeEvent, FormEvent } from "react";
+import React, { FC, useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { FormInput, Card, FormButton, Form } from "../component";
 import { Heading, Paragraph } from "../styling/css";
 import axios from "axios"
 import swal from "sweetalert"
 
 type SuperAdminSignUpProps = {};
+
+const BASEURL = process.env.REACT_APP_BASEURL;
 
 const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
     email: "",
     password: "",
   });
+  const [ formErrors, setFormErrors] = useState({firstName:'', lastName:'', email: '', password: ''});
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const [errMsg, setErrMsg] = useState<string>('')
   const [errMsgColor, setErrMsgColor] = useState<string>('')
@@ -40,14 +44,45 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
+      setFormErrors(validate(formData));
+      setIsSubmit(true);
       console.log(formData);
-      await axios.post("/admin/superuser",formData)
+      await axios.post(`${BASEURL}/admin/superuser`,formData)
       swal("Success", "You have successfully signed up!", "success");
 
     } catch(error) {
         swal("Error", "Something went wrong", "error");
     }
   }
+
+  useEffect(() => {
+    console.log(formErrors);
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+      console.log(formData);
+    }
+  }, [formErrors]);
+
+  const validate = (values: any) => {
+    const errors = {firstName:'', lastName:'', email: '', password: ''};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if(!values.firstName){
+      errors.firstName = "First name is required";
+    }
+    if(!values.lastName){
+      errors.lastName = "Last name is required";
+    }
+    if(!values.email){
+      errors.email = "Email is required";
+    } else if(!regex.test(values.email)){
+      errors.email = "This is not a valid email address";
+    }
+    if(!values.password){
+      errors.password = "Password is required";
+    } else if(values.password.length < 4){
+      errors.password = "Password must be at least 4 characters";
+    }
+    return errors;
+  };
 
   return (
     <>
@@ -71,6 +106,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               onBlur={(e) => handleBlur(e)}
               errBorderColor={`${errBorderColor}`} 
             />
+            <p>{formErrors.firstName}</p>
 
             <FormInput
               label="Last Name"
@@ -81,6 +117,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               onBlur={(e) => handleBlur(e)}
               errBorderColor={`${errBorderColor}`} 
             />
+            <p>{formErrors.lastName}</p>
 
             <FormInput
               label="Email"
@@ -91,6 +128,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               onBlur={(e) => handleBlur(e)}
               errBorderColor={`${errBorderColor}`}
             />
+            <p>{formErrors.email}</p>
 
             <FormInput
               label="Password"
@@ -101,6 +139,7 @@ const SuperAdminSignUp: FC = (props: SuperAdminSignUpProps) => {
               onBlur={(e) => handleBlur(e)}
               errBorderColor={`${errBorderColor}`}
             />
+            <p>{formErrors.password}</p>
 
             <FormButton text="Create Super Admin" />
 

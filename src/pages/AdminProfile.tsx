@@ -103,7 +103,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
     //useMemo to call api for profile image
 
     return (
-        <div style={{ width: '1200px' }}>
+        <div style={{ width: '73rem', marginBottom: '4rem' }}>
             <Heading>Profile</Heading>
             <Card2>
                 <Paragraph2>
@@ -111,7 +111,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
                 </Paragraph2>
                 <ProfileImage>
                     <div>
-                        {/** use State and conditional logic to trigger */
+                        {
                             loaded && formContent.imageUrl !== '#' ?
                                 <img src={formContent?.imageUrl} alt="profile" style={{ width: '10rem', height: '10rem', objectFit: 'cover', clipPath: 'circle(50%)' }} />
                                 :

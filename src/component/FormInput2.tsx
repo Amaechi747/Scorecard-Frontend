@@ -3,13 +3,13 @@ import { useState, useEffect, ChangeEvent } from 'react';
 
 type PageProps = {
     name: string;
-    placeholder: string;
+    placeholder?: string;
     label: string;
     match?: string;
     firstValue?: string;
     disabled?: boolean;
     type: string;
-    errorMsg: string;
+    errorMsg?: string;
     presetValue?: string;
     setSharedState?: React.Dispatch<React.SetStateAction<string>> | ( (param: string) => void )
 }

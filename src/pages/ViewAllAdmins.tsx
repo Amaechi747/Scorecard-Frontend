@@ -6,6 +6,8 @@ import AdminTable from '../component/AdminTable';
 type ViewAllAdminsProps = {
 }
 
+const BASEURL = process.env.REACT_APP_BASEURL;
+
 const ViewAllAdmins = (props: ViewAllAdminsProps) => {
 
   const [admins, setAdmins] = useState([])
@@ -13,9 +15,9 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
 
   const fetchAdmins = async () => {
 
-    const response = await axios.get('/admin');
+    const response = await axios.get(`${BASEURL}/admin`);
 
-    console.log(response.data);
+    /*console.log(response.data);*/
       setAdmins(response.data);
   };
 
@@ -25,11 +27,9 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
   console.log(admins)
   
   return (
-    <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', flexDirection: 'column', width: '1200px'}}>
-
-      <div  style ={{ alignSelf: 'start', marginLeft: 'calc(15% - 4rem)', color: "#03435F"}}>
-
-        <p> <HiArrowNarrowLeft /> Go back</p>
+    <div style={{ width: '70rem', marginLeft: '1rem', marginBottom: '3rem'}}>
+      <div  style ={{marginLeft: 'calc(10% - 4rem)', color: "#03435F"}}>
+        <p style={{ cursor: 'pointer' }} onClick={() => {}}> <HiArrowNarrowLeft /> Go back</p>
         <h1>All Admins</h1>
       </div>
        <AdminTable
