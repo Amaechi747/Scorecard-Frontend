@@ -25,6 +25,7 @@ const ModalForm: (props: ModalFormProps) => JSX.Element = function(props: ModalF
     // }else{
     //     onFileSelectSuccess(file)
     // }
+    
     const imageUploadHandler: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
         if(e.target.files){
             const file = e.target.files[0];
