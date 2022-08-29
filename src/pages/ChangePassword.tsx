@@ -7,10 +7,12 @@ import swal from "sweetalert"
 
 type ChangePasswordProps = {};
 
+const BASEURL = process.env.REACT_APP_BASEURL
+
 const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   props: ChangePasswordProps
 ) => {
-  
+
   const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
@@ -20,7 +22,6 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   const [errBorderColor, setErrBorderColor] = useState<string>('')
   const [passwordVisible, setPasswordVisible] = useState(true)
 
-  
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (formData.password === '' && errMsgColor === '' && errBorderColor === '') {
@@ -33,11 +34,11 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
       setErrBorderColor('#FF0000')
       setErrMsg('Passwords do not match')
     }
-    else if ( formData.password.length < 8 && formData.confirmPassword.length < 8) {
+    else if (formData.password.length < 8 && formData.confirmPassword.length < 8) {
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if(formData.password === formData.confirmPassword) {
+    } else if (formData.password === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -56,12 +57,12 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
         setErrMsgColor('#FF0000')
         setErrBorderColor('#FF0000')
         setErrMsg('Password cannot be empty')
-      } else { 
-        const result = await axios.post('/users/update_password', formData)
+      } else {
+        const result = await axios.post(`${BASEURL}/users/update_password`, formData)
         swal("Success", "You have successfully signed in", "success")
       }
     } catch (error: any) {
-      if(error?.response.data.error) {
+      if (error?.response.data.error) {
         const message = error?.response.data.error.includes('jwt') ? "You must be logged in" : error?.response.data.error
         swal("Error", message, "error")
       }
@@ -78,7 +79,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if(formData.password && formData.confirmPassword && formData.password === formData.confirmPassword) {
+    } else if (formData.password && formData.confirmPassword && formData.password === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -86,7 +87,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   }, [errMsg])
 
   return (
-    <div style={{ width: '1200px'}}>
+    <div style={{ width: '1200px' }}>
       <Heading>Change Password</Heading>
       <Card>
         <div>
