@@ -17,4 +17,5 @@ export { default as UserManagement} from "./UserManagement"
 export {default as LandingDashboard} from './LandingDashboard';
 export { default as PerformanceTracker} from './DecadevPerformanceTracker';
 export {default as Stack} from "./Stack";
+export { default as DevDashboard } from "./DecadevDashboard"
 

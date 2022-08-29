@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import validator from 'validator';
+// import validator from 'validator';
 // import { AuthenticationInput, AuthenticationButton } from '.';
 import {AuthInput, AuthButton} from '.'
 type IAuthenticationLeftProps = {
@@ -38,7 +38,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/admin-dashboard/profile');
+                        navigate('/admin-dashboard/stack');
 
                     }, 900)
                 }
@@ -47,7 +47,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/login');
+                        navigate('/decadev-dashboard/overview');
                     }, 900)
                 }
             }
