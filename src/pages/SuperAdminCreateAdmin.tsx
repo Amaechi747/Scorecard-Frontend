@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FormSelect, FormButton, Form, FormInput2 } from "../component";
 import { Heading2, Paragraph, Card2, Select2 } from "../styling/css";
 import axios from "axios";
-import swal from "sweetalert"
+import swal from "sweetalert";
 
 
 type PageProps = {}
@@ -69,7 +69,7 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
         <div style={{ width: '1200px'}}>
           <Heading2>Create Admin 
             <div>
-                <Link to='/view-all-admins' style={{
+                <Link to='/admin-dashboard/view-all-admins' style={{
                     fontSize: 'calc(2rem - 18px)',
                     fontWeight: '300',
                     backgroundColor: 'white',
@@ -115,13 +115,6 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                 setSharedState={(s: string) => { setUserData({ ...userData, email: s }) }}
                 // firstValue="Name cannot be blank"
                 />
-                {/* <FormSelect 
-                  name="stack"
-                  label="Stack"
-                  errorMsg="Please select a comma separated list of Stacks for this Admin"
-                  type="text"
-                /> */}
-                {/* <FormSelect /> */}
                 <div style={{ marginBottom: '0.7rem' }}>
                   <label style={{ 
                     fontWeight: '400',

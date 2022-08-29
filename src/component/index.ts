@@ -9,9 +9,9 @@ export { default as AuthenticationRight } from "./AuthenticationRight"
 export { default as ScorecardLogo } from "./ScorecardLogo"
 export { default as AuthInput } from "./AuthInput";
 export { default as AuthButton } from "./AuthButton"
-export { default as UserTable } from "./AdminTable"
+export { default as AdminTable } from "./AdminTable"
 export { default as NavBarSearch } from "./NavBarSearch"
-export { default as NavBar } from './NavBar'
+export { default as NavBar } from "./Navbar"
 export { default as SideBar } from "./SideBar"
 export { default as ProfileAccountSettings } from "./ProfileAccountSettings"
 export { default as DashboardLayout } from "./DashboardLayout"

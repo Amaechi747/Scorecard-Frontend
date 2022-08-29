@@ -20,9 +20,9 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
     return ReactDOM.createPortal(
       <div className="profile-modal">
         <div className="profile-modal-up">
-          <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}>
-            <img src={profilePicture} />
-          </div>
+          {/* <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}> */}
+            <img src={profilePicture} style={{ width: '5rem', clipPath: 'circle(50%)', marginRight: '0.8rem' }} />
+          {/* </div> */}
 
           <div className="profile-modal-bottom">
             <span style={{ color: '#03435F', fontWeight: '700', lineHeight: '19px' }}>{`${firstName} ${lastName}`}</span>
