@@ -2,19 +2,19 @@ import React, { useEffect } from 'react';
 import {Navigate} from 'react-router-dom';
 
 interface IAuthenticated{
-    userRole: string[],
+    // userRole: string,
     children: React.ReactNode
 
 }
 
-const IsAuthenticated=(props: IAuthenticated)=>{
-    const ROLE = localStorage.getItem('role')
+const IsAuthenticatedUser = (props: IAuthenticated) => {
+    const ROLE = localStorage.getItem('email')
 
-    if(props.userRole.includes(ROLE as string)){
+    if(ROLE && ROLE.split('@')[1] === 'decagon.dev'){
         return <>{props.children}</>
     }
 
     return <Navigate to="/login" />
 }
 
-export default IsAuthenticated;
+export default IsAuthenticatedUser;
