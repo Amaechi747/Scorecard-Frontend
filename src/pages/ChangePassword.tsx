@@ -14,7 +14,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
 ) => {
 
   const [formData, setFormData] = useState({
-    password: "",
+    newPassword: "",
     confirmPassword: "",
   });
   const [errMsg, setErrMsg] = useState<string>('')
@@ -24,21 +24,21 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (formData.password === '' && errMsgColor === '' && errBorderColor === '') {
+    if (formData.newPassword === '' && errMsgColor === '' && errBorderColor === '') {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Password cannot be empty')
     }
-    else if (formData.password !== formData.confirmPassword) {
+    else if (formData.newPassword !== formData.confirmPassword) {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Passwords do not match')
     }
-    else if (formData.password.length < 8 && formData.confirmPassword.length < 8) {
+    else if (formData.newPassword.length < 8 && formData.confirmPassword.length < 8) {
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if (formData.password === formData.confirmPassword) {
+    } else if (formData.newPassword === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -53,12 +53,16 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      if (formData.password === '' && errMsgColor === '' && errBorderColor === '') {
+      if (formData.newPassword === '' && errMsgColor === '' && errBorderColor === '') {
         setErrMsgColor('#FF0000')
         setErrBorderColor('#FF0000')
         setErrMsg('Password cannot be empty')
       } else {
-        const result = await axios.post(`${BASEURL}/users/update_password`, formData)
+        const result = await axios.put(`${BASEURL}/admin/update_password/${localStorage.getItem('id')}`, formData, {
+          headers: {
+            "authorization": `Bearer ${localStorage.getItem('token')}`
+          }
+        })
         swal("Success", "You have successfully signed in", "success")
       }
     } catch (error: any) {
@@ -70,16 +74,16 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
   }
 
   useEffect(() => {
-    if (formData.password !== formData.confirmPassword) {
+    if (formData.newPassword !== formData.confirmPassword) {
       setErrMsgColor('#FF0000')
       setErrBorderColor('#FF0000')
       setErrMsg('Passwords do not match')
     }
-    else if (formData.password && formData.password.length < 8 && formData.confirmPassword.length < 8) {
+    else if (formData.newPassword && formData.newPassword.length < 8 && formData.confirmPassword.length < 8) {
       setErrMsgColor('#FFA500')
       setErrBorderColor('#FFA500')
       setErrMsg('Password or Confirm Password must not be less than 8 characters')
-    } else if (formData.password && formData.confirmPassword && formData.password === formData.confirmPassword) {
+    } else if (formData.newPassword && formData.confirmPassword && formData.newPassword === formData.confirmPassword) {
       setErrMsgColor('#249800')
       setErrBorderColor('#249800')
       setErrMsg('Passwords Match')
@@ -103,11 +107,11 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
           >
             <FormInput
               label="New Password"
-              type="password"
-              value={formData.password}
+              type="Password"
+              value={formData.newPassword}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleChange(e)}
-              name="password"
+              name="newPassword"
               errBorderColor={`${errBorderColor}`}
               errMsg={errMsg}
               errMsgColor={errMsgColor}
@@ -115,7 +119,7 @@ const ChangePassword: (props: ChangePasswordProps) => JSX.Element = (
 
             <FormInput
               label="Confirm Password"
-              type="password"
+              type="Password"
               value={formData.confirmPassword}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleChange(e)}
