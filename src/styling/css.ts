@@ -61,8 +61,7 @@ text-align: center;
 color: #fff;
 margin: 0.5rem, 0 0 0;
 background: #14A800;
-cursor: pointer
-
+cursor: pointer;
 `
 
 export const CardBody = styled.div`
@@ -81,26 +80,31 @@ background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
 
 export const Tr = styled.tr`
-
-background: rgba(0, 0, 0, 0.04);
-height: 42px;
-
+border-bottom: 0.015rem solid gray;
+&:last-child {
+  border: unset;
+}
 `
 
 export const Table = styled.table`
-  margin: 10% auto;
-  width: 80%;
+width: 80%;
+border-collapse: collapse;
 `
 
 export const Th = styled.th`
-
-  border: 1px solid #dddddd;
-
-  text-align: center;
-
-  text-color: red;
-
-  padding: 8px;
+padding: 0.5rem 1rem 0.5rem 2rem;
+text-align: justify;
+color: #03435F;
+@media screen and (max-width: 1200px) {
+  font-size: 1rem;
+  font-weight: 500;
+}
+`
+// background: 
+export const Td = styled.td`
+background-color: #fff;
+padding: 0.4rem 2rem;
+color: #03435F;
 `
 
 export const Select = styled.select`
