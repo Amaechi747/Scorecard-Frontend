@@ -12,7 +12,8 @@ import {
   ViewAllAdmins,
   ViewAllUsers,
   LandingDashboard,
-  Stack 
+  Stack,
+  Welcome 
 } from "./pages";
 // import { AuthenticationBody } from './component';
 
@@ -20,8 +21,10 @@ import {
 function App(): JSX.Element {
   return (
     <div className="App">
+      
       <Router>
         <Routes>
+          <Route path="/" element={<Welcome />} />
           <Route path="/" element={<LandingDashboard />}>
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgetPassword />} />

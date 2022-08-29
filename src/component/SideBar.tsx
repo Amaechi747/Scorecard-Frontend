@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { sideBarData } from "../component/data"
+import { sideBarData } from "./data"
 import { Logout } from "../component"
 
 
@@ -18,9 +18,9 @@ const SideBar = (props: SideBarProps) => {
           }}>
       <div>
         {
-          sideBarData.map(el => {
+          sideBarData.map((el, index) => {
             return (
-                <div className="sidebar_data" style={{ 
+                <div key={index} className="sidebar_data" style={{ 
                   display: 'block', 
                   marginTop: '0.5rem', 
                   fontSize: '0.91rem', 
