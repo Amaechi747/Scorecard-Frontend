@@ -18,6 +18,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
+
     
     useEffect(() => {
         if(mail || pass) {
@@ -28,7 +29,6 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-
             const response = await axios.post(`${BASEURL}/users/login`, formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
@@ -54,7 +54,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
             // localStorage.setItem
         }catch(err: any) {
             if(err?.response.data.error) {
-                const message = err?.response.data.error
+                const message = err?.response.data.error;
                 swal("Error",message, "error")
             }
         }
