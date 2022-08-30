@@ -35,7 +35,7 @@ const WeekDropDown = (props: PageProps) => {
             borderRadius: '5px', 
             backgroundColor: '#ffffffb0',cursor: 'pointer'}}><AiOutlineCalendar style={{fontSize: '1.25rem',marginRight: '0.4rem'}}/>Weeks
             </button>
-            <div style={{ 
+            <div onMouseLeave={() => {showModal(!modal)}} style={{ 
                 position: 'absolute', 
                 display: (modal ? 'inline-flex' : 'none'),
                 boxShadow: '0px 0px 10px grey',

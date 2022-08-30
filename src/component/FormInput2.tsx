@@ -15,7 +15,7 @@ type PageProps = {
 }
 
 
-const FormInput2 = (props: PageProps) => {
+const FormInput2 = (props: PageProps): JSX.Element => {
     const { label, name, placeholder, type, errorMsg, setSharedState, firstValue, disabled, presetValue } = props;
     const [err, errOccured] = useState(false);
     const [value, setValue] = useState(firstValue ? `${firstValue}` : "");
