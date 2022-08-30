@@ -16,6 +16,7 @@ import {
   Stack,
   Welcome,
   PerformanceTracker,
+  Overview,
   About,
   Learnings,
   Contact,
@@ -60,7 +61,7 @@ function App(): JSX.Element {
         </Route>
         
         <Route path="/decadev-dashboard" element={<DevDashboard/>}>
-          <Route path="/decadev-dashboard/overview" element={<h1>Here</h1>} />
+          <Route path="/decadev-dashboard/overview" element={<Overview />} />
         </Route>
 
         <Route path="/performance-tracker" element={<PerformanceTracker />} />
