@@ -38,7 +38,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/admin-dashboard/profile');
+                        navigate('/admin-dashboard/stack');
 
                     }, 900)
                 }

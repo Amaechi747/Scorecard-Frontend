@@ -25,4 +25,6 @@ export { default as EmptyStack } from "./EmptyStack";
 export { default as CreatedStack } from "./CreatedStack";
 export { default as CreateStackModal } from "./CreateStackModal";
 export { default as ModalForm} from "./ModalForm";
+export {default as AddPerformanceScoreModal} from "./AddPerformanceScoreModal"
+export {default as AddPerformanceScoreModalPortal} from "./AddPerformanceScoreModalPortal"
 

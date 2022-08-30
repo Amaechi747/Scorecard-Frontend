@@ -5,7 +5,7 @@ export { default as Login} from "./Login"
 export { default as ResetPassword} from "./ResetPassword"
 
 export { default as SuperAdminSignUp} from "./SuperAdminSignUp"
-export { default as AddPerformanceScore} from "./AddPerformanceScore"
+export { default as AddPerformanceScore} from "../component/AddPerformanceScoreModal"
 export { default as WeeklyPerformance} from "./WeeklyPerformance"
 export { default as WeekDropDown } from "./WeekPerformanceDropdown"
 
