@@ -16,5 +16,7 @@ export { default as Welcome } from "./Welcome"
 export { default as AddPerformanceScore} from "./AddPerformanceScore"
 export { default as WeeklyPerformance} from "./WeeklyPerformance"
 export { default as WeekDropDown } from "./WeekPerformanceDropdown"
-export { default as PerformanceTracker} from './DecadevPerformanceTracker';
-
+export { default as PerformanceTracker } from './DecadevPerformanceTracker';
+export { default as About } from "./About"
+export { default as Learnings } from "./Learnings"
+export { default as Contact } from "./Contact"
