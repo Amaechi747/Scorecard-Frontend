@@ -27,7 +27,11 @@ export { default as EmptyStack } from "./EmptyStack";
 export { default as CreatedStack } from "./CreatedStack";
 export { default as CreateStackModal } from "./CreateStackModal";
 export { default as ModalForm} from "./ModalForm";
+export { default as LandingPageNavbar} from "./LandingPageNavbar"
+export { default as LandingPageBanner} from "./LandingPageBanner"
+export { default as WhyScorecard} from "./WhyScorecard"
+export { default as OurPartners } from "./OurPartners"
+export { default as Footer} from "./Footer"
 export { default as DecadevDashboardLayout } from "./DevDashboardLayout";
 export { default as DevNavBar } from "./DevNavbar";
 export { default as DevProfileAccountSetting } from "./DevProfileAccountSetting";
-export { default as LandingPageNavbar} from "./LandingPageNavbar";
