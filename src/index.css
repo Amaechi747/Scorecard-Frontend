@@ -97,6 +97,7 @@ body {
   background: #14A800;
 }
 
+
 .swal-button--confirm {
   border-radius: unset;
   outline: unset;
@@ -239,4 +240,67 @@ a {
   color: transparent;
   position: absolute;
 
+}
+
+.link {
+  color: #012A4A;
+  font-weight: 400
+}
+
+.link-active {
+  color: #14A800;
+  font-weight: 700;
+}
+
+.footer-link {
+  color: #F2F2F2;
+  font-feature-settings: 'liga off';
+  font-weight: 400;
+}
+
+.banner_background {
+  background-image: linear-gradient(92.75deg, rgba(0, 0, 0, 0.6) 37.33%, rgba(0, 0, 0, 0.03) 77.93%),
+  url('./component/images/banner.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.banner_heading {
+  line-height: 4.5rem; 
+  font-weight: 700; 
+  color: #FFFFFF; 
+  font-style: normal; 
+  font-size: 4vw;
+  padding-top: 14px;
+}
+
+.banner_button {
+  background: #14A800;
+  border-radius: 4px; 
+  padding: 0.6rem 1.4rem;
+   align-items: center; 
+   justify-content: center; 
+   width: 7.8rem; 
+   height: 2.3rem;
+   border: none;
+   cursor: pointer;
+}
+
+.menu {
+  list-style-type: none;
+}
+
+.landing_nav {
+  display: flex;
+  border: 1px solid #E5E5E5; 
+  box-shadow: 0 1px grey;
+   background: #FFFFFF; 
+   padding: 0.8rem; 
+   height: 4rem;
 }
