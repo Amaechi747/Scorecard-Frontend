@@ -2,9 +2,12 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
+
 type PageProps = {
     id: string;
 }
+
+
 const ModalButton = styled.button`
     border: unset;
     background-color: white;
@@ -26,6 +29,8 @@ const FormSelect = (props: PageProps) => {
             'authorization': `Bearer ${localStorage.getItem('token')}`
         } 
     }
+
+    
     const deleteUser = async (url: string) => {
         const response = await axios.delete(url, axiosHeader);
         if(response.data.status === 'success') {
@@ -47,6 +52,8 @@ const FormSelect = (props: PageProps) => {
             showModal(false);
         }
     }
+
+    
     const handleClick = (e: any) => {
         if(e.target.dataset){
             const [url, method] = e.target.dataset.action.split(',');
@@ -65,6 +72,7 @@ const FormSelect = (props: PageProps) => {
             }
         }
     }
+    
     return (
         <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
             <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
@@ -82,6 +90,7 @@ const FormSelect = (props: PageProps) => {
                 justifyContent: 'space-around',
                 padding: '0.8rem 0'
             }}>
+                
                 <ModalButton onClick={() => {}}>Edit</ModalButton>
                 <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
                 <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import validator from 'validator';
+// import validator from 'validator';
 // import { AuthenticationInput, AuthenticationButton } from '.';
 import {AuthInput, AuthButton} from '.'
 type IAuthenticationLeftProps = {
@@ -18,6 +18,7 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
+
     
     useEffect(() => {
         if(mail || pass) {
@@ -28,7 +29,6 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-
             const response = await axios.post(`${BASEURL}/users/login`, formData);
             response.data.message === 'Success' ? swal("Success","Login Successful", "success") : void 0;
             for(let item in response.data.data) {
@@ -47,14 +47,14 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/login');
+                        navigate('/decadev-dashboard/overview');
                     }, 900)
                 }
             }
             // localStorage.setItem
         }catch(err: any) {
             if(err?.response.data.error) {
-                const message = err?.response.data.error
+                const message = err?.response.data.error;
                 swal("Error",message, "error")
             }
         }

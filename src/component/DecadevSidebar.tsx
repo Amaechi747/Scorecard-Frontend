@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { sideBarData } from "./data"
+import { decadevSideBarData } from "../component/data"
 import { Logout } from "../component"
 
 
 type SideBarProps = {}
 
-const SideBar = (props: SideBarProps) => {
+const DecadevSideBar = (props: SideBarProps) => {
   return (
     <div style={{ 
             background: '#FFFFFF', 
@@ -19,9 +19,9 @@ const SideBar = (props: SideBarProps) => {
           }}>
       <div>
         {
-          sideBarData.map((el, index) => {
+          decadevSideBarData.map(el => {
             return (
-                <div key={index} className="sidebar_data" style={{ 
+                <div className="sidebar_data" style={{ 
                   display: 'block', 
                   marginTop: '0.5rem', 
                   fontSize: '0.91rem', 
@@ -51,4 +51,4 @@ const SideBar = (props: SideBarProps) => {
   )
 }
 
-export default SideBar
+export default DecadevSideBar
