@@ -17,3 +17,4 @@ export { default as WeeklyPerformance} from "./WeeklyPerformance"
 export { default as WeekDropDown } from "./WeekPerformanceDropdown"
 export { default as PerformanceTracker} from './DecadevPerformanceTracker';
 export { default as DevDashboard } from "./DecadevDashboard";
+export { default as Overview } from "./DecadevOverview"

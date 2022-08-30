@@ -16,7 +16,8 @@ import {
   Stack,
   Welcome,
   PerformanceTracker,
-  DevDashboard
+  DevDashboard,
+  Overview
 } from "./pages";
 // import { AuthenticationBody } from './component';
 
@@ -53,7 +54,7 @@ function App(): JSX.Element {
         </Route>
         
         <Route path="/decadev-dashboard" element={<DevDashboard/>}>
-          <Route path="/decadev-dashboard/overview" element={<h1>Here</h1>} />
+          <Route path="/decadev-dashboard/overview" element={<Overview />} />
         </Route>
 
         <Route path="/performance-tracker" element={<PerformanceTracker />} />
