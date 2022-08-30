@@ -1,4 +1,3 @@
-
 export { default as AdminDashboard } from "./AdminDashboard"
 export { default as ChangePassword } from "./ChangePassword"
 export { default as ForgetPassword } from "./ForgotPassword"
@@ -20,3 +19,4 @@ export { default as PerformanceTracker } from './DecadevPerformanceTracker';
 export { default as About } from "./About"
 export { default as Learnings } from "./Learnings"
 export { default as Contact } from "./Contact"
+export { default as DevDashboard } from "./DecadevDashboard";
