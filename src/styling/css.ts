@@ -251,7 +251,8 @@ border-bottom: 0.015rem solid gray;
 `
 
 export const Table = styled.table`
-width: 100%;
+width: calc(100% - 8rem);
+margin: 0 4rem 4rem 4rem;
 border-collapse: collapse;
 `
 
