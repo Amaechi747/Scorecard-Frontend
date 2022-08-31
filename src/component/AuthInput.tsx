@@ -105,6 +105,7 @@ const AuthInput = (props: PageProps) => {
             }
         }
 
+    
         if(value && type === 'password') {
             if ( value.length > 3 && new RegExp('^[a-zA-Z0-9@_:;]{3,30}$', 'g').test(value)) {
                 if(props.match){

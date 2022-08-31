@@ -3,13 +3,12 @@ import { AdminEditModalPortal } from '../component';
 import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
-// import {AdminEditModal} from '../component';
-// import {AdminTable} from '../component';
-// import ReactDOM from 'react-dom';
 
 type PageProps = {
     id: string;
 }
+const BASEURL = process.env.REACT_APP_BASEURL;
+
 const ModalButton = styled.button`
     border: unset;
     background-color: white;
@@ -24,16 +23,18 @@ const ModalButton = styled.button`
     }
 `
 const FormSelect = (props: PageProps) => {
-    const {id} = props;
+    const { id } = props;
     const [modal, showModal] = useState(false);
-    const axiosHeader = { 
+
+    const axiosHeader = {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('token')}`
-        } 
+        }
     }
+
+
     const deleteUser = async (url: string) => {
         const response = await axios.delete(url, axiosHeader);
-        console.log('Delete Res: ',response);
         if(response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
@@ -55,8 +56,10 @@ const FormSelect = (props: PageProps) => {
             showModal(false);
         }
     }
+
+
     const handleClick = (e: any) => {
-        if(e.target.dataset){
+        if (e.target.dataset) {
             const [url, method] = e.target.dataset.action.split(',');
             switch (method) {
                 case 'delete':
@@ -74,6 +77,7 @@ const FormSelect = (props: PageProps) => {
         }
     }
 
+    
     const [editModal, setEditModal] = useState(false);
 
     const addModal: (e: MouseEvent<HTMLButtonElement>) => void = function (e: MouseEvent<HTMLButtonElement>){

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FormSelect, FormButton, Form, FormInput2 } from "../component";
 import { Heading2, Paragraph, Card2, Select2 } from "../styling/css";
 import axios from "axios";
-import swal from "sweetalert"
+import swal from "sweetalert";
 
 
 type PageProps = {}

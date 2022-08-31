@@ -19,8 +19,6 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
   const fetchAdmins = async () => {
 
     const response = await axios.get(`${BASEURL}/admin`);
-
-    console.log('All Admin: ',response.data);
       setAdmins(response.data);
   };
 
@@ -30,11 +28,9 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
   console.log(admins)
   
   return (
-    <div style={{ display: 'flex', justifyContent:'center', alignItems:'center', flexDirection: 'column', width: '1200px'}}>
-
-      <div  style ={{ alignSelf: 'start', marginLeft: 'calc(15% - 4rem)', color: "#03435F"}}>
-
-        <p> <HiArrowNarrowLeft onClick={() => { navigate('/admin-dashboard/stack')}} /> Go back</p>
+    <div style={{ width: '70rem', marginLeft: '1rem', marginBottom: '3rem'}}>
+      <div  style ={{marginLeft: 'calc(10% - 4rem)', color: "#03435F"}}>
+        <p style={{ cursor: 'pointer' }} onClick={() => {}}> <HiArrowNarrowLeft /> Go back</p>
         <h1>All Admins</h1>
       </div>
        <AdminTable

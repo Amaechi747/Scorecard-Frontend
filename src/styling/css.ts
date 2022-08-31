@@ -147,12 +147,29 @@ margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
 
-export const Tr = styled.tr`
-border-bottom: 0.015rem solid gray;
-&:last-child {
-  border: unset;
-}`
+export const CardDashboard = styled.div`
+    margin: 0 auto;
+    background: #FFFFFF;
+`
 
+// export const Table = styled.table`
+//     width: 100%;
+//     border-collapse: collapse;
+// `;
+
+export const Thead = styled.thead`
+    color: #03435F;
+    font-size: 14px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+`
+
+export const Tbody = styled.tbody`
+
+`
 
 export const SearchBar = styled.input`
  width: 100%;
@@ -197,12 +214,22 @@ justify-content: center;
 }
 `
 
+export const Tr = styled.tr`
+background: rgba(0, 0, 0, 0.04);
+border-bottom: 0.015rem solid gray;
+&:last-child {
+  border: unset;
+}
+`
+
 export const Table = styled.table`
-width: 80%;
+width: calc(100% - 8rem);
+margin: 0 4rem 4rem 4rem;
 border-collapse: collapse;
 `
+
 export const Th = styled.th`
-padding: 0.5rem 1rem 0.5rem 2rem;
+padding: 0.35rem 1rem 0.35rem 2.5rem;
 text-align: justify;
 color: #03435F;
 @media screen and (max-width: 1200px) {
@@ -214,7 +241,8 @@ color: #03435F;
 // background: 
 export const Td = styled.td`
 background-color: #fff;
-padding: 0.4rem 2rem;
+border-bottom: 0.05rem solid rgba(0, 0, 0, 0.05);
+padding: 0.5rem 1rem 0.5rem 2.5rem;
 color: #03435F;
 `
 export const Select = styled.select`

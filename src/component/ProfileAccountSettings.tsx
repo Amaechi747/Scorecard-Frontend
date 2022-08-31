@@ -5,7 +5,7 @@ import { accountSettingsData } from "./data"
 import { ProfileModal, Logout } from "."
 
 
-type Props = {
+type ProfileAccountSettingsProps = {
   handleClick: (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void
   setShowModal: any
   showModal: boolean
@@ -16,7 +16,7 @@ type Props = {
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 
-const ProfileAccountSettings = (props: Props) => {
+const ProfileAccountSettings = (props: ProfileAccountSettingsProps) => {
   const { handleClick, setShowModal, showModal, handleHover, handleLeave } = props;
 
   const [profilePicture, setProfilePicture] = useState('');

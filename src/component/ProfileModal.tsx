@@ -20,9 +20,9 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
     return ReactDOM.createPortal(
       <div className="profile-modal">
         <div className="profile-modal-up">
-          <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}>
-            <img src={profilePicture} />
-          </div>
+          {/* <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}> */}
+            <img src={profilePicture} style={{ width: '5rem', clipPath: 'circle(50%)', marginRight: '0.8rem' }} />
+          {/* </div> */}
 
           <div className="profile-modal-bottom">
             <span style={{ color: '#03435F', fontWeight: '700', lineHeight: '19px' }}>{`${firstName} ${lastName}`}</span>
@@ -33,9 +33,9 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
 
         <div style={{ padding: '1rem 0 1.5rem 2rem' }}>
           {
-            accountSettingsData.map((el: any) => {
+            accountSettingsData.map((el: any, index: number) => {
               return (
-                <div style={{paddingBottom: '0rem', paddingTop: '2rem'}}>
+                <div key={index} style={{paddingBottom: '0rem', paddingTop: '2rem'}}>
                   <Link to={el.link} className='profile-modal-links'>
                     <span style={{ marginRight: '1rem', fontSize: '1.5rem', display: 'inline-block' }}>{el.icon}</span>
                     <span style={{ display: 'inline-block',  }}>{el.name}</span>

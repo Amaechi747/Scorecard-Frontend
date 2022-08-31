@@ -3,19 +3,19 @@ import { useState, useEffect, ChangeEvent } from 'react';
 
 type PageProps = {
     name: string;
-    placeholder: string;
+    placeholder?: string;
     label: string;
     match?: string;
     firstValue?: string;
     disabled?: boolean;
     type: string;
-    errorMsg: string;
+    errorMsg?: string;
     presetValue?: string;
     setSharedState?: React.Dispatch<React.SetStateAction<string>> | ( (param: string) => void )
 }
 
 
-const FormInput2 = (props: PageProps) => {
+const FormInput2 = (props: PageProps): JSX.Element => {
     const { label, name, placeholder, type, errorMsg, setSharedState, firstValue, disabled, presetValue } = props;
     const [err, errOccured] = useState(false);
     const [value, setValue] = useState(firstValue ? `${firstValue}` : "");

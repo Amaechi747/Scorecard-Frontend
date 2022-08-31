@@ -12,15 +12,13 @@ color: #03435F;
 }
 
 .dashboard{
-
-/* Dashboard */
-display: flex;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
 font-size: 32px;
 line-height: 39px;
-margin: 0.5rem 0rem 0.5rem 3rem;
+text-align: start;
+margin: 2.5rem 0rem 0.5rem 2rem;
 color: #03435F;
 }
 
@@ -35,24 +33,13 @@ color: #03435F;
     /* height: 100%; */
 }
 
-.dashboard-div{
-    display: block;
-    width: 100%;
-    margin: 0;
-    /* height: 5vh; */
-    /* background-color: black; */
-    /* align-items: flex-start;
-    justify-content: flex-start; */
-}
-
 .wrapper{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    border: 1px solid red;
+    width: 72rem;
+    height: 85%;
     /* background-color: green; */
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     grid-column: 2 / 3;
 }
 
@@ -77,9 +64,12 @@ color: #03435F;
 }
 
 .create-stack {
-    width: 140px;
+    /* width: 140px;
     height: 40px;
-    margin: 20px;
+    margin: 20px; */
+    cursor: pointer;
+    padding: 0.8rem 3.2rem;
+    font-size: 1.1rem;
     background: #14A800;
     border-radius: 6px;
     color: white;

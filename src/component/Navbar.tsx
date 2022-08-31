@@ -11,9 +11,10 @@ type NavBarProps = {
 }
 
 const NavBar = (props: NavBarProps) => {
-  const { handleClick, handleLeave, handleHover, setShowModal, showModal } = props
+  const { handleClick, handleLeave, handleHover, setShowModal, showModal } = props;
+
   return (
-    <nav style={{ display: 'flex', border: '1px solid #E5E5E5', boxShadow: '0 1px grey', background: '#FFFFFF', padding: '0.8rem', height: '4rem' }}>
+    <nav style={{ display: 'flex', boxShadow: '0 1px 50px rgba(0,0,0,0.05)', background: '#FFFFFF', padding: '0.8rem', height: '4rem' }}>
       <div style={{ flex: '3', margin: '0 1rem' }}>
         <ScorecardLogo />
       </div>
@@ -33,4 +34,4 @@ const NavBar = (props: NavBarProps) => {
   )
 }
 
-export default NavBar
+export default NavBar;

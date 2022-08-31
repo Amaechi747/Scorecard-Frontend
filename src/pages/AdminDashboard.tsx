@@ -6,7 +6,7 @@ type AdminDashboardProps = {};
 
 const AdminDashboard: FC = (props: AdminDashboardProps) => {
   return (
-    <IsAuthenticated userRole="SL">
+    <IsAuthenticated userRole={["SL", "SA", "PA"]}>
       <DashboardLayout>
         <Outlet />
       </DashboardLayout>

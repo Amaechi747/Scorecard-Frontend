@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import validator from 'validator';
+// import validator from 'validator';
 // import { AuthenticationInput, AuthenticationButton } from '.';
 import {AuthInput, AuthButton} from '.'
 type IAuthenticationLeftProps = {
@@ -18,13 +18,8 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
-    // const [errMsg, setErrMSg] = useState('')
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target
-    //     setFormData({ ...formData, [name]: value })
-    //     formData.email.length === 0 ? setErrMSg('Email cannot be empty') :
-    //     formData.email.length > 0 && validator.isEmail(formData.email) ? setErrMSg('Valid Email') : setErrMSg('Please enter a valid email address')
-    // }
+
+    
     useEffect(() => {
         if(mail || pass) {
             setFormData({ email: mail, password: pass});
@@ -43,15 +38,23 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                         localStorage.setItem(key, `${value}`);
                     });
                     setTimeout(()=>{
-                        navigate('/admin-dashboard/profile');
+                        navigate('/admin-dashboard/stack');
 
+                    }, 900)
+                }
+                if(item === 'decadevDetails'){
+                    Object.entries(response.data.data[item]).forEach(([key, value]) => {
+                        localStorage.setItem(key, `${value}`);
+                    });
+                    setTimeout(()=>{
+                        navigate('/decadev-dashboard/overview');
                     }, 900)
                 }
             }
             // localStorage.setItem
         }catch(err: any) {
             if(err?.response.data.error) {
-                const message = err?.response.data.error
+                const message = err?.response.data.error;
                 swal("Error",message, "error")
             }
         }

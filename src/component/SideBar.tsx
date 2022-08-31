@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { sideBarData } from "../component/data"
+import { sideBarData } from "./data"
 import { Logout } from "../component"
 
 
@@ -11,16 +11,17 @@ const SideBar = (props: SideBarProps) => {
     <div style={{ 
             background: '#FFFFFF', 
             // width: '23%', 
-            padding: '4rem 2rem 7rem 2rem', 
+            padding: '1rem 2rem 2rem 2rem', 
             display: 'flex', 
             flexDirection: 'column', 
-            justifyContent: 'space-between' 
+            justifyContent: 'space-between',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.05)' 
           }}>
       <div>
         {
-          sideBarData.map(el => {
+          sideBarData.map((el, index) => {
             return (
-                <div className="sidebar_data" style={{ 
+                <div key={index} className="sidebar_data" style={{ 
                   display: 'block', 
                   marginTop: '0.5rem', 
                   fontSize: '0.91rem', 

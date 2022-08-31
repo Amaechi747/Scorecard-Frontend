@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {Navigate} from 'react-router-dom';
 
 interface IAuthenticated{
-    userRole: string,
+    userRole: string[],
     children: React.ReactNode
 
 }
@@ -10,7 +10,7 @@ interface IAuthenticated{
 const IsAuthenticated=(props: IAuthenticated)=>{
     const ROLE = localStorage.getItem('role')
 
-    if(props.userRole === ROLE){
+    if(props.userRole.includes(ROLE as string)){
         return <>{props.children}</>
     }
 

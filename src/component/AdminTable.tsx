@@ -1,10 +1,16 @@
 // import React, { useMemo } from "react";
 // import { useTable, Column } from "react-table";
 // import { IAdmins } from "./TableTypes";
+<<<<<<< HEAD
 import { Table, Tr, Th, Td } from "../styling/css";
 import {MouseEvent} from "react";
 import FormSelect from "./FormSelect";
 import { AdminEditModal } from '../component';
+=======
+import { Table, Tr, Th, Td } from "../styling/css"
+import FormSelect from "./UserFormSelect";
+
+>>>>>>> main
 
 type AdminTableProp = {
   tableData?: any;
