@@ -62,9 +62,9 @@ function App(): JSX.Element {
         
         <Route path="/decadev-dashboard" element={<DevDashboard/>}>
           <Route path="/decadev-dashboard/overview" element={<Overview />} />
+          <Route path="/decadev-dashboard/performance-tracker" element={<PerformanceTracker />} />
         </Route>
 
-        <Route path="/performance-tracker" element={<PerformanceTracker />} />
       </Routes>
     </div>
   );
