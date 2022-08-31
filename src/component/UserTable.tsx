@@ -2,7 +2,8 @@ import React, { useMemo } from "react";
 // import { useTable, Column } from "react-table";
 // import { IAdmins } from "./TableTypes";
 import { Table, Tr, Th, Td } from "../styling/css"
-import FormSelect from "./FormSelect";
+import UserFormSelect from "./UserFormSelect";
+
 
 
 type UserTableProp = {
@@ -30,7 +31,7 @@ const {tableData} = props
               <Td>{user.email}</Td>
               <Td>{user.stack.name}</Td>
               <Td>SQ {user.squad}</Td>
-              <Td><FormSelect key={index} id={user._id} /></Td>
+              <Td><UserFormSelect key={index} id={user._id} /></Td>
             </Tr>)
             )}
             </tbody>

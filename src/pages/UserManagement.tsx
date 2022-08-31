@@ -98,7 +98,7 @@ const UserManagement: FC = (props: UserManagementProps) => {
   };
 
   return (
-    <div style={{ width: '1200px'}}>
+    <div style={{ width: '73rem'}}>
       <Heading2>
         Create user
         <div>

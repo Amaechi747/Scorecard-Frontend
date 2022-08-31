@@ -1,4 +1,5 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, MouseEvent } from 'react';
+import UserEditModalPortal from './UserEditModalPortal'
 import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -6,7 +7,7 @@ import swal from 'sweetalert';
 type PageProps = {
     id: string;
 }
-
+const BASEURL = process.env.REACT_APP_BASEURL;
 
 const ModalButton = styled.button`
     border: unset;
@@ -21,41 +22,42 @@ const ModalButton = styled.button`
         letter-spacing: 0.4px;
     }
 `
-const FormSelect = (props: PageProps) => {
-    const {id} = props;
+const UserFormSelect = (props: PageProps) => {
+    const { id } = props;
     const [modal, showModal] = useState(false);
-    const axiosHeader = { 
+
+    const axiosHeader = {
         headers: {
             'authorization': `Bearer ${localStorage.getItem('token')}`
-        } 
+        }
     }
 
-    
+
     const deleteUser = async (url: string) => {
         const response = await axios.delete(url, axiosHeader);
-        if(response.data.status === 'success') {
+        if (response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
         }
     }
     const deactiv8User = async (url: string) => {
-        const response = await axios.patch(url, {},axiosHeader);
-        if(response.data.status === 'success') {
+        const response = await axios.patch(url, {}, axiosHeader);
+        if (response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
         }
     }
     const activ8User = async (url: string) => {
-        const response = await axios.post(url, {},axiosHeader);
-        if(response.data.status === 'success') {
+        const response = await axios.post(url, {}, axiosHeader);
+        if (response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
         }
     }
 
-    
+
     const handleClick = (e: any) => {
-        if(e.target.dataset){
+        if (e.target.dataset) {
             const [url, method] = e.target.dataset.action.split(',');
             switch (method) {
                 case 'delete':
@@ -72,12 +74,25 @@ const FormSelect = (props: PageProps) => {
             }
         }
     }
-    
+
+    const [editUserModal, setEditUserModal] = useState(false)
+
+    const addModal: () => void = function () {
+        setEditUserModal(true)
+    }
+    const offModal: () => void = function () {
+        setEditUserModal(false)
+    }
+
+
+
     return (
+    <>
+        { editUserModal && <UserEditModalPortal offModal={offModal} id={id} /> }
         <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
-            <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
-            <div style={{ 
-                position: 'absolute', 
+            <span onClick={() => { showModal(!modal) }} style={{ cursor: 'pointer' }}>...</span>
+            <div onMouseLeave={() => { showModal(!modal) }} style={{
+                position: 'absolute',
                 display: (modal ? 'inline-flex' : 'none'),
                 boxShadow: '0px 0px 10px grey',
                 flexDirection: 'column',
@@ -90,13 +105,13 @@ const FormSelect = (props: PageProps) => {
                 justifyContent: 'space-around',
                 padding: '0.8rem 0'
             }}>
-                
-                <ModalButton onClick={() => {}}>Edit</ModalButton>
-                <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
-                <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
-                <ModalButton data-action={[`/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
+
+                <ModalButton onClick={addModal}>Edit</ModalButton>
+                <ModalButton data-action={[`${BASEURL}/admin/activate_decadev/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
+                <ModalButton data-action={[`${BASEURL}/admin/deactivate_decadev/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
+                <ModalButton data-action={[`${BASEURL}/admin/delete_decadev/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
             </div>
         </div>
-    )
+    </>)
 }
-export default FormSelect;
+export default UserFormSelect;
