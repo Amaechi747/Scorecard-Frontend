@@ -16,6 +16,11 @@ import {
   Stack,
   Welcome,
   PerformanceTracker,
+  Overview,
+  About,
+  Learnings,
+  Contact,
+  DevDashboard
 } from "./pages";
 // import { AuthenticationBody } from './component';
 
@@ -24,8 +29,8 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        {/* <Route path="/" element={<AdminDashboard />} /> */}
+        {/* <Route path="/admin" element={<AdminDashboard />} /> */}
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
@@ -33,7 +38,11 @@ function App(): JSX.Element {
 
         {/* <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingDashboard />} /> */}
-        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<Welcome />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/learnings" element={<Learnings />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
@@ -49,6 +58,10 @@ function App(): JSX.Element {
           <Route path="/admin-dashboard/profile" element={<AdminProfile />} />
           <Route path="/admin-dashboard/create_admin" element={<SuperAdminCreateAdmin />} />
           <Route path="/admin-dashboard/superadmin-signup" element={<SuperAdminSignUp />} />
+        </Route>
+        
+        <Route path="/decadev-dashboard" element={<DevDashboard/>}>
+          <Route path="/decadev-dashboard/overview" element={<Overview />} />
         </Route>
 
         <Route path="/performance-tracker" element={<PerformanceTracker />} />
