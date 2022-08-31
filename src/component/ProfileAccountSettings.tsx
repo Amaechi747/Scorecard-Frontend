@@ -49,10 +49,10 @@ const ProfileAccountSettings = (props: ProfileAccountSettingsProps) => {
   return (
     <>
       <div onClick={(e) => handleClick(e)} onMouseOver={() => handleHover()} className="account-settings">
-        <div style={{ paddingLeft: '2rem' }}>
-          <img className="profile-img" src={profilePicture} />
-        </div>
-        <div style={{ paddingLeft: '2rem' }}>{`${firstName} ${lastName}`}</div>
+        {/* <div style={{ paddingLeft: '2rem', margin: '0' }}>
+        </div> */}
+          <img className="profile-img" alt='Admin profile' src={profilePicture} />
+        <div style={{ paddingLeft: '1rem' }}>{`${firstName} ${lastName}`}</div>
       </div>
 
       <div onMouseLeave={() => handleLeave()}>

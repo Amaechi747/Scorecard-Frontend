@@ -12,7 +12,7 @@ const UserEditModalPortal: (props: UserEditModalPortalProps) => JSX.Element = fu
     return (
         ReactDOM.createPortal(
             <EditUserModal offModal={props.offModal} id={props.id} />,
-            document.getElementById('edit-user-modal-root')!
+            document.getElementById('create-stack-modal-root')!
         )
     )
 }

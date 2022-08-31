@@ -14,7 +14,7 @@ const UserTable = (props:UserTableProp) => {
 const {tableData} = props
 
     return (
-      <>
+      // <>
         <Table>
          <thead style={{ padding: '1rem 3rem' }}>
           <Th>Full Name</Th>
@@ -36,7 +36,6 @@ const {tableData} = props
             )}
             </tbody>
         </Table>
-      </>
     );
 }
 

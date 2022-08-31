@@ -1,49 +1,46 @@
 import React, { FC, FormEvent, ChangeEvent, MouseEvent, useState, useRef, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 import styles from './CreateStackModal.module.css';
-import { CgClose } from 'react-icons/cg';
 import { Select2 } from '../styling/css';
+import { CgClose } from 'react-icons/cg';
 import axios from 'axios';
 import swal from 'sweetalert';
+
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 //Implemented Portals here
 type ModalFormProps ={
-    offModal: () => void;
+    offModal: (event: MouseEvent<HTMLButtonElement>) => void;
     submitHandler?: (event: FormEvent<HTMLFormElement>) => void;
     id: string
 }
 
-interface Idata {
-  firstName?: string,
-  lastName?: string, 
-  email?: string, 
-  stack?: string, 
-  role?: string, 
-  squad?: string
-} 
-const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: ModalFormProps) {
+const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: ModalFormProps) {
+ 
     const { offModal, submitHandler } = props;
     const [input, setInput] = useState({
         firstName: '',
         lastName: '',
         email: '',
-        password: '',
         stack: '',
-        // squad: ''
+        role: '',
+        squad: ''
     });
-    // const navigate = useNavigate();
-    // const formData = new FormData();
+    const [stacks, setStacks] = useState([]);
+    const navigate = useNavigate();
 
-    function getFirstName(e: ChangeEvent<HTMLInputElement>){
+    let closeModal:(event: MouseEvent<HTMLButtonElement>) => void;
+    
+    const getFirstName: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
       setInput((prevState) => {
         return {
           ...prevState,
           firstName: e.target.value
         }
       })
+      
     }
-    function getLastName(e: ChangeEvent<HTMLInputElement>){
+    const getLastName: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
       setInput((prevState) => {
         return {
           ...prevState,
@@ -51,7 +48,7 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
         }
       })
     }
-    function getEmail(e: ChangeEvent<HTMLInputElement>){
+    const getEmail: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
       setInput((prevState) => {
         return {
           ...prevState,
@@ -59,15 +56,7 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
         }
       })
     }
-    // function getPassword(e: ChangeEvent<HTMLInputElement>){
-    //   setInput((prevState) => {
-    //     return {
-    //       ...prevState,
-    //       password: e.target.value
-    //     }
-    //   })
-    // }
-    function getStack(e: ChangeEvent<HTMLSelectElement>){
+    const getStack: (e: ChangeEvent<HTMLSelectElement>) => void = function(e: ChangeEvent<HTMLSelectElement>){
       setInput((prevState) => {
         return {
           ...prevState,
@@ -75,22 +64,39 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
         }
       })
     }
-    function getSquad(e: ChangeEvent<HTMLInputElement>){
+
+    const getRole: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
+      setInput((prevState) => {
+        return {
+          ...prevState,
+          role: e.target.value
+        }
+      })
+    }
+
+    const getSquad: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
       setInput((prevState) => {
         return {
           ...prevState,
           squad: e.target.value
         }
       })
+      
     }
-    const {firstName, lastName, email, stack} = input;
+    interface Idata {
+      firstName?: string,
+      lastName?: string, 
+      email?: string, 
+      stack?: string, 
+      role?: string, 
+      squad?: string
+    } 
+    const {firstName, lastName, email, stack, role, squad} = input;
     const token =  localStorage.getItem('token');
-    
-    const formSubmitHandler: (e: FormEvent<HTMLFormElement>) => void = function (e: FormEvent<HTMLFormElement>){
-        e.preventDefault();
-        const data: Idata = {};
+    const formSubmitHandler: (e: FormEvent<HTMLFormElement>) => void = function(e: FormEvent<HTMLFormElement>){
+      e.preventDefault();
+      const data: Idata = {};
         if(firstName !== '' && firstName !== undefined){
-          // console.log('I am here in this place')
           data['firstName'] = firstName;
         }
 
@@ -103,51 +109,34 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
         if(stack !== '' && stack !== undefined){
           data['stack'] = stack;
         }
-        // if(role !== '' && role !== undefined){
-        //   data['role'] = role;
-        // }
-        // if(squad !== '' && squad !== undefined){
-        //   data['squad'] = squad;
-        // }
-        // console.log('I am here ooo',formData)
-        // if(firstName !== '' && firstName !== undefined){
-        //   console.log('I am here in this place')
-        //   formData.append('firstName', firstName)
-        //   console.log('Get',formData.get('firstName'))
-        // }
-        // if(lastName !== '' && lastName !== undefined){
-        //   formData.append('lastName', lastName)
-        // }
-        // if(email !== '' && email !== undefined){
-        //   formData.append('email', email)
-        // }
-        // if(stack !== '' && stack !== undefined){
-        //   formData.append('stack', stack)
-        // }
-        // if(password !== '' && password !== undefined){
-        //   formData.append('password', password)
-        // }
-        console.log('FormData',data);
-        axios.patch(`${BASEURL}/admin/edit_decadev/${props.id}`, data, {
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            },
-        })
-        .then((res) => {
-          console.log('Response',res)
-          if (res.data.status === 'success') {
-            swal('Success', res.data.message, 'success');
-          }
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);               
-        })
-        .catch((error) => {
-            console.log(error)
-        })        
+        if(role !== '' && role !== undefined){
+          data['role'] = role;
+        }
+        if(squad !== '' && squad !== undefined){
+          data['squad'] = squad;
+        }
+
+        /***************** */
+          axios.patch(`${BASEURL}/admin/edit/${props.id}`, data, {
+              headers: {
+                  "Authorization": `Bearer ${token}`,
+              },
+          })
+          .then((res) => {
+              setTimeout(() => {
+                  // navigate('/stack');
+                  window.location.reload();
+                  console.log(data)
+              }, 1000);   
+              console.log('I am done my guy')            
+          })
+          .catch((error) => {
+              console.log(error)
+            swal('Error', error.response.error, 'error');
+            
+          })        
     }
 
-    const [stacks, setStacks] = useState([]);
 
     useEffect(() => {
       axios.get(`${BASEURL}/admin/view_all_stack`, {
@@ -162,20 +151,21 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
       })
     }, [])
 
-    const closeModal  = function (){
-      setTimeout(() => {
-        offModal()
-    }, 500)
+    closeModal  = function (event: MouseEvent<HTMLButtonElement>){
+        setTimeout(() => {
+            offModal(event)
+        }, 500)
     }
-
+    
     return(
-    <div className={styles["modal-container"]} >
-        <div className={styles["close"]} >
-            <h2> Edit User Details </h2>
+      <div className={styles["modal-container"]} >
+          <div className={styles["close"]} >
+            <h2> Edit Admin Details </h2>
             <button onClick={offModal} > <CgClose/> </button> 
-        </div>
-      <div  style={{ padding: '1rem 4rem 4rem 4rem'}}>
-      <form onSubmit={formSubmitHandler}> 
+          </div>
+        
+        <div style={{ padding: '1rem 4rem 4rem 4rem'}}>
+        <form onSubmit={formSubmitHandler}> 
         <div className="custom_form_input">
             <label htmlFor='firstName'>First Name</label>
             <input 
@@ -201,22 +191,15 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
             />
         </div>
         {/* <div className="custom_form_input">
-            <label htmlFor='password'>password</label>
-            <input 
-            type="text" value={input.password}  
-            placeholder='Enter password'
-            onChange={getPassword}
-            />
-        </div> */}
-        {/* <div className="custom_form_input">
-            <label htmlFor='stack'>Stack</label>
+            <label htmlFor='role'>Stack</label>
             <input 
             type="text" value={input.stack}  
             placeholder='Enter name of Stack'
             onChange={getStack}
             />
         </div> */}
-        { stacks.length > 0 && <div className="custom_form_input">
+
+          { stacks.length > 0 && <div className="custom_form_input">
                   <label style={{ 
                     fontWeight: '400',
                     marginBottom: '0.7rem',
@@ -229,10 +212,27 @@ const EditUserModal: (props: ModalFormProps) => JSX.Element = function(props: Mo
                       )) }
                   </Select2>
           </div>}
-        <button type={"submit"} onClick={closeModal} className={`${styles["submit"]}`} > Done </button>
-      </form>
-    </div>
-    </div>
+        <div className="custom_form_input">
+            <label htmlFor='role'>Role</label>
+            <input 
+            type="text" value={input.role}  
+            placeholder='Enter Role'
+            onChange={getRole}
+            />
+        </div>
+        <div className="custom_form_input">
+            <label htmlFor='squad'> Squad </label>
+            <input 
+            type="text" value={input.squad}  
+            placeholder='Enter Squad'
+            onChange={getSquad}
+            />
+        </div>
+        <button type={"submit"} onClick={closeModal} className={`${styles["submit"]}`} ><p> Done </p></button>
+    </form>
+  </div>          
+</div>
     )
 }
-export default EditUserModal;
+
+export default AdminEditModal;

@@ -37,18 +37,18 @@ const AuthenticationLeft = (props: IAuthenticationLeftProps) => {
                     Object.entries(response.data.data[item]).forEach(([key, value]) => {
                         localStorage.setItem(key, `${value}`);
                     });
-                    setTimeout(()=>{
+                    // setTimeout(()=>{
                         navigate('/admin-dashboard/stack');
 
-                    }, 900)
+                    // }, 900)
                 }
                 if(item === 'decadevDetails'){
                     Object.entries(response.data.data[item]).forEach(([key, value]) => {
                         localStorage.setItem(key, `${value}`);
                     });
-                    setTimeout(()=>{
+                    // setTimeout(()=>{
                         navigate('/decadev-dashboard/overview');
-                    }, 900)
+                    // }, 900)
                 }
             }
             // localStorage.setItem

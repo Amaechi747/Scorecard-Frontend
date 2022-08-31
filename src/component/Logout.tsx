@@ -1,4 +1,3 @@
-import { token } from 'morgan'
 import React, { useState } from 'react'
 import { Navigate } from 'react-router'
 import { FiLogOut } from "react-icons/fi"
