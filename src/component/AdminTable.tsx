@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 // import { useTable, Column } from "react-table";
 // import { IAdmins } from "./TableTypes";
 import { Table, Tr, Th, Td } from "../styling/css"
-import FormSelect from "./FormSelect";
+import FormSelect from "./UserFormSelect";
 
 
 type AdminTableProp = {
