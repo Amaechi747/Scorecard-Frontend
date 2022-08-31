@@ -120,7 +120,7 @@ cursor: pointer;
 `
 export const CardBody = styled.div`
  background: #fff;
- height: 85vh;
+ padding-bottom: 10rem;
  margin: 2rem auto 0;
  width: 50%;
  @media screen and (max-width: 700px) {

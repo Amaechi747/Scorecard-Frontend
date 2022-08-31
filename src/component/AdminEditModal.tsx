@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, ChangeEvent, MouseEvent, useState, useRef, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 import styles from './CreateStackModal.module.css';
-import Button from '../UI/Button';
+import { Select2 } from '../styling/css';
 import { CgClose } from 'react-icons/cg';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -26,6 +26,7 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
         role: '',
         squad: ''
     });
+    const [stacks, setStacks] = useState([]);
     const navigate = useNavigate();
 
     let closeModal:(event: MouseEvent<HTMLButtonElement>) => void;
@@ -55,7 +56,7 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
         }
       })
     }
-    const getStack: (e: ChangeEvent<HTMLInputElement>) => void = function(e: ChangeEvent<HTMLInputElement>){
+    const getStack: (e: ChangeEvent<HTMLSelectElement>) => void = function(e: ChangeEvent<HTMLSelectElement>){
       setInput((prevState) => {
         return {
           ...prevState,
@@ -96,7 +97,6 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
       e.preventDefault();
       const data: Idata = {};
         if(firstName !== '' && firstName !== undefined){
-          console.log('I am here in this place')
           data['firstName'] = firstName;
         }
 
@@ -138,6 +138,19 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
     }
 
 
+    useEffect(() => {
+      axios.get(`${BASEURL}/admin/view_all_stack`, {
+        headers: {
+          'authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then((data) => {
+        setStacks(data.data.data);
+      }).catch((err) => {
+        /** replace with custom contextual error message */
+        console.error(err);
+      })
+    }, [])
+
     closeModal  = function (event: MouseEvent<HTMLButtonElement>){
         setTimeout(() => {
             offModal(event)
@@ -145,13 +158,15 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
     }
     
     return(
-    <form onSubmit={formSubmitHandler} className={styles["modal-container"]} > 
-        <div className={styles["close"]} >
+      <div className={styles["modal-container"]} >
+          <div className={styles["close"]} >
             <h2> Edit Admin Details </h2>
             <button onClick={offModal} > <CgClose/> </button> 
-        </div>
+          </div>
         
-        <div className={styles["stack-name"]}>
+        <div style={{ padding: '1rem 4rem 4rem 4rem'}}>
+        <form onSubmit={formSubmitHandler}> 
+        <div className="custom_form_input">
             <label htmlFor='firstName'>First Name</label>
             <input 
             type="text" value={input.firstName}  
@@ -159,7 +174,7 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
             onChange={getFirstName}
             />
         </div>
-        <div className={styles["stack-name"]}>
+        <div className="custom_form_input">
             <label htmlFor='last-name'>Last Name</label>
             <input 
             type="text" value={input.lastName}  
@@ -167,7 +182,7 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
             onChange={getLastName}
             />
         </div>
-        <div className={styles["stack-name"]}>
+        <div className="custom_form_input">
             <label htmlFor='email'>Email</label>
             <input 
             type="text" value={input.email}  
@@ -175,15 +190,29 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
             onChange={getEmail}
             />
         </div>
-        <div className={styles["stack-name"]}>
+        {/* <div className="custom_form_input">
             <label htmlFor='role'>Stack</label>
             <input 
             type="text" value={input.stack}  
             placeholder='Enter name of Stack'
             onChange={getStack}
             />
-        </div>
-        <div className={styles["stack-name"]}>
+        </div> */}
+
+          { stacks.length > 0 && <div className="custom_form_input">
+                  <label style={{ 
+                    fontWeight: '400',
+                    marginBottom: '0.7rem',
+                    color: '#21334F',
+                    display: 'block' }}>Stack</label>
+                  <Select2 name="stack" id="stack" onChange={getStack}>
+                      <option value="">Select...</option>
+                      { stacks.length > 0 && stacks.map((e: any) => (
+                        <option key={e._id} value={e.name}>{e.name}</option>
+                      )) }
+                  </Select2>
+          </div>}
+        <div className="custom_form_input">
             <label htmlFor='role'>Role</label>
             <input 
             type="text" value={input.role}  
@@ -191,7 +220,7 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
             onChange={getRole}
             />
         </div>
-        <div className={styles["stack-name"]}>
+        <div className="custom_form_input">
             <label htmlFor='squad'> Squad </label>
             <input 
             type="text" value={input.squad}  
@@ -201,6 +230,8 @@ const AdminEditModal: (props: ModalFormProps) => JSX.Element = function(props: M
         </div>
         <button type={"submit"} onClick={closeModal} className={`${styles["submit"]}`} ><p> Done </p></button>
     </form>
+  </div>          
+</div>
     )
 }
 

@@ -45,6 +45,9 @@ const AdminProfile = (props: PageProps): JSX.Element => {
                 if (result.status === 200) {
                     setFormContent({ ...formContent, imageUrl: result.data.imageUrl });
                     swal('Success', 'Profile Image updated', "success");
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000)
                 }
             } catch (err: any) {
                 /** replace with custom contextual error message */

@@ -23,10 +23,11 @@ useEffect(()=>{
 
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width:"72rem", marginTop: '3rem' }}>
+    <div style={{ width: '70rem', margin: '3rem 1rem'}}>
+      <div  style ={{marginLeft: 'calc(10% - 4rem)', color: "#03435F"}}>
+        {/* <p style={{ cursor: 'pointer' }} onClick={() => { navigate('/admin-dashboard/create_admin') }}> <HiArrowNarrowLeft /> Go back</p> */}
 
-      <div style={{ alignSelf: 'start', marginLeft: 'calc(15% - 4rem)', color: "#03435F" }}>
-        <Link to="/admin-dashboard/user" style={{ textDecoration:"none",cursor:"pointer",fontSize:"1.3rem"}}><HiArrowNarrowLeft/> Go back</Link>
+        <Link to="/admin-dashboard/user" style={{  color: "#03435F",textDecoration:"none",cursor:"pointer",fontSize:"1.3rem"}}><HiArrowNarrowLeft/> Go back</Link>
         <h1 style={{ color: "#03435F" }}>All Users</h1>
       </div>
 
