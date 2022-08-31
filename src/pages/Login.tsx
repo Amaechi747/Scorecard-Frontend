@@ -22,7 +22,7 @@ const Login: React.FunctionComponent<IAuthenticationBodyProps> = (props) => {
             textAlign: "center",
             fontWeight: '300',
             color: '#03435F'
-          }}>Don't have an account? <Link to="/sign-up" style={{
+          }}>Don't have an account? <Link to="/superadmin-signup" style={{
             textDecoration: "none",
             color: "#34A853",
             fontWeight: '800'
