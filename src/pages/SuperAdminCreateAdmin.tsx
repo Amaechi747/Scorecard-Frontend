@@ -115,13 +115,6 @@ const SuperAdminCreateAdmin = (props: PageProps): JSX.Element => {
                 setSharedState={(s: string) => { setUserData({ ...userData, email: s }) }}
                 // firstValue="Name cannot be blank"
                 />
-                {/* <FormSelect 
-                  name="stack"
-                  label="Stack"
-                  errorMsg="Please select a comma separated list of Stacks for this Admin"
-                  type="text"
-                /> */}
-                {/* <FormSelect /> */}
                 <div style={{ marginBottom: '0.7rem' }}>
                   <label style={{ 
                     fontWeight: '400',

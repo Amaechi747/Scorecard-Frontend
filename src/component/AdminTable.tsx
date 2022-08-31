@@ -4,10 +4,10 @@
 import { Table, Tr, Th, Td } from "../styling/css";
 import {MouseEvent} from "react";
 import FormSelect from "./FormSelect";
-import { EditModal } from '../component';
+import { AdminEditModal } from '../component';
 
 type AdminTableProp = {
-  tableData: any;
+  tableData?: any;
   action?: string;
   offModal?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
@@ -28,9 +28,9 @@ const AdminTable = (props: AdminTableProp) => {
         </thead>
         <tbody>
           {tableData.map((data: any, index: number) => <Tr key={index}>
-            <Td>{data.firstName} {data.firstName}</Td>
+            <Td>{data.firstName} {data.lastName}</Td>
             <Td>{data.email}</Td>
-            <Td>{data.stack}</Td>
+            <Td>{data.stack.name}</Td>
             <Td>{data.role}</Td>
             <Td>{data.squad[0]}</Td>
             <Td><FormSelect key={index} id={data._id} /></Td>

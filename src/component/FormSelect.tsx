@@ -1,10 +1,11 @@
 import { useState, useEffect, ChangeEvent, MouseEvent } from 'react';
+import { AdminEditModalPortal } from '../component';
 import styled from 'styled-components';
 import axios from 'axios'
 import swal from 'sweetalert';
-import {EditModal} from '../component';
-import {AdminTable} from '../component';
-import ReactDOM from 'react-dom';
+// import {AdminEditModal} from '../component';
+// import {AdminTable} from '../component';
+// import ReactDOM from 'react-dom';
 
 type PageProps = {
     id: string;
@@ -32,6 +33,7 @@ const FormSelect = (props: PageProps) => {
     }
     const deleteUser = async (url: string) => {
         const response = await axios.delete(url, axiosHeader);
+        console.log('Delete Res: ',response);
         if(response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
@@ -39,6 +41,7 @@ const FormSelect = (props: PageProps) => {
     }
     const deactiv8User = async (url: string) => {
         const response = await axios.patch(url, {},axiosHeader);
+        console.log('Deactivate Res: ', response);
         if(response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
@@ -46,6 +49,7 @@ const FormSelect = (props: PageProps) => {
     }
     const activ8User = async (url: string) => {
         const response = await axios.post(url, {},axiosHeader);
+        console.log('Activate Res: ', response);
         if(response.data.status === 'success') {
             swal('Success', response.data.message, 'success');
             showModal(false);
@@ -75,17 +79,18 @@ const FormSelect = (props: PageProps) => {
     const addModal: (e: MouseEvent<HTMLButtonElement>) => void = function (e: MouseEvent<HTMLButtonElement>){
         setEditModal(true);
     }
-    return (
-        <>
-              { ReactDOM.createPortal(
-                    <EditModal />,
-                    document.getElementById('edit-admin-modal-root')!
-                )}
-                { editModal && <AdminTable tableData={undefined} />}
+    const offModal: (e: MouseEvent<HTMLButtonElement>) => void = function (e: MouseEvent<HTMLButtonElement>){
+        setEditModal(false);
+    }
 
+    const BASEURL = process.env.REACT_APP_BASEURL;
+
+    return (
+        <> 
+            { editModal && <AdminEditModalPortal offModal={offModal} id={id}/>}
             <div style={{ width: '100%', marginBottom: '0.8rem', position: 'relative' }}>
                 <span onClick={() => {showModal(!modal)}} style={{cursor: 'pointer'}}>...</span>
-                <div style={{ 
+                <div onMouseLeave={() => {showModal(!modal)}} style={{ 
                     position: 'absolute', 
                     display: (modal ? 'inline-flex' : 'none'),
                     boxShadow: '0px 0px 10px grey',
@@ -100,9 +105,9 @@ const FormSelect = (props: PageProps) => {
                     padding: '0.8rem 0'
                 }}>
                     <ModalButton onClick={addModal}>Edit</ModalButton>
-                    <ModalButton data-action={[`/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
-                    <ModalButton data-action={[`/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
-                    <ModalButton data-action={[`/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
+                    <ModalButton data-action={[`${BASEURL}/admin/activate/${id}`, 'post']} onClick={handleClick}>Activate</ModalButton>
+                    <ModalButton data-action={[`${BASEURL}/admin/deactivate/${id}`, 'patch']} onClick={handleClick}>Deactivate</ModalButton>
+                    <ModalButton data-action={[`${BASEURL}/admin/delete/${id}`, 'delete']} onClick={handleClick}>Delete</ModalButton>
                 </div>
             </div>
         </>
