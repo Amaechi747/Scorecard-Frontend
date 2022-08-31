@@ -56,9 +56,9 @@ const PerformanceTracker: any = (props: WeeksPerformanceProps) => {
 
   return (
     <>
-      <div style={{ margin: '0 3rem'}}>
-        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-          <Heading> Scorecard </Heading>
+      <div style={{ margin: '0 3rem', width: '63rem'}} className="user-dashboard ">
+        <div className="dash-header" style={{display: "flex", flexDirection: "column", alignItems: "flex-start", margin: "1.5rem 0rem 2rem"}}>
+          <div className="overview"> Scorecard </div>
         </div>
         <CardDashboard>
           <Table>
