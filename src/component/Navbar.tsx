@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ScorecardLogo, NavBarSearch, ProfileAccountSettings } from '.'
 
 
@@ -9,6 +9,7 @@ type NavBarProps = {
   setShowModal: any
   showModal: boolean
 }
+
 
 const NavBar = (props: NavBarProps) => {
   const { handleClick, handleLeave, handleHover, setShowModal, showModal } = props;
