@@ -20,6 +20,7 @@ const ViewAllAdmins = (props: ViewAllAdminsProps) => {
 
     const response = await axios.get(`${BASEURL}/admin`);
       setAdmins(response.data);
+      
   };
 
   useEffect(() => {

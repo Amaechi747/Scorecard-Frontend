@@ -34,7 +34,8 @@ const Stack: FC = function ( props: StackProps) {
         })
         setStackData([...stackDataArray])
     }
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
+    const stackID = localStorage.getItem('stack');
     //Get and save stack records.
     useEffect(() => {
         axios.get(`${BASEURL}/admin/view_all_stack`, {headers: {"Authorization": `Bearer ${token}`}})
@@ -49,6 +50,7 @@ const Stack: FC = function ( props: StackProps) {
             .catch((error) => {
                 console.log(error)
             })
+        
     }, [])
 
 
@@ -58,7 +60,7 @@ const Stack: FC = function ( props: StackProps) {
         <>         
             { page.showModal && < CreateStackModal onOffModalHandler = { toggleStackOff }  />}
             { page.showEmptyStack && < EmptyStack onChangeHandler = { toggleStack } />}
-            { page.showCreatedStack && < CreatedStack stackDataArray={stackData} onChangeHandler = { toggleStack } />}
+            { page.showCreatedStack && < CreatedStack stackDataArray={stackData} onChangeHandler = { toggleStack } stack={ stackID! } />}
             {/* onModalChange={ modalChangeHandler }  */}
         </>
     )

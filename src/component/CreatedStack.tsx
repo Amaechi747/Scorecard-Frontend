@@ -12,6 +12,7 @@ interface IStackDataArray{
 type CreatedStackProps = {
     stackDataArray: [IStackDataArray]
     onChangeHandler: (event?: MouseEvent<HTMLInputElement>) => void
+    stack?: string 
 }
 
 const CreatedStack: (props: CreatedStackProps) => JSX.Element = function  (props: CreatedStackProps){
