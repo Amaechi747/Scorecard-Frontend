@@ -6,7 +6,7 @@ import { Logout } from "../component"
 
 type SideBarProps = {}
 
-const DecadevSideBar = (props: SideBarProps) => {
+const DecadevSideBar: (props: SideBarProps)=> JSX.Element = (props: SideBarProps) => {
   return (
     <div style={{ 
             background: '#FFFFFF', 

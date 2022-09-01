@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 type AdminDashboardProps = {};
 
-const AdminDashboard: FC = (props: AdminDashboardProps) => {
+const DecadevDashboard: FC = (props: AdminDashboardProps) => {
   return (
     <IsAuthenticatedDecadev>
       <DecadevDashboardLayout>
@@ -14,4 +14,4 @@ const AdminDashboard: FC = (props: AdminDashboardProps) => {
   );
 };
 
-export default AdminDashboard;
+export default DecadevDashboard;
