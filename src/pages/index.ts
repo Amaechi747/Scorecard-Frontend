@@ -24,3 +24,5 @@ export { default as About } from "./About"
 export { default as Learnings } from "./Learnings"
 export { default as Contact } from "./Contact"
 export { default as DevDashboard } from "./DecadevDashboard";
+export { default as DevProfile } from './DevProfile';
+export { default as DevChangePassword } from './DevChangePassword';

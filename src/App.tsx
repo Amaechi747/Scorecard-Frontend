@@ -20,7 +20,9 @@ import {
   About,
   Learnings,
   Contact,
-  DevDashboard
+  DevDashboard,
+  DevProfile,
+  DevChangePassword
 } from "./pages";
 // import { AuthenticationBody } from './component';
 
@@ -63,6 +65,8 @@ function App(): JSX.Element {
         <Route path="/decadev-dashboard" element={<DevDashboard/>}>
           <Route path="/decadev-dashboard/overview" element={<Overview />} />
           <Route path="/decadev-dashboard/performance-tracker" element={<PerformanceTracker />} />
+          <Route path="/decadev-dashboard/profile" element={<DevProfile />} />
+          <Route  path="/decadev-dashboard/password-update" element={<DevChangePassword />}></Route>
         </Route>
 
       </Routes>

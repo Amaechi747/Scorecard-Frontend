@@ -104,8 +104,6 @@ const Overview = () => {
     getUserCurrentPerformance();
   }, []);
 
-//   const latestResult: ResultType = result[result.length - 1];
-            console.log('From Tracker: \n',tracker);
   const labels = tracker.map((_, i: number) => `week ${i + 1}`);
   const data1 = tracker.map((ele: ResultType) => ele.agileTest);
   const data2 = tracker.map((ele: ResultType) => ele.algorithm);
