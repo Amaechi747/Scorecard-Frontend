@@ -8,7 +8,7 @@ const accountSettingsData = [
   id: 0,
   link: '/admin-dashboard/profile',
   icon: <AiOutlineUser />,
-  name: 'Profile',
+  name: 'Profile'
  },
  {
   id: 1,

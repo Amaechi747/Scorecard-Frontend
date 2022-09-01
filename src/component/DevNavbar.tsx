@@ -10,6 +10,7 @@ type NavBarProps = {
   showModal: boolean
 }
 
+
 const DevNavBar = (props: NavBarProps) => {
   const { handleClick, handleLeave, handleHover, setShowModal, showModal } = props;
 

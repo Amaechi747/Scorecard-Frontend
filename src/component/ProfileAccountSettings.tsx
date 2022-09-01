@@ -32,6 +32,7 @@ const ProfileAccountSettings = (props: ProfileAccountSettingsProps) => {
             'authorization': `Bearer ${localStorage.getItem('token')}`
           }
         })
+        
         console.log(result.data)
         const {imageUrl, firstName, lastName, role}=  result.data        
         setProfilePicture(imageUrl)
