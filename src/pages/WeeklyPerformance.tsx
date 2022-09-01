@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Card } from "../component";
 import styles from '../component/CreateStackModal.module.css';
 import {AiOutlineCalendar} from 'react-icons/ai';
-import AddPerformanceScore from './AddPerformanceScore'
+import AddPerformanceScore from '../component/AddPerformanceScoreModal'
 import {
   Heading,
   Table,
@@ -14,6 +14,7 @@ import {
   Tbody,
   CardDashboard,
 } from "../styling/css";
+import FormSelect2 from "../component/FormSelect2"
 import axios from "axios";
 import WeekDropDown from "./WeekPerformanceDropdown"
 
@@ -57,7 +58,8 @@ const WeeklyTable = (props: WeeklyTableProps) => {
           <Td>-</Td>
         </>
       }
-      <Td style={{cursor: 'pointer'}} className='action'>...</Td>
+      {/* <Td style={{cursor: 'pointer'}} className='action'>...</Td> */}
+      <Td><FormSelect2 id={props.el.user._id} firstName={props.el.user.firstName} lastName={props.el.user.lastName}/></Td>
     </Tr>
   )  
 }
@@ -88,7 +90,6 @@ const WeeklyPerformance: any = (props: AddWeeklyPerformanceProps) => {
       )
 
       setDisplayList([...result.data]);
-      // console.log(result.data);
     })();
   }, [week]);
 

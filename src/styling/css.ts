@@ -120,7 +120,7 @@ cursor: pointer;
 `
 export const CardBody = styled.div`
  background: #fff;
- height: 85vh;
+ padding-bottom: 10rem;
  margin: 2rem auto 0;
  width: 50%;
  @media screen and (max-width: 700px) {
@@ -147,34 +147,6 @@ margin: 0.4rem 0;
 background: linear-gradient(96.67deg, #34A853 0%, #B8D344 100%);
 `
 
-// <<<<<<< HEAD
-// export const Tr = styled.tr`
-// border-bottom: 0.015rem solid gray;
-// &:last-child {
-//   border: unset;
-// }
-// `
-
-// export const Table = styled.table`
-// width: 80%;
-// border-collapse: collapse;
-// `
-
-// export const Th = styled.th`
-// padding: 0.5rem 1rem 0.5rem 2rem;
-// text-align: justify;
-// color: #03435F;
-// @media screen and (max-width: 1200px) {
-//   font-size: 1rem;
-//   font-weight: 500;
-// }
-// `
-// // background: 
-// export const Td = styled.td`
-// background-color: #fff;
-// padding: 0.4rem 2rem;
-// color: #03435F;
-// =======
 export const CardDashboard = styled.div`
     margin: 0 auto;
     background: #FFFFFF;
@@ -251,7 +223,7 @@ border-bottom: 0.015rem solid gray;
 `
 
 export const Table = styled.table`
-width: 100%;
+width: calc(100%);
 border-collapse: collapse;
 `
 
@@ -264,6 +236,7 @@ color: #03435F;
   font-weight: 500;
 }
 `
+
 // background: 
 export const Td = styled.td`
 background-color: #fff;
@@ -282,6 +255,7 @@ export const Select = styled.select`
  line-height: 1.5rem;
  height: 2.5rem;
 `
+
 export const Option = styled.option`
  border: 0.15rem solid rgba(33, 51, 79, 0.15);
  color: #21334F;

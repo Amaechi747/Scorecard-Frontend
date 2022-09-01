@@ -16,6 +16,10 @@ import {
   Stack,
   Welcome,
   PerformanceTracker,
+  Overview,
+  About,
+  Learnings,
+  Contact,
   DevDashboard
 } from "./pages";
 // import { AuthenticationBody } from './component';
@@ -34,7 +38,11 @@ function App(): JSX.Element {
 
         {/* <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingDashboard />} /> */}
-        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<Welcome />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/learnings" element={<Learnings />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
@@ -53,10 +61,10 @@ function App(): JSX.Element {
         </Route>
         
         <Route path="/decadev-dashboard" element={<DevDashboard/>}>
-          <Route path="/decadev-dashboard/overview" element={<h1>Here</h1>} />
+          <Route path="/decadev-dashboard/overview" element={<Overview />} />
+          <Route path="/decadev-dashboard/performance-tracker" element={<PerformanceTracker />} />
         </Route>
 
-        <Route path="/performance-tracker" element={<PerformanceTracker />} />
       </Routes>
     </div>
   );

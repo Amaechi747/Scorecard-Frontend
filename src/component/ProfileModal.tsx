@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Logout from './Logout';
+import styles from './CreateStackModal.module.css';
 
 type ProfileModalProps = {
   accountSettingsData: any
@@ -19,10 +20,8 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
 
     return ReactDOM.createPortal(
       <div className="profile-modal">
-        <div className="profile-modal-up">
-          {/* <div style={{ width: '5rem', clip: 'circle(50%)', marginRight: '0.8rem' }}> */}
-            <img src={profilePicture} style={{ width: '5rem', clipPath: 'circle(50%)', marginRight: '0.8rem' }} />
-          {/* </div> */}
+        <div className="profile-modal-up" >
+          <img src={profilePicture} alt='Admin profile' style={{ width: '5rem', clipPath: 'circle(50%)', marginRight: '0.8rem' }} />
 
           <div className="profile-modal-bottom">
             <span style={{ color: '#03435F', fontWeight: '700', lineHeight: '19px' }}>{`${firstName} ${lastName}`}</span>
@@ -44,8 +43,11 @@ const ProfileModal: (props: ProfileModalProps) => React.ReactPortal | null = (pr
               )
             })
           }
-          <Logout />
 
+        </div>
+        <div style={{ paddingLeft: '1.4rem' }}>
+
+          <Logout />
         </div>
 
       </div>, document.getElementById('modal-root')!)

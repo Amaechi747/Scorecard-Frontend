@@ -11,7 +11,7 @@ const decadevSidebarData = [
  },
  {
   id: 1,
-  link: "/decadev-dashboard/performance",
+  link: "/decadev-dashboard/performance-tracker",
   icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M21.6 4.7998H19.9999V10.3997H21.6V4.7998Z" fill="#21334F"/>
   <path d="M18.4001 2.3999H16.8V10.3998H18.4001V2.3999Z" fill="#21334F"/>

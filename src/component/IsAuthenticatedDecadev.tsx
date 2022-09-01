@@ -10,7 +10,7 @@ interface IAuthenticated{
 const IsAuthenticatedUser = (props: IAuthenticated) => {
     const ROLE = localStorage.getItem('email')
 
-    if(ROLE && ROLE.split('@')[1] === 'decagon.dev'){
+    if(ROLE && (ROLE.split('@')[1] === 'decagon.dev' ||  ROLE.split('@')[1] ==='gmail.com')){
         return <>{props.children}</>
     }
 
