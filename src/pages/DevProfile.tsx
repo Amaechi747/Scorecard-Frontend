@@ -11,7 +11,7 @@ type PageProps = {}
 
 const BASEURL = process.env.REACT_APP_BASEURL;
 
-const AdminProfile = (props: PageProps): JSX.Element => {
+const DevProfile = (props: PageProps): JSX.Element => {
     const [loaded, setLoaded] = useState(false);
     const imageRef = useRef(HTMLInputElement.prototype);
     const [formContent, setFormContent] = useState({
@@ -36,7 +36,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
         if (e.currentTarget.files[0]) {
             try {
                 // @ts-ignore: Object is possibly 'null'.
-                const result = await axios.put(`${BASEURL}/admin/upload/${localStorage.getItem('id')}`, { image: e.currentTarget.files[0] }, {
+                const result = await axios.put(`${BASEURL}/users/upload/${localStorage.getItem('id')}`, { image: e.currentTarget.files[0] }, {
                     headers: {
                         'authorization': `Bearer ${localStorage.getItem('token')}`,
                         'Content-Type': 'multipart/form-data'
@@ -67,17 +67,17 @@ const AdminProfile = (props: PageProps): JSX.Element => {
             lastName
         } = formContent;
         try {
-            const result = await axios.patch(`${BASEURL}/admin/edit/${localStorage.getItem('id')}`, { firstName, lastName }, {
+            const result = await axios.patch(`${BASEURL}/users/edit/${localStorage.getItem('id')}`, { firstName, lastName }, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             })
             if (result.status === 201) {
-                // setFormContent({ ...result.data });
-                swal('Success', 'Profile details updated', "success").then(() => { 
+                swal('Success', 'Profile details updated', "success");
+                setFormContent({ ...result.data });
+                setTimeout(() => {
                     window.location.reload();
-                });
-                
+                }, 1000)
             }
         } catch (err: any) {
             /** replace with custom contextual error message */
@@ -91,7 +91,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
 
 
     useEffect(() => {
-        axios.get(`${BASEURL}/admin/profile/${localStorage.getItem('id')}`, {
+        axios.get(`${BASEURL}/users/profile/${localStorage.getItem('id')}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -186,7 +186,7 @@ const AdminProfile = (props: PageProps): JSX.Element => {
                             label="Squad"
                             type="text"
                             errorMsg="Please enter a valid Squad e.g. - SQ0012"
-                            presetValue={`${formContent?.squad.join(',')}`}
+                            presetValue={`${formContent?.squad}`}
                             disabled
                         />
 
@@ -199,4 +199,4 @@ const AdminProfile = (props: PageProps): JSX.Element => {
         </div>)
 }
 
-export default AdminProfile;
+export default DevProfile;
